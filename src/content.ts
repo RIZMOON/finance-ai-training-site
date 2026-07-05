@@ -5,9 +5,9 @@ export const nav = {
   brand: { en: "AI for the Finance Function", zh: "财务职能 AI 实训" },
   links: [
     { id: "outcomes", label: { en: "Outcomes", zh: "培训成效" } },
-    { id: "cases", label: { en: "The Six Cases", zh: "六大案例" } },
     { id: "instructor", label: { en: "Instructor", zh: "讲师" } },
-    { id: "track-record", label: { en: "Track Record", zh: "培训往绩" } },
+    { id: "clients", label: { en: "Clients", zh: "服务客户" } },
+    { id: "workflows", label: { en: "What We Train", zh: "培训内容" } },
     { id: "insights", label: { en: "Insights", zh: "监管与洞察" } },
   ] as { id: string; label: L }[],
   cta: { en: "Book a session", zh: "预约培训" },
@@ -31,9 +31,8 @@ export const hero = {
     en: "Current edition: prepared for the Office of the Controller of an Asia-based, AAA-rated multilateral development bank · July 2026",
     zh: "当前版本：为一家总部位于亚洲的 AAA 评级多边开发银行财务控制部定制 · 2026 年 7 月",
   },
-  ctaCases: { en: "See the six cases", zh: "查看六大案例" },
+  ctaCases: { en: "See what we train", zh: "查看培训内容" },
   ctaDemo: { en: "Book a session", zh: "预约培训" },
-  ctaDemoNote: { en: "Open a sample output", zh: "打开示例产出" },
   stats: [
     { value: "2.5–3h", label: { en: "one focused session", zh: "一场聚焦的工作坊" } },
     { value: "6", label: { en: "hands-on cases, one connected quarter", zh: "个实操案例，串成同一个季度" } },
@@ -724,8 +723,30 @@ export const instructor = {
   name: { en: "Tom Wang", zh: "王雨岩 Tom Wang" },
   role: { en: "Audit Partner, Deloitte · CPA, MSF", zh: "德勤审计合伙人 · CPA、MSF" },
   lead: {
-    en: "Sixteen years across major accounting firms and enterprise finance advisory in Canada, the United States and China. The training does not stop at model concepts: every session is built from the client's own pre-session diagnostic and connects generative AI to real workflows, review mechanisms and the control expectations of a regulated finance function.",
-    zh: "16 年横跨加拿大、美国与中国的大型会计师事务所与企业财务咨询经验。培训不止步于模型概念：每一场都基于客户自己的课前调研搭建，把生成式 AI 接进真实流程、复核机制与受监管财务职能的控制要求。",
+    en: "Tom is an Audit Partner at Deloitte with sixteen years across major accounting firms and enterprise finance advisory in Canada, the United States and China. He has spent his career inside the work this training automates — audits of financial institutions, quarter-end closes, fair-value review of hard-to-value investments — and now teaches finance teams to hand the mechanical parts of that work to AI without giving up an inch of control.",
+    zh: "王雨岩现任德勤审计合伙人，拥有 16 年横跨加拿大、美国与中国的大型会计师事务所与企业财务咨询经验。他的职业生涯恰好浸泡在本课程要自动化的那些工作里——金融机构审计、季末结账、难估值投资的公允价值复核——如今他教财务团队把这些工作中机械的部分交给 AI，而控制力一寸不让。",
+  },
+  bio: [
+    {
+      en: "Every program is built the same way: a structured pre-session diagnostic of the client's own processes, data shapes and approved tools — then cases written to mirror them, so the room recognizes its own files on day one.",
+      zh: "每套课程的搭建方式都一样：先对客户自身的流程、数据形态与合规工具做结构化课前调研，再据此编写案例——学员第一天就能认出自己的文件。",
+    },
+    {
+      en: "The teaching stance comes from audit, not from technology sales: AI output is a draft until it is verified; every deliverable ships with its exception list; judgment is never delegated to a machine. That is why controllers, auditors and risk teams trust the material.",
+      zh: "教学立场来自审计，而非技术销售：AI 产出在被验证之前只是草稿；每份交付物都附异常清单；判断永远不移交给机器。这正是财务控制、审计与风险团队信任这套材料的原因。",
+    },
+  ] as L[],
+  expertiseTitle: { en: "Where he works", zh: "专业领域" },
+  expertise: [
+    { en: "Audit of financial institutions", zh: "金融机构审计" },
+    { en: "Quarter-end close & financial reporting", zh: "季末结账与财务报告" },
+    { en: "Fair-value & Level-3 valuation review", zh: "公允价值与 Level 3 估值复核" },
+    { en: "Anti-fraud & forensic data analytics", zh: "反欺诈与数据鉴证分析" },
+    { en: "GenAI enablement for finance teams", zh: "财务团队生成式 AI 赋能" },
+  ] as L[],
+  quote: {
+    en: "“Training only counts if it survives contact with Monday morning. My job is that your team walks out with prompts they will actually use at the next close — and the judgment to check what comes back.”",
+    zh: "“培训只有扛得住周一早上的真实工作才算数。我的任务是让团队带着下个结账周期真会用的提示词离场——以及核验 AI 产出的判断力。”",
   },
   points: [
     {
@@ -759,12 +780,21 @@ export const instructor = {
 
 /* ---------------------------------------------------------- track record -- */
 export const trackRecord = {
-  eyebrow: { en: "Track record", zh: "培训往绩" },
-  title: { en: "Hands-on AI programs delivered to finance and audit teams", zh: "已为多家财务与审计团队交付的 AI 实操培训" },
+  eyebrow: { en: "Clients", zh: "服务客户" },
+  title: { en: "Trusted by finance and audit teams at regulated institutions", zh: "受监管机构的财务与审计团队都在用" },
   intro: {
-    en: "Client names are withheld; each program was built from the institution's own processes and data shapes. Every dataset shown is simulated.",
-    zh: "客户名称按惯例隐去；每套课程都基于该机构自身的流程与数据形态搭建。所示数据均为模拟。",
+    en: "Programs delivered to date span multilateral development banking, insurance and asset-heavy corporates. Client names are withheld as a matter of professional practice; each program was built from the institution's own processes and data shapes, and every dataset used in training is simulated.",
+    zh: "已交付课程覆盖多边开发银行、保险与重资产企业。按职业惯例隐去客户名称；每套课程都基于该机构自身的流程与数据形态搭建，培训所用数据均为模拟。",
   },
+  segmentsTitle: { en: "Who this is for", zh: "适合哪些机构" },
+  segments: [
+    { en: "Multilateral development banks", zh: "多边开发银行" },
+    { en: "Commercial & policy banks", zh: "商业银行与政策性银行" },
+    { en: "Central banks & supervisors", zh: "中央银行与监管机构" },
+    { en: "Insurers & asset managers", zh: "保险公司与资管机构" },
+    { en: "Sovereign & pension funds", zh: "主权基金与养老金" },
+    { en: "CFO offices of large corporates", zh: "大型企业 CFO 办公室" },
+  ] as L[],
   programs: [
     {
       client: { en: "Multilateral development bank", zh: "多边开发银行" },
@@ -791,6 +821,31 @@ export const trackRecord = {
       },
     },
   ] as { client: L; tag: L; body: L }[],
+};
+
+/* -------------------------------------------------------------- workflows -- */
+export const workflows = {
+  eyebrow: { en: "What we train", zh: "培训内容" },
+  title: {
+    en: "Six finance workflows, hands-on, in one session",
+    zh: "六个财务工作流，一场课全部上手",
+  },
+  intro: {
+    en: "Participants work through one connected quarter — from raw ledgers to the management report — instructing AI in plain language at every step. Full case materials, data packs and reference solutions are provided in the session, not published here.",
+    zh: "学员完整跑通一个季度——从原始台账到管理层报告——每一步都用大白话指挥 AI。完整案例材料、数据包与参考解法在课上提供，不在本站公开。",
+  },
+  items: [
+    { tag: { en: "Split", zh: "拆分" }, title: { en: "Ledger splitting & distribution", zh: "总账拆分与分发" } },
+    { tag: { en: "Merge", zh: "合并" }, title: { en: "Quarter-end accrual consolidation", zh: "季末应计归集" } },
+    { tag: { en: "Clean", zh: "清洗" }, title: { en: "Invoice-register cleanup & duplicate-payment checks", zh: "发票台账清洗与重复付款核查" } },
+    { tag: { en: "Analyze", zh: "分析" }, title: { en: "Budget-vs-actual variance dashboards", zh: "预算执行差异看板" } },
+    { tag: { en: "Report", zh: "报告" }, title: { en: "One-prompt management flash reports", zh: "一句提示词生成管理层快报" } },
+    { tag: { en: "Review", zh: "复核" }, title: { en: "Fair-value roll-forward screening (Level 3)", zh: "公允价值滚动筛查（Level 3）" } },
+  ] as { tag: L; title: L }[],
+  note: {
+    en: "Two delivery paths throughout: AI-written macros that keep data on the laptop, and AI agents for end-to-end deliverables — with the four prompt principles drilled at every step.",
+    zh: "全程两条路径：数据不出本机的 AI 宏，与端到端交付的 AI 智能体——四条提示词原则贯穿每一步。",
+  },
 };
 
 /* -------------------------------------------------------------------- cta -- */

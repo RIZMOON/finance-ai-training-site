@@ -20,8 +20,6 @@ import {
 import { useEffect, useRef, useState } from "react";
 import {
   bigNumbers,
-  cases,
-  casesSection,
   cta,
   footer,
   governance,
@@ -34,6 +32,7 @@ import {
   pains,
   program,
   trackRecord,
+  workflows,
 } from "./content";
 import { useLang } from "./i18n";
 
@@ -209,19 +208,10 @@ function Hero() {
             <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
           </a>
           <a
-            href="#cases"
+            href="#workflows"
             className="inline-flex items-center gap-2 rounded-md border border-navy/25 bg-panel px-5 py-3 text-sm font-semibold text-navy transition-colors hover:border-teal hover:text-teal-deep"
           >
             {t(hero.ctaCases)}
-          </a>
-          <a
-            href="/demo/flash-report-sample.html"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-1.5 px-2 py-3 text-sm font-medium text-teal-deep underline-offset-4 transition-colors hover:underline"
-          >
-            {t(hero.ctaDemoNote)}
-            <ExternalLink size={13} />
           </a>
         </div>
 
@@ -385,108 +375,6 @@ function Program() {
             <p className="mt-3 text-[13.5px] leading-6 text-white/70">{t(program.audience.body)}</p>
           </Reveal>
         </div>
-      </div>
-    </section>
-  );
-}
-
-/* ----------------------------------------------------------------- cases -- */
-
-function Cases() {
-  const { t } = useLang();
-  return (
-    <section id="cases" className="py-20 md:py-24">
-      <div className="mx-auto max-w-6xl px-5">
-        <SectionHead
-          eyebrow={t(casesSection.eyebrow)}
-          title={t(casesSection.title)}
-          intro={t(casesSection.intro)}
-        />
-        <div className="mt-12 space-y-8">
-          {cases.map((c, idx) => (
-            <Reveal
-              as="article"
-              key={c.no}
-              className="overflow-hidden rounded-xl border border-mist bg-panel"
-            >
-              <div className="grid lg:grid-cols-[1.15fr_1fr]">
-                {/* left: narrative */}
-                <div className="p-7 md:p-9">
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className="font-mono text-3xl font-semibold text-mist">{c.no}</span>
-                    <span className="rounded-full bg-navy px-3 py-1 font-mono text-[11px] font-semibold tracking-wider text-white uppercase">
-                      {t(c.tag)}
-                    </span>
-                    <Stars n={c.stars} />
-                    <span className="font-mono text-[11px] text-slate">{t(c.minutes)}</span>
-                  </div>
-                  <h3 className="font-display mt-4 text-2xl leading-snug font-semibold text-navy">
-                    {t(c.title)}
-                  </h3>
-                  <p className="mt-1.5 font-mono text-xs font-medium text-gold">{t(c.pain)}</p>
-                  <p className="mt-4 text-[14px] leading-6.5 text-slate">{t(c.story)}</p>
-                  {c.trap ? (
-                    <p className="mt-4 rounded-md border-l-[3px] border-flag bg-[#FBF1F1] px-4 py-3 text-[13px] leading-6 text-[#7A2E2E]">
-                      {t(c.trap)}
-                    </p>
-                  ) : null}
-                  <ul className="mt-5 space-y-2">
-                    {c.tasks.map((task, i) => (
-                      <li key={i} className="flex items-start gap-2.5 text-[13.5px] leading-6 text-ink">
-                        <CheckCircle2 size={15} className="mt-1 shrink-0 text-teal" />
-                        {t(task)}
-                      </li>
-                    ))}
-                  </ul>
-                  {c.demo ? (
-                    <a
-                      href={c.demo.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="mt-5 inline-flex items-center gap-2 rounded-md border border-teal/40 bg-teal-wash px-4 py-2.5 text-[13px] font-semibold text-teal-deep transition-colors hover:border-teal"
-                    >
-                      {t(c.demo.label)}
-                      <ArrowUpRight size={14} />
-                    </a>
-                  ) : null}
-                </div>
-
-                {/* right: evidence */}
-                <div className="flex flex-col justify-between gap-6 border-t border-mist bg-paper/70 p-7 md:p-9 lg:border-t-0 lg:border-l">
-                  <div>
-                    <p className="eyebrow">{t(casesSection.verifiedNote)}</p>
-                    <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                      {c.results.map((r, i) => (
-                        <div key={i} className="rounded-lg border border-mist bg-panel px-4 py-4">
-                          <div className="font-mono text-[1.45rem] leading-none font-semibold text-teal-deep">
-                            {r.value}
-                          </div>
-                          <div className="mt-2 text-[12px] leading-5 text-slate">{t(r.label)}</div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  {c.chart ? (
-                    <div className="space-y-4">
-                      {c.chart.map((ch, i) => (
-                        <figure key={i} className="overflow-hidden rounded-lg border border-mist bg-white">
-                          <img src={ch.src} alt={t(ch.alt)} loading="lazy" className="w-full" />
-                          <figcaption className="border-t border-mist px-4 py-2.5 font-mono text-[10.5px] text-slate">
-                            {t(ch.caption)}
-                          </figcaption>
-                        </figure>
-                      ))}
-                    </div>
-                  ) : null}
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-        <Reveal as="p" className="mt-8 flex items-center gap-2 font-mono text-xs text-slate">
-          <ShieldCheck size={14} className="text-teal" />
-          {t(casesSection.simNote)}
-        </Reveal>
       </div>
     </section>
   );
@@ -688,6 +576,19 @@ function Instructor() {
               </div>
             </div>
             <p className="mt-6 text-[14px] leading-7 text-white/75">{t(instructor.lead)}</p>
+            {instructor.bio.map((b, i) => (
+              <p key={i} className="mt-3 text-[13px] leading-6.5 text-white/60">{t(b)}</p>
+            ))}
+            <div className="mt-6">
+              <p className="font-mono text-[10.5px] tracking-wider text-[#7FD8D4] uppercase">{t(instructor.expertiseTitle)}</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {instructor.expertise.map((e, i) => (
+                  <span key={i} className="rounded-full border border-white/20 bg-white/[0.06] px-3 py-1 font-mono text-[11px] text-white/80">
+                    {t(e)}
+                  </span>
+                ))}
+              </div>
+            </div>
             <div className="mt-8 grid grid-cols-3 gap-px overflow-hidden rounded-lg border border-white/12 bg-white/10">
               {instructor.stats.map((s, i) => (
                 <div key={i} className="bg-[#0f3050] px-4 py-4">
@@ -713,6 +614,10 @@ function Instructor() {
                 </div>
               </Reveal>
             ))}
+            <Reveal delay={0.26} className="rounded-lg border border-[#66D1CC]/35 bg-[#66D1CC]/[0.08] p-6">
+              <p className="font-display text-[15px] leading-7 text-white/90 italic">{t(instructor.quote)}</p>
+              <p className="mt-3 font-mono text-[11px] text-[#7FD8D4]">— {t(instructor.name)}</p>
+            </Reveal>
           </div>
         </div>
       </div>
@@ -725,7 +630,7 @@ function Instructor() {
 function TrackRecord() {
   const { t } = useLang();
   return (
-    <section id="track-record" className="py-20 md:py-24">
+    <section id="clients" className="py-20 md:py-24">
       <div className="mx-auto max-w-6xl px-5">
         <SectionHead
           eyebrow={t(trackRecord.eyebrow)}
@@ -750,6 +655,50 @@ function TrackRecord() {
             </Reveal>
           ))}
         </div>
+        <Reveal className="mt-10 rounded-lg border border-mist bg-panel p-6">
+          <p className="font-mono text-[10.5px] tracking-wider text-teal-deep uppercase">{t(trackRecord.segmentsTitle)}</p>
+          <div className="mt-3.5 flex flex-wrap gap-2.5">
+            {trackRecord.segments.map((sg, i) => (
+              <span key={i} className="rounded-full bg-teal-wash px-3.5 py-1.5 font-mono text-[11.5px] text-teal-deep">
+                {t(sg)}
+              </span>
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------- workflows -- */
+
+function Workflows() {
+  const { t } = useLang();
+  return (
+    <section id="workflows" className="border-y border-mist bg-[#EFF3F6] py-20 md:py-24">
+      <div className="mx-auto max-w-6xl px-5">
+        <SectionHead eyebrow={t(workflows.eyebrow)} title={t(workflows.title)} intro={t(workflows.intro)} />
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {workflows.items.map((w, i) => (
+            <Reveal
+              key={i}
+              delay={i * 0.05}
+              className="card-hover flex items-center gap-4 rounded-lg border border-mist bg-panel p-5"
+            >
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-navy font-mono text-xs font-semibold text-[#7FD8D4]">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <div>
+                <p className="font-mono text-[10px] tracking-wider text-teal-deep uppercase">{t(w.tag)}</p>
+                <h3 className="mt-0.5 text-[14.5px] leading-snug font-semibold text-navy">{t(w.title)}</h3>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+        <Reveal as="p" className="mt-8 flex items-start gap-2 text-[13px] leading-6 text-slate">
+          <ShieldCheck size={15} className="mt-0.5 shrink-0 text-teal" />
+          {t(workflows.note)}
+        </Reveal>
       </div>
     </section>
   );
@@ -778,7 +727,7 @@ function Cta() {
               <span className="font-mono text-[13px] font-normal opacity-80">{cta.email}</span>
             </a>
             <a
-              href="#cases"
+              href="#workflows"
               className="inline-flex items-center gap-2 rounded-md border border-white/25 px-5 py-3 text-sm font-semibold text-white transition-colors hover:border-[#66D1CC]"
             >
               {t(cta.secondaryLabel)}
@@ -831,9 +780,9 @@ export default function App() {
         <BigNumbers />
         <Pains />
         <Outcomes />
-        <Cases />
         <Instructor />
         <TrackRecord />
+        <Workflows />
         <Program />
         <Insights />
         <Governance />
