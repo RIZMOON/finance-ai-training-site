@@ -17,9 +17,9 @@ Design system: "institutional ledger"
   --color-navy-2: #14395f;
   --color-slate: #51667e;
   --color-mist: #dfe7ee;
-  --color-teal: #0e7f80;
-  --color-teal-deep: #0a6263;
-  --color-teal-wash: #e7f3f2;
+  --color-teal: #00858c;
+  --color-teal-deep: #00666d;
+  --color-teal-wash: #e5f4f4;
   --color-gold: #b98d2f;
   --color-flag: #c22f2f;
 
@@ -104,6 +104,6 @@ body {
 
 .dark-band {
   background:
-    radial-gradient(1100px 420px at 85% -10%, rgba(20, 128, 129, 0.28), transparent 60%),
+    radial-gradient(1100px 420px at 85% -10%, rgba(0, 138, 145, 0.30), transparent 60%),
     linear-gradient(160deg, #0e2a47 0%, #0f3050 55%, #0c2440 100%);
 }

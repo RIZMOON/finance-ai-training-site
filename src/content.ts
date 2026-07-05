@@ -16,8 +16,8 @@ export const nav = {
 /* ----------------------------------------------------------------- hero -- */
 export const hero = {
   eyebrow: {
-    en: "In-person · hands-on · for finance & controller teams at international financial institutions",
-    zh: "线下实操 · 面向国际金融机构的财务与会计团队",
+    en: "In-person · hands-on · for the finance teams behind tomorrow's infrastructure",
+    zh: "线下实操 · 献给支撑“明日基建”的财务团队",
   },
   title: {
     en: "AI your finance team can use on Monday morning.",
@@ -569,8 +569,8 @@ export const governance = {
     zh: "银行级的习惯，从第一句提示词教起",
   },
   intro: {
-    en: "The program treats AI use as a controlled activity, not a shortcut around control. Four rules are stated on the first slide and reinforced by the structure of every case.",
-    zh: "本课程把使用 AI 当作一项受控活动，而不是绕开控制的捷径。四条规则写在第一页，并由每个案例的结构反复强化。",
+    en: "The program treats AI use as a controlled activity, not a shortcut around control. Four rules are stated on the first slide and reinforced by the structure of every case — a working method a lean, clean and green institution can adopt as-is.",
+    zh: "本课程把使用 AI 当作一项受控活动，而不是绕开控制的捷径。四条规则写在第一页，并由每个案例的结构反复强化——一套“精干、廉洁、绿色”机构可直接采纳的工作方法。",
   },
   rules: [
     {
@@ -783,8 +783,8 @@ export const trackRecord = {
   eyebrow: { en: "Clients", zh: "服务客户" },
   title: { en: "Trusted by finance and audit teams at regulated institutions", zh: "受监管机构的财务与审计团队都在用" },
   intro: {
-    en: "Programs delivered to date span multilateral development banking, insurance and asset-heavy corporates. Client names are withheld as a matter of professional practice; each program was built from the institution's own processes and data shapes, and every dataset used in training is simulated.",
-    zh: "已交付课程覆盖多边开发银行、保险与重资产企业。按职业惯例隐去客户名称；每套课程都基于该机构自身的流程与数据形态搭建，培训所用数据均为模拟。",
+    en: "Programs delivered to date span development finance, insurance and asset-heavy corporates — institutions whose finance teams sit behind climate-era mandates and member-facing reporting. Client names are withheld as a matter of professional practice; each program was built from the institution's own processes and data shapes, and every dataset used in training is simulated.",
+    zh: "已交付课程覆盖开发性金融、保险与重资产企业——这些机构的财务团队正支撑着气候时代的使命与面向成员的报告责任。按职业惯例隐去客户名称；每套课程都基于该机构自身的流程与数据形态搭建，培训所用数据均为模拟。",
   },
   segmentsTitle: { en: "Who this is for", zh: "适合哪些机构" },
   segments: [
