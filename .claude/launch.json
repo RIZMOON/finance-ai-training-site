@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "finance-ai-training-site",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "preview", "--", "--port", "4318", "--strictPort"],
+      "port": 4318,
+      "cwd": "/Users/tomyyw/Desktop/GitProjects/finance-ai-training-site"
+    }
+  ]
+}

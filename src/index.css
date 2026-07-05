@@ -1,0 +1,103 @@
+/*
+Design system: "institutional ledger"
+- A quiet, credible banking aesthetic: porcelain paper, deep navy ink,
+  a restrained sea-teal accent (a nod to Asia-based multilateral lenders),
+  hairline rules like a well-set financial report.
+- Typography: Source Serif 4 for display (institutional gravitas),
+  Inter for body, IBM Plex Mono for figures & labels;
+  Noto Sans/Serif SC keep the Chinese edition equally sharp.
+*/
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f6f8fa;
+  --color-panel: #ffffff;
+  --color-ink: #10233b;
+  --color-navy: #0e2a47;
+  --color-navy-2: #14395f;
+  --color-slate: #51667e;
+  --color-mist: #dfe7ee;
+  --color-teal: #0e7f80;
+  --color-teal-deep: #0a6263;
+  --color-teal-wash: #e7f3f2;
+  --color-gold: #b98d2f;
+  --color-flag: #c22f2f;
+
+  --font-display: "Source Serif 4", "Noto Serif SC", Georgia, serif;
+  --font-body: "Inter", "Noto Sans SC", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #0e7f80;
+  color: #fff;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* hairline rule with a small square terminal, like a report divider */
+.rule {
+  position: relative;
+  height: 1px;
+  background: var(--color-mist);
+}
+.rule::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -2.5px;
+  width: 6px;
+  height: 6px;
+  background: var(--color-teal);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-teal-deep);
+}
+
+.card-hover {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+.card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px -18px rgba(14, 42, 71, 0.35);
+  border-color: #b9cdd8;
+}
+
+/* subtle grid backdrop for the hero, like ledger paper */
+.ledger-bg {
+  background-image:
+    linear-gradient(to right, rgba(14, 42, 71, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(14, 42, 71, 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse 90% 75% at 50% 20%, black 35%, transparent 75%);
+}
+
+.dark-band {
+  background:
+    radial-gradient(1100px 420px at 85% -10%, rgba(20, 128, 129, 0.28), transparent 60%),
+    linear-gradient(160deg, #0e2a47 0%, #0f3050 55%, #0c2440 100%);
+}
