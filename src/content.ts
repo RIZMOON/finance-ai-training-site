@@ -4,12 +4,13 @@ import type { L } from "./i18n";
 export const nav = {
   brand: { en: "AI for the Finance Function", zh: "财务职能 AI 实训" },
   links: [
-    { id: "program", label: { en: "Program", zh: "课程设计" } },
+    { id: "outcomes", label: { en: "Outcomes", zh: "培训成效" } },
     { id: "cases", label: { en: "The Six Cases", zh: "六大案例" } },
+    { id: "instructor", label: { en: "Instructor", zh: "讲师" } },
+    { id: "track-record", label: { en: "Track Record", zh: "培训往绩" } },
     { id: "insights", label: { en: "Insights", zh: "监管与洞察" } },
-    { id: "governance", label: { en: "Governance", zh: "治理与安全" } },
-    { id: "materials", label: { en: "Materials", zh: "交付物" } },
   ] as { id: string; label: L }[],
+  cta: { en: "Book a session", zh: "预约培训" },
 };
 
 /* ----------------------------------------------------------------- hero -- */
@@ -30,8 +31,9 @@ export const hero = {
     en: "Current edition: prepared for the Office of the Controller of an Asia-based, AAA-rated multilateral development bank · July 2026",
     zh: "当前版本：为一家总部位于亚洲的 AAA 评级多边开发银行财务控制部定制 · 2026 年 7 月",
   },
-  ctaCases: { en: "Explore the six cases", zh: "查看六大案例" },
-  ctaDemo: { en: "Open a sample output", zh: "打开示例产出" },
+  ctaCases: { en: "See the six cases", zh: "查看六大案例" },
+  ctaDemo: { en: "Book a session", zh: "预约培训" },
+  ctaDemoNote: { en: "Open a sample output", zh: "打开示例产出" },
   stats: [
     { value: "2.5–3h", label: { en: "one focused session", zh: "一场聚焦的工作坊" } },
     { value: "6", label: { en: "hands-on cases, one connected quarter", zh: "个实操案例，串成同一个季度" } },
@@ -655,6 +657,161 @@ export const materials = {
       { en: "Sovereign & pension funds", zh: "主权基金与养老金" },
     ],
   },
+};
+
+/* -------------------------------------------------------------- outcomes -- */
+export const outcomes = {
+  eyebrow: { en: "What changes after the session", zh: "培训之后，什么变了" },
+  title: {
+    en: "The same work — hours to minutes, and better controlled",
+    zh: "同样的活——从几小时到几分钟，而且更受控",
+  },
+  intro: {
+    en: "Access to AI tools is not the bottleneck; hands-on capability is. Participants leave able to describe, delegate and verify — and they take reusable prompts back to the next close.",
+    zh: "瓶颈从来不是有没有 AI 工具，而是会不会用。学员离场时已经学会“描述—委派—验证”，并把可复用的提示词带回下一个结账周期。",
+  },
+  pairs: [
+    {
+      task: { en: "Quarter-end accruals", zh: "季末应计" },
+      before: {
+        en: "Hours of manual VLOOKUP across three systems; a few rows silently return #N/A every quarter.",
+        zh: "跨三套系统几小时的手工 VLOOKUP，每季度总有几行悄悄返回 #N/A。",
+      },
+      after: {
+        en: "One instruction consolidates the accrual and returns the exception list of everything that didn't match.",
+        zh: "一句指令归集出应计，并附上一份“没对上”的异常清单。",
+      },
+    },
+    {
+      task: { en: "Invoice register cleanup", zh: "发票台账清洗" },
+      before: {
+        en: "An afternoon of cleanup by hand, with a duplicate-payment risk easy to miss.",
+        zh: "一个下午的手工清洗，重复付款风险很容易漏掉。",
+      },
+      after: {
+        en: "Cleaned, standardized and validated in minutes — and the re-submitted invoice is flagged, not paid twice.",
+        zh: "几分钟内清洗、规范、校验完成——重复提交的发票被标旗，而不是付两遍。",
+      },
+    },
+    {
+      task: { en: "Quarterly reporting", zh: "季度报告" },
+      before: {
+        en: "A pack assembled by hand from five files, stale the day it ships.",
+        zh: "从五个文件手工拼装的报告包，送出当天就已过期。",
+      },
+      after: {
+        en: "A formatted report generated from one prompt, regenerated in under a minute when a number changes.",
+        zh: "一句提示词生成排好版的报告，改一个数一分钟内重新生成。",
+      },
+    },
+    {
+      task: { en: "Team capability", zh: "团队能力" },
+      before: {
+        en: "Tools available but unused; a widening gap between having AI and using it.",
+        zh: "工具有了却没人用；“有 AI”和“会用 AI”之间的差距越拉越大。",
+      },
+      after: {
+        en: "A team that instructs AI in plain language and verifies like accountants — with the control mindset intact.",
+        zh: "一支能用大白话指挥 AI、又像会计师一样复核的团队——控制思维不打折。",
+      },
+    },
+  ] as { task: L; before: L; after: L }[],
+};
+
+/* ------------------------------------------------------------ instructor -- */
+export const instructor = {
+  eyebrow: { en: "Your instructor", zh: "你的讲师" },
+  name: { en: "Tom Wang", zh: "王雨岩 Tom Wang" },
+  role: { en: "Audit Partner, Deloitte · CPA, MSF", zh: "德勤审计合伙人 · CPA、MSF" },
+  lead: {
+    en: "Sixteen years across major accounting firms and enterprise finance advisory in Canada, the United States and China. The training does not stop at model concepts: every session is built from the client's own pre-session diagnostic and connects generative AI to real workflows, review mechanisms and the control expectations of a regulated finance function.",
+    zh: "16 年横跨加拿大、美国与中国的大型会计师事务所与企业财务咨询经验。培训不止步于模型概念：每一场都基于客户自己的课前调研搭建，把生成式 AI 接进真实流程、复核机制与受监管财务职能的控制要求。",
+  },
+  points: [
+    {
+      title: { en: "Built by a practitioner, not a vendor", zh: "出自实务者，而非厂商" },
+      body: {
+        en: "Cases come from real finance and audit work — accruals, AP, variance, valuation review — so the room recognizes its own files on day one.",
+        zh: "案例源自真实的财务与审计工作——应计、应付、差异、估值复核——学员第一天就认出自己的文件。",
+      },
+    },
+    {
+      title: { en: "Control-first, audit-grade", zh: "控制优先、审计级" },
+      body: {
+        en: "Every AI output is paired with an exception log and a verification step, consistent with IAASB and FRC positions: judgment stays human.",
+        zh: "每份 AI 产出都配异常日志与验证步骤，与 IAASB、FRC 立场一致：判断权留给人。",
+      },
+    },
+    {
+      title: { en: "Bilingual, cross-border", zh: "双语、跨境" },
+      body: {
+        en: "Delivered in English or Chinese, calibrated to your network, approved tools and quarter-end calendar.",
+        zh: "中英文皆可交付，按你的网络环境、合规工具与季末日历量身校准。",
+      },
+    },
+  ],
+  stats: [
+    { value: "16 yrs", label: { en: "finance, audit & advisory", zh: "财务、审计与咨询" } },
+    { value: "3", label: { en: "markets: Canada · US · China", zh: "市场：加拿大 · 美国 · 中国" } },
+    { value: "EN / 中文", label: { en: "bilingual delivery", zh: "中英双语交付" } },
+  ] as { value: string; label: L }[],
+};
+
+/* ---------------------------------------------------------- track record -- */
+export const trackRecord = {
+  eyebrow: { en: "Track record", zh: "培训往绩" },
+  title: { en: "Hands-on AI programs delivered to finance and audit teams", zh: "已为多家财务与审计团队交付的 AI 实操培训" },
+  intro: {
+    en: "Client names are withheld; each program was built from the institution's own processes and data shapes. Every dataset shown is simulated.",
+    zh: "客户名称按惯例隐去；每套课程都基于该机构自身的流程与数据形态搭建。所示数据均为模拟。",
+  },
+  programs: [
+    {
+      client: { en: "Multilateral development bank", zh: "多边开发银行" },
+      tag: { en: "Controller's function", zh: "财务控制职能" },
+      body: {
+        en: "Quarter-end close, accruals, reporting and Level-3 valuation review — the six-case program featured on this site.",
+        zh: "季末结账、应计、报告与 Level 3 估值复核——即本站展示的六案例课程。",
+      },
+    },
+    {
+      client: { en: "Top-tier Chinese insurer", zh: "头部中资保险公司" },
+      tag: { en: "Internal audit", zh: "内部审计" },
+      body: {
+        en: "A seven-case program from remediation trackers to Benford-based anti-fraud analytics and valuation audit.",
+        zh: "七案例课程，从整改台账到基于 Benford 定律的反欺诈分析与估值审计。",
+      },
+    },
+    {
+      client: { en: "Commercial-vehicle finance & logistics group", zh: "商用车金融与物流集团" },
+      tag: { en: "Finance & operations", zh: "财务与运营" },
+      body: {
+        en: "Ledger automation, portfolio-quality analytics and reporting pipelines across finance and operations.",
+        zh: "覆盖财务与运营的台账自动化、资产质量分析与报告流水线。",
+      },
+    },
+  ] as { client: L; tag: L; body: L }[],
+};
+
+/* -------------------------------------------------------------------- cta -- */
+export const cta = {
+  eyebrow: { en: "Bring this to your team", zh: "把它带给你的团队" },
+  title: {
+    en: "A working session your finance team will use the next Monday",
+    zh: "一场你的财务团队下周一就会用起来的实操课",
+  },
+  body: {
+    en: "Tuned to your institution, your network and your approved tools — in English or Chinese. Tell us your team's biggest quarter-end pain and we'll shape the session around it.",
+    zh: "按你的机构、网络与合规工具定制——中英文皆可。告诉我们团队季末最大的痛点，我们就围绕它设计这场课。",
+  },
+  emailLabel: { en: "Email the instructor", zh: "邮件联系讲师" },
+  email: "tomyyw@gmail.com",
+  secondaryLabel: { en: "See the full program", zh: "查看完整课程" },
+  points: [
+    { en: "2.5–3 hours, in person, up to ~30 participants", zh: "2.5–3 小时，线下，约 30 人以内" },
+    { en: "Zero installs; runs on the tools you already have", zh: "零安装；用你现成的工具即可" },
+    { en: "Full kit included: handouts, data packs, answer pack", zh: "含全套包：讲义、数据包、答案册" },
+  ] as L[],
 };
 
 /* ---------------------------------------------------------------- footer -- */

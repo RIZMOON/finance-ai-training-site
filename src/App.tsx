@@ -10,23 +10,30 @@ import {
   FileSpreadsheet,
   Landmark,
   Languages,
+  Mail,
+  MoveRight,
   ShieldCheck,
   Sparkles,
   Star,
+  UserRound,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import {
   bigNumbers,
   cases,
   casesSection,
+  cta,
   footer,
   governance,
   hero,
+  instructor,
   insightsSection,
   materials,
   nav,
+  outcomes,
   pains,
   program,
+  trackRecord,
 } from "./content";
 import { useLang } from "./i18n";
 
@@ -132,6 +139,12 @@ function Nav() {
           ))}
         </nav>
         <div className="flex items-center gap-3">
+          <a
+            href="#contact"
+            className="hidden rounded-md bg-navy px-4 py-2 text-[13px] font-semibold text-white transition-colors hover:bg-navy-2 md:inline-block"
+          >
+            {t(nav.cta)}
+          </a>
           <button
             onClick={() => setLang(lang === "en" ? "zh" : "en")}
             className="flex items-center gap-1.5 rounded-full border border-mist bg-panel px-3 py-1.5 font-mono text-xs font-medium text-navy transition-colors hover:border-teal hover:text-teal-deep"
@@ -161,6 +174,13 @@ function Nav() {
               {t(l.label)}
             </a>
           ))}
+          <a
+            href="#contact"
+            onClick={() => setOpen(false)}
+            className="mt-2 block rounded-md bg-navy px-4 py-2.5 text-center text-sm font-semibold text-white"
+          >
+            {t(nav.cta)}
+          </a>
         </nav>
       ) : null}
     </header>
@@ -182,20 +202,26 @@ function Hero() {
 
         <div className="mt-8 flex flex-wrap items-center gap-3">
           <a
-            href="#cases"
+            href="#contact"
             className="group inline-flex items-center gap-2 rounded-md bg-navy px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-navy-2"
           >
-            {t(hero.ctaCases)}
+            {t(hero.ctaDemo)}
             <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
+          </a>
+          <a
+            href="#cases"
+            className="inline-flex items-center gap-2 rounded-md border border-navy/25 bg-panel px-5 py-3 text-sm font-semibold text-navy transition-colors hover:border-teal hover:text-teal-deep"
+          >
+            {t(hero.ctaCases)}
           </a>
           <a
             href="/demo/flash-report-sample.html"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-md border border-navy/25 bg-panel px-5 py-3 text-sm font-semibold text-navy transition-colors hover:border-teal hover:text-teal-deep"
+            className="inline-flex items-center gap-1.5 px-2 py-3 text-sm font-medium text-teal-deep underline-offset-4 transition-colors hover:underline"
           >
-            {t(hero.ctaDemo)}
-            <ExternalLink size={14} />
+            {t(hero.ctaDemoNote)}
+            <ExternalLink size={13} />
           </a>
         </div>
 
@@ -599,6 +625,180 @@ function Materials() {
   );
 }
 
+/* -------------------------------------------------------------- outcomes -- */
+
+function Outcomes() {
+  const { t } = useLang();
+  return (
+    <section id="outcomes" className="py-20 md:py-24">
+      <div className="mx-auto max-w-6xl px-5">
+        <SectionHead eyebrow={t(outcomes.eyebrow)} title={t(outcomes.title)} intro={t(outcomes.intro)} />
+        <div className="mt-10 grid gap-5 md:grid-cols-2">
+          {outcomes.pairs.map((p, i) => (
+            <Reveal
+              key={i}
+              delay={i * 0.06}
+              className="card-hover overflow-hidden rounded-lg border border-mist bg-panel"
+            >
+              <div className="border-b border-mist bg-paper/60 px-6 py-3">
+                <span className="font-mono text-xs font-semibold tracking-wide text-navy uppercase">
+                  {t(p.task)}
+                </span>
+              </div>
+              <div className="grid sm:grid-cols-2">
+                <div className="p-6">
+                  <span className="font-mono text-[10.5px] tracking-wider text-slate/70 uppercase">
+                    {t({ en: "Before", zh: "过去" })}
+                  </span>
+                  <p className="mt-2 text-[13px] leading-6 text-slate">{t(p.before)}</p>
+                </div>
+                <div className="border-t border-mist bg-teal-wash/50 p-6 sm:border-t-0 sm:border-l">
+                  <span className="inline-flex items-center gap-1.5 font-mono text-[10.5px] tracking-wider text-teal-deep uppercase">
+                    <MoveRight size={12} />
+                    {t({ en: "After", zh: "现在" })}
+                  </span>
+                  <p className="mt-2 text-[13px] leading-6 text-ink">{t(p.after)}</p>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------ instructor -- */
+
+function Instructor() {
+  const { t } = useLang();
+  return (
+    <section id="instructor" className="dark-band py-20 text-white md:py-24">
+      <div className="mx-auto max-w-6xl px-5">
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.15fr]">
+          <Reveal>
+            <p className="eyebrow !text-[#7FD8D4]">{t(instructor.eyebrow)}</p>
+            <div className="mt-4 flex items-center gap-4">
+              <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full border border-[#66D1CC]/40 bg-white/[0.06] text-[#7FD8D4]">
+                <UserRound size={28} />
+              </span>
+              <div>
+                <h2 className="font-display text-3xl font-semibold">{t(instructor.name)}</h2>
+                <p className="mt-1 text-[13.5px] text-[#9FD9D6]">{t(instructor.role)}</p>
+              </div>
+            </div>
+            <p className="mt-6 text-[14px] leading-7 text-white/75">{t(instructor.lead)}</p>
+            <div className="mt-8 grid grid-cols-3 gap-px overflow-hidden rounded-lg border border-white/12 bg-white/10">
+              {instructor.stats.map((s, i) => (
+                <div key={i} className="bg-[#0f3050] px-4 py-4">
+                  <div className="font-mono text-lg font-semibold text-[#7FD8D4]">{s.value}</div>
+                  <div className="mt-1 text-[11px] leading-4 text-white/60">{t(s.label)}</div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+          <div className="flex flex-col justify-center gap-4">
+            {instructor.points.map((p, i) => (
+              <Reveal
+                key={i}
+                delay={i * 0.08}
+                className="rounded-lg border border-white/12 bg-white/[0.05] p-6"
+              >
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-[#7FD8D4]" />
+                  <div>
+                    <h3 className="font-display text-lg font-semibold">{t(p.title)}</h3>
+                    <p className="mt-1.5 text-[13px] leading-6 text-white/70">{t(p.body)}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------------------------------------------------- track record -- */
+
+function TrackRecord() {
+  const { t } = useLang();
+  return (
+    <section id="track-record" className="py-20 md:py-24">
+      <div className="mx-auto max-w-6xl px-5">
+        <SectionHead
+          eyebrow={t(trackRecord.eyebrow)}
+          title={t(trackRecord.title)}
+          intro={t(trackRecord.intro)}
+        />
+        <div className="mt-10 grid gap-5 md:grid-cols-3">
+          {trackRecord.programs.map((p, i) => (
+            <Reveal
+              key={i}
+              delay={i * 0.08}
+              className="card-hover flex flex-col rounded-lg border border-mist bg-panel p-6"
+            >
+              <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-teal-wash px-3 py-1 font-mono text-[10.5px] font-semibold tracking-wide text-teal-deep uppercase">
+                <Landmark size={12} />
+                {t(p.tag)}
+              </span>
+              <h3 className="font-display mt-4 text-lg leading-snug font-semibold text-navy">
+                {t(p.client)}
+              </h3>
+              <p className="mt-2.5 text-[13px] leading-6 text-slate">{t(p.body)}</p>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------- cta -- */
+
+function Cta() {
+  const { t } = useLang();
+  return (
+    <section id="contact" className="dark-band py-20 text-white md:py-24">
+      <div className="mx-auto max-w-5xl px-5">
+        <Reveal className="rounded-2xl border border-[#66D1CC]/30 bg-white/[0.04] p-8 md:p-12">
+          <p className="eyebrow !text-[#7FD8D4]">{t(cta.eyebrow)}</p>
+          <h2 className="font-display mt-3 max-w-3xl text-3xl leading-tight font-semibold md:text-[2.5rem]">
+            {t(cta.title)}
+          </h2>
+          <p className="mt-5 max-w-2xl text-[15px] leading-7 text-white/75">{t(cta.body)}</p>
+          <div className="mt-7 flex flex-wrap items-center gap-3">
+            <a
+              href={`mailto:${cta.email}?subject=${encodeURIComponent("AI for the Finance Function - training enquiry")}`}
+              className="group inline-flex items-center gap-2 rounded-md bg-[#66D1CC] px-5 py-3 text-sm font-semibold text-[#0c2440] transition-colors hover:bg-[#7FD8D4]"
+            >
+              <Mail size={16} />
+              {t(cta.emailLabel)}
+              <span className="font-mono text-[13px] font-normal opacity-80">{cta.email}</span>
+            </a>
+            <a
+              href="#cases"
+              className="inline-flex items-center gap-2 rounded-md border border-white/25 px-5 py-3 text-sm font-semibold text-white transition-colors hover:border-[#66D1CC]"
+            >
+              {t(cta.secondaryLabel)}
+              <ArrowRight size={15} />
+            </a>
+          </div>
+          <div className="mt-8 flex flex-wrap gap-x-7 gap-y-2.5 border-t border-white/12 pt-6">
+            {cta.points.map((p, i) => (
+              <div key={i} className="flex items-center gap-2 text-[12.5px] text-white/70">
+                <CheckCircle2 size={14} className="text-[#7FD8D4]" />
+                {t(p)}
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 /* ---------------------------------------------------------------- footer -- */
 
 function Footer() {
@@ -630,11 +830,15 @@ export default function App() {
         <Hero />
         <BigNumbers />
         <Pains />
-        <Program />
+        <Outcomes />
         <Cases />
+        <Instructor />
+        <TrackRecord />
+        <Program />
         <Insights />
         <Governance />
         <Materials />
+        <Cta />
       </main>
       <Footer />
     </div>
