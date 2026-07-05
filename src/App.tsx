@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import {
+  bigNumbers,
   cases,
   casesSection,
   footer,
@@ -60,9 +61,9 @@ function Reveal({
     <M
       ref={ref}
       className={className}
-      initial={{ opacity: 0, y: 22 }}
-      animate={show ? { opacity: 1, y: 0 } : undefined}
-      transition={{ duration: 0.55, ease: "easeOut", delay }}
+      initial={{ y: 18 }}
+      animate={show ? { y: 0 } : undefined}
+      transition={{ duration: 0.5, ease: "easeOut", delay }}
     >
       {children}
     </M>
@@ -172,38 +173,14 @@ function Hero() {
   const { t } = useLang();
   return (
     <section id="top" className="ledger-bg relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-24">
-      <div className="mx-auto max-w-6xl px-5">
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          className="eyebrow"
-        >
-          {t(hero.eyebrow)}
-        </motion.p>
-        <motion.h1
-          initial={{ opacity: 0, y: 26 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.08 }}
-          className="font-display mt-5 max-w-4xl text-4xl leading-[1.12] font-bold text-navy md:text-[4rem]"
-        >
+      <div className="relative mx-auto max-w-6xl px-5">
+        <p className="eyebrow">{t(hero.eyebrow)}</p>
+        <h1 className="font-display mt-5 max-w-4xl text-4xl leading-[1.12] font-bold text-navy md:text-[4rem]">
           {t(hero.title)}
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.18 }}
-          className="mt-6 max-w-3xl text-[15.5px] leading-7 text-slate"
-        >
-          {t(hero.subtitle)}
-        </motion.p>
+        </h1>
+        <p className="mt-6 max-w-3xl text-[15.5px] leading-7 text-slate">{t(hero.subtitle)}</p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.28 }}
-          className="mt-8 flex flex-wrap items-center gap-3"
-        >
+        <div className="mt-8 flex flex-wrap items-center gap-3">
           <a
             href="#cases"
             className="group inline-flex items-center gap-2 rounded-md bg-navy px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-navy-2"
@@ -220,31 +197,57 @@ function Hero() {
             {t(hero.ctaDemo)}
             <ExternalLink size={14} />
           </a>
-        </motion.div>
+        </div>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
-          className="mt-6 inline-flex max-w-2xl items-start gap-2 rounded-md border border-teal/25 bg-teal-wash px-3.5 py-2.5 text-xs leading-5 text-teal-deep"
-        >
+        <p className="mt-6 inline-flex max-w-2xl items-start gap-2 rounded-md border border-teal/40 bg-teal-wash px-3.5 py-2.5 text-[12.5px] font-medium leading-5 text-teal-deep">
           <Landmark size={14} className="mt-0.5 shrink-0" />
           {t(hero.badge)}
-        </motion.p>
+        </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.5 }}
-          className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-mist bg-mist md:grid-cols-4"
-        >
+        <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-mist bg-mist md:grid-cols-4">
           {hero.stats.map((s, i) => (
             <div key={i} className="bg-panel px-5 py-5">
               <div className="font-mono text-[1.7rem] font-semibold text-teal-deep">{s.value}</div>
               <div className="mt-1 text-[12.5px] leading-5 text-slate">{t(s.label)}</div>
             </div>
           ))}
-        </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------- opening numbers -- */
+
+function BigNumbers() {
+  const { t } = useLang();
+  return (
+    <section className="dark-band py-20 text-white md:py-24">
+      <div className="mx-auto max-w-6xl px-5">
+        <Reveal className="max-w-3xl">
+          <p className="eyebrow !text-[#7FD8D4]">{t(bigNumbers.eyebrow)}</p>
+          <h2 className="font-display mt-3 text-3xl leading-tight font-semibold md:text-[2.6rem]">
+            {t(bigNumbers.title)}
+          </h2>
+          <p className="mt-5 text-[15px] leading-7 text-white/70">{t(bigNumbers.intro)}</p>
+        </Reveal>
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {bigNumbers.stats.map((st, i) => (
+            <Reveal
+              key={i}
+              delay={i * 0.05}
+              className="flex flex-col rounded-lg border border-white/12 bg-white/[0.05] p-6"
+            >
+              <div className="font-mono text-[2.6rem] leading-none font-semibold tracking-tight text-[#7FD8D4]">
+                {st.value}
+              </div>
+              <p className="mt-4 text-[13.5px] leading-6 text-white/80">{t(st.label)}</p>
+            </Reveal>
+          ))}
+        </div>
+        <Reveal as="p" className="mt-8 font-mono text-[11px] leading-5 text-white/45">
+          {bigNumbers.source}
+        </Reveal>
       </div>
     </section>
   );
@@ -625,6 +628,7 @@ export default function App() {
       <Nav />
       <main>
         <Hero />
+        <BigNumbers />
         <Pains />
         <Program />
         <Cases />

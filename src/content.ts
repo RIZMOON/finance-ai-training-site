@@ -40,6 +40,47 @@ export const hero = {
   ] as { value: string; label: L }[],
 };
 
+/* ------------------------------------------------------- opening numbers -- */
+export const bigNumbers = {
+  eyebrow: { en: "The 2026 numbers · openers for your first slide", zh: "2026 大数字 · 开场第一页就能讲" },
+  title: {
+    en: "Six numbers that set the room up",
+    zh: "六个数字，先把局面讲清楚",
+  },
+  intro: {
+    en: "The macro picture the session opens with — why access alone changes nothing, and why hands-on capability is the scarce asset. All figures from Deloitte's global surveys.",
+    zh: "培训开场先讲的宏观图景——为什么“有工具”本身改变不了什么，动手能力才是稀缺资产。全部数字来自德勤全球调查。",
+  },
+  stats: [
+    {
+      value: "2×",
+      label: { en: "workforce access to sanctioned AI tools roughly doubled in one year — from under 40% to about 60%", zh: "员工可用合规 AI 工具的比例一年翻倍——从不足 40% 升至约 60%" },
+    },
+    {
+      value: "~60%",
+      label: { en: "of workers with access actually use AI in daily work — the activation gap is a skills gap", zh: "拿到工具的员工中真正日常使用的比例——“激活缺口”本质是技能缺口" },
+    },
+    {
+      value: "25%",
+      label: { en: "of companies have moved 40%+ of AI experiments into production — most pilots stall", zh: "的公司把四成以上 AI 试点推进到生产——大多数试点止步于试点" },
+    },
+    {
+      value: "84%",
+      label: { en: "have not redesigned work around AI; insufficient skills rank as the #1 integration barrier", zh: "尚未围绕 AI 重塑工作方式；技能不足高居整合障碍首位" },
+    },
+    {
+      value: "74% vs 21%",
+      label: { en: "plan agentic AI within two years — versus those with a mature governance model for agents", zh: "计划两年内部署智能体——而具备成熟智能体治理模型的仅 21%" },
+    },
+    {
+      value: "31%",
+      label: { en: "of boards have AI on the agenda, while 66% of directors report limited AI knowledge", zh: "的董事会将 AI 列入议程，同时 66% 的董事自认 AI 知识有限" },
+    },
+  ] as { value: string; label: L }[],
+  source:
+    "Deloitte, State of AI in the Enterprise (Jan 2026, n=3,235) · Deloitte Global Boardroom Program, Governance of AI 2nd ed. (2025, n=695, 56 countries)",
+};
+
 /* ------------------------------------------------------------ pain points -- */
 export const pains = {
   eyebrow: { en: "Built from a real diagnostic", zh: "源自真实的课前调研" },
@@ -368,12 +409,12 @@ export const insightsSection = {
     zh: "财务团队所处的监管与采纳大势",
   },
   intro: {
-    en: "A short, sourced briefing opens the session: what regulators expect, what the profession's standard-setters are saying, and what adoption data shows about why hands-on skills — not tool access — are the bottleneck. Every figure below traces to the cited publication.",
-    zh: "开课先上一段有出处的简报：监管者期待什么、会计与审计准则制定者在说什么、采纳数据又如何解释“瓶颈不在工具、而在上手能力”。以下每个数字都可追溯到所引出版物。",
+    en: "A short, sourced briefing opens the session: what regulators expect, what the profession's standard-setters are saying, and what adoption data shows about why hands-on skills — not tool access — are the bottleneck. Survey figures come from Deloitte's global research; regulatory items cite the primary documents.",
+    zh: "开课先上一段有出处的简报：监管者期待什么、会计与审计准则制定者在说什么、采纳数据又如何解释“瓶颈不在工具、而在上手能力”。调查数字均来自德勤全球研究，监管条目直引官方原文。",
   },
   disclaimer: {
-    en: "Sources on file and verified against the original publications as of July 2026. Survey figures describe the cited samples, not any individual institution.",
-    zh: "所有来源均存档，并于 2026 年 7 月对照原始出版物核验。调查数字描述的是所引样本，不指向任何单一机构。",
+    en: "Sources on file and verified against the original publications as of July 2026. Survey figures describe the cited Deloitte samples, not any individual institution.",
+    zh: "所有来源均存档，并于 2026 年 7 月对照原始出版物核验。调查数字描述的是所引德勤样本，不指向任何单一机构。",
   },
   groups: [
     {
@@ -386,7 +427,7 @@ export const insightsSection = {
             en: "The first comprehensive AI law: prohibited / high-risk / minimal-risk tiers, with high-risk systems requiring risk management, data governance, human oversight and post-market monitoring. It reaches any institution whose AI touches EU persons — obligations phase in through 2026–27.",
             zh: "首部综合性 AI 法律：禁止类 / 高风险 / 低风险分级，高风险系统须配备风险管理、数据治理、人工监督与上市后监测。凡 AI 触及欧盟人员的机构均在射程内——义务在 2026–27 年间分阶段生效。",
           },
-          src: "EU AI Act, in force Aug 2024 · EY Global Regulatory Landscape, Jul 2024",
+          src: "Regulation (EU) 2024/1689, in force Aug 2024 · obligations phase in to 2026–27",
         },
         {
           stat: { en: "Map–Measure–Manage–Govern", zh: "映射–度量–管理–治理" },
@@ -398,13 +439,13 @@ export const insightsSection = {
           src: "NIST AI RMF 1.0, Jan 2023",
         },
         {
-          stat: { en: "8 jurisdictions", zh: "8 个司法辖区" },
-          head: { en: "Six global regulatory trends", zh: "六大全球监管趋势" },
+          stat: { en: "77%", zh: "77%" },
+          head: { en: "Sovereign AI shapes vendor choices", zh: "主权 AI 左右选型决策" },
           body: {
-            en: "Across Canada, China, the EU, Japan, Korea, Singapore, the UK and the US: alignment with OECD AI principles, risk-based approaches, sector-specific rules for finance (e.g. MAS FEAT), cross-cutting digital policy, sandboxes, and frontier-safety cooperation.",
-            zh: "覆盖加、中、欧、日、韩、新、英、美八个辖区：对齐 OECD AI 原则、风险导向、金融业专项规则（如新加坡 MAS FEAT）、数据与网络交叉政策、监管沙盒、前沿安全协作。",
+            en: "77% of companies now factor an AI solution's country of origin into vendor decisions, and 83% call sovereign AI important to strategic planning. Data residency and compute location have become core governance requirements — familiar territory for multilateral institutions.",
+            zh: "77% 的公司在选型时考量 AI 方案的来源国，83% 认为主权 AI 对战略规划重要。数据驻留与算力所在地已成为核心治理要求——这对多边机构而言并不陌生。",
           },
-          src: "EY, The AI Global Regulatory Landscape, Jul 2024",
+          src: "Deloitte, State of AI in the Enterprise, Jan 2026 · n=3,235",
         },
         {
           stat: { en: "7 areas · 32 articles", zh: "7 方面 · 32 条" },
