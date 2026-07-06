@@ -862,7 +862,7 @@ export const cta = {
     zh: "按你的机构、网络与合规工具定制——中英文皆可。告诉我们团队季末最大的痛点，我们就围绕它设计这场课。",
   },
   emailLabel: { en: "Email the instructor", zh: "邮件联系讲师" },
-  email: "tomyyw@gmail.com",
+  email: "tomywang@deloitte.com.cn",
   secondaryLabel: { en: "See the full program", zh: "查看完整课程" },
   points: [
     { en: "2.5–3 hours, in person, up to ~30 participants", zh: "2.5–3 小时，线下，约 30 人以内" },
