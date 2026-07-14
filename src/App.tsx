@@ -3,6 +3,7 @@ import {
   ArrowRight,
   ArrowUpRight,
   BookOpenCheck,
+  Bot,
   CheckCircle2,
   ClipboardCheck,
   Clock3,
@@ -10,11 +11,15 @@ import {
   FileSpreadsheet,
   Landmark,
   Languages,
+  Layers,
   Mail,
   MoveRight,
+  Quote,
+  ShieldAlert,
   ShieldCheck,
   Sparkles,
   Star,
+  TrendingUp,
   UserRound,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
@@ -29,6 +34,7 @@ import {
   materials,
   nav,
   outcomes,
+  outlook,
   pains,
   program,
   trackRecord,
@@ -73,6 +79,44 @@ function Reveal({
     >
       {children}
     </M>
+  );
+}
+
+/**
+ * Animated bar that can never end up empty: it fills when scrolled into view,
+ * or after a short fallback timeout - whichever comes first. Same guarantee as
+ * Reveal, and for the same reason: headless renders, print/PDF export and odd
+ * scroll containers must still show the data, not a blank track.
+ */
+function Bar({
+  pct,
+  fill,
+  delay = 0,
+  height = "h-2",
+}: {
+  pct: number; // 0-100, share of the track to fill
+  fill: string; // any CSS background value
+  delay?: number;
+  height?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.3 });
+  const [forced, setForced] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setForced(true), 1600);
+    return () => clearTimeout(t);
+  }, []);
+  const show = inView || forced;
+  return (
+    <div ref={ref} className={`${height} w-full overflow-hidden rounded-full bg-mist/70`}>
+      <motion.div
+        className="h-full rounded-full"
+        style={{ background: fill }}
+        initial={{ width: 0 }}
+        animate={{ width: show ? `${Math.max(0, Math.min(100, pct))}%` : 0 }}
+        transition={{ duration: 0.9, ease: "easeOut", delay }}
+      />
+    </div>
   );
 }
 
@@ -423,6 +467,299 @@ function Insights() {
         </div>
         <Reveal as="p" className="mt-10 max-w-3xl font-mono text-[11px] leading-5 text-slate/80">
           {t(insightsSection.disclaimer)}
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* --------------------------------------------------------------- outlook -- */
+
+function Outlook() {
+  const { t } = useLang();
+  const maxPct = Math.max(...outlook.risks.map((r) => r.pct));
+  const maxOptimised = Math.max(...outlook.pillars.map((p) => p.optimised));
+  return (
+    <section id="outlook" className="py-20 md:py-24">
+      <div className="mx-auto max-w-6xl px-5">
+        <SectionHead
+          eyebrow={t(outlook.eyebrow)}
+          title={t(outlook.title)}
+          intro={t(outlook.intro)}
+        />
+
+        {/* 0 — the source report */}
+        <Reveal className="mt-10">
+          <a
+            href={outlook.sourceHero.href}
+            target="_blank"
+            rel="noreferrer"
+            className="card-hover group flex flex-col gap-4 rounded-xl border border-teal/30 bg-teal-wash/50 p-6 md:flex-row md:items-center md:gap-7 md:p-7"
+          >
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-navy">
+              <BookOpenCheck size={21} className="text-[#7FD8D4]" />
+            </span>
+            <div className="min-w-0 flex-1">
+              <p className="eyebrow">{t(outlook.sourceHero.label)}</p>
+              <h3 className="font-display mt-1.5 text-lg leading-snug font-semibold text-navy">
+                {t(outlook.sourceHero.title)}
+              </h3>
+              <p className="mt-1.5 font-mono text-[11px] leading-5 text-slate">
+                {t(outlook.sourceHero.meta)}
+              </p>
+            </div>
+            <ArrowUpRight
+              size={18}
+              className="shrink-0 text-teal transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+            />
+          </a>
+        </Reveal>
+
+        {/* 1 — the gap */}
+        <Reveal
+          as="h3"
+          className="font-display mt-12 flex items-center gap-2.5 text-xl font-semibold text-navy"
+        >
+          <TrendingUp size={17} className="text-teal" />
+          {t(outlook.gapTitle)}
+        </Reveal>
+        <div className="mt-5 grid gap-5 md:grid-cols-3">
+          {outlook.gap.map((g, i) => (
+            <Reveal
+              key={g.stat}
+              delay={i * 0.06}
+              className="card-hover flex flex-col rounded-lg border border-mist bg-panel p-6"
+            >
+              <div className="font-mono text-3xl leading-none font-semibold text-teal-deep">
+                {g.stat}
+              </div>
+              <h4 className="mt-3.5 text-[15px] leading-6 font-semibold text-navy">{t(g.head)}</h4>
+              <p className="mt-2.5 flex-1 text-[13px] leading-6 text-slate">{t(g.body)}</p>
+              <p className="mt-4 border-t border-mist pt-3 font-mono text-[10.5px] leading-4 text-slate/80">
+                {g.src}
+              </p>
+            </Reveal>
+          ))}
+        </div>
+
+        {/* 2 — the reframe */}
+        <Reveal className="dark-band mt-12 rounded-xl px-7 py-10 text-white md:px-12 md:py-12">
+          <Quote size={26} className="text-[#7FD8D4]" />
+          <blockquote className="font-display mt-4 max-w-4xl text-[22px] leading-[1.45] font-semibold md:text-[30px]">
+            {t(outlook.quote)}
+          </blockquote>
+          <p className="mt-4 font-mono text-[11px] leading-5 text-white/55">{outlook.quoteSrc}</p>
+          <div className="mt-8 max-w-3xl border-t border-white/15 pt-6">
+            <p className="text-[14px] leading-7 text-white/85">{t(outlook.quoteFollow)}</p>
+            <p className="mt-3 font-mono text-[10.5px] text-white/45">{outlook.quoteFollowSrc}</p>
+          </div>
+        </Reveal>
+
+        {/* 2b — the five pillars */}
+        <Reveal
+          as="h3"
+          className="font-display mt-14 flex items-center gap-2.5 text-xl font-semibold text-navy"
+        >
+          <Layers size={17} className="text-teal" />
+          {t(outlook.pillarsTitle)}
+        </Reveal>
+        <Reveal as="p" className="mt-4 max-w-3xl text-[14px] leading-7 text-slate">
+          {t(outlook.pillarsLede)}
+        </Reveal>
+        <Reveal className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[10.5px] text-slate">
+          <span className="flex items-center gap-1.5">
+            <span className="h-2.5 w-2.5 rounded-sm bg-teal" />
+            {t(outlook.pillarsLegend.optimised)}
+          </span>
+          <span className="flex items-center gap-1.5">
+            <span className="h-2.5 w-2.5 rounded-sm bg-flag/70" />
+            {t(outlook.pillarsLegend.adhoc)}
+          </span>
+        </Reveal>
+        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          {outlook.pillars.map((p, i) => (
+            <Reveal
+              key={i}
+              delay={i * 0.06}
+              className={`card-hover flex flex-col rounded-lg border bg-panel p-5 ${
+                i >= 3 ? "border-flag/35" : "border-mist"
+              }`}
+            >
+              <h4 className="min-h-[2.6rem] text-[13.5px] leading-snug font-semibold text-navy">
+                {t(p.name)}
+              </h4>
+              <div className="mt-3 flex items-baseline gap-1.5">
+                <span className="font-mono text-3xl leading-none font-semibold text-teal-deep">
+                  {p.optimised}%
+                </span>
+                <span className="font-mono text-[10px] text-slate/80">
+                  {t(outlook.pillarsLegend.optimised)}
+                </span>
+              </div>
+              <div className="mt-3">
+                <Bar
+                  pct={(p.optimised / maxOptimised) * 100}
+                  fill="linear-gradient(90deg,#00666d,#00a4a4)"
+                  delay={0.15 + i * 0.07}
+                  height="h-1.5"
+                />
+              </div>
+              <p className="mt-3 font-mono text-[10.5px] text-slate">
+                <span className="text-flag">{p.adhoc}%</span>{" "}
+                {t(outlook.pillarsLegend.adhoc).toLowerCase()}
+              </p>
+            </Reveal>
+          ))}
+        </div>
+        <Reveal className="mt-5 flex max-w-3xl gap-3 rounded-lg border border-flag/30 bg-flag/[0.05] p-5">
+          <ShieldAlert size={17} className="mt-0.5 shrink-0 text-flag" />
+          <p className="text-[13.5px] leading-6 font-medium text-navy">{t(outlook.pillarsKicker)}</p>
+        </Reveal>
+        <p className="mt-4 font-mono text-[10.5px] leading-4 text-slate/80">{outlook.pillarsSrc}</p>
+
+        {/* 3 — what banks fear */}
+        <div className="mt-14 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] lg:gap-14">
+          <Reveal>
+            <h3 className="font-display flex items-center gap-2.5 text-xl leading-tight font-semibold text-navy">
+              <ShieldAlert size={17} className="shrink-0 text-teal" />
+              {t(outlook.risksTitle)}
+            </h3>
+            <p className="mt-4 text-[14px] leading-7 text-slate">{t(outlook.risksLede)}</p>
+            <p className="mt-5 font-mono text-[10.5px] leading-4 text-slate/80">
+              {outlook.risksSrc}
+            </p>
+          </Reveal>
+          <Reveal delay={0.08} className="rounded-lg border border-mist bg-panel p-6 md:p-7">
+            <ul className="space-y-5">
+              {outlook.risks.map((r, i) => (
+                <li key={i}>
+                  <div className="flex items-baseline justify-between gap-4">
+                    <span className="text-[13.5px] font-medium text-navy">{t(r.label)}</span>
+                    <span className="font-mono text-[15px] font-semibold text-teal-deep tabular-nums">
+                      {r.pct}%
+                    </span>
+                  </div>
+                  <div className="mt-2">
+                    <Bar
+                      pct={(r.pct / maxPct) * 100}
+                      fill={
+                        i < 4
+                          ? "linear-gradient(90deg,#00666d,#00a4a4)"
+                          : "linear-gradient(90deg,#93a7ba,#b8c7d4)"
+                      }
+                      delay={0.1 + i * 0.09}
+                    />
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-6 border-t border-mist pt-4 text-[12.5px] leading-6 text-slate">
+              <span className="font-semibold text-navy">
+                {t({
+                  en: "Four of the top five are governance problems.",
+                  zh: "前五项里有四项是治理问题。",
+                })}
+              </span>{" "}
+              {t({
+                en: "None of them is solved by buying a better model.",
+                zh: "没有一项能靠买一个更好的模型解决。",
+              })}
+            </p>
+          </Reveal>
+        </div>
+
+        {/* 4 — trustworthy AI dimensions */}
+        <Reveal className="mt-14 rounded-xl border border-mist bg-teal-wash/60 p-7 md:p-9">
+          <h3 className="font-display flex items-center gap-2.5 text-xl font-semibold text-navy">
+            <ShieldCheck size={17} className="text-teal" />
+            {t(outlook.framework.title)}
+          </h3>
+          <p className="mt-4 max-w-3xl text-[14px] leading-7 text-slate">
+            {t(outlook.framework.lede)}
+          </p>
+          <div className="mt-6 flex flex-wrap gap-2.5">
+            {outlook.framework.items.map((d, i) => (
+              <Reveal
+                key={i}
+                delay={i * 0.05}
+                className="rounded-md border border-teal/30 bg-panel px-4 py-2.5"
+              >
+                <span className="font-mono text-[10px] text-teal-deep/70">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="ml-2 text-[13.5px] font-semibold text-navy">{t(d)}</span>
+              </Reveal>
+            ))}
+          </div>
+          <p className="mt-5 font-mono text-[10.5px] text-slate/80">{outlook.framework.src}</p>
+        </Reveal>
+
+        {/* 5 — agentic frontier */}
+        <Reveal
+          as="h3"
+          className="font-display mt-14 flex items-center gap-2.5 text-xl font-semibold text-navy"
+        >
+          <Bot size={17} className="text-teal" />
+          {t(outlook.agentic.title)}
+        </Reveal>
+        <Reveal as="p" className="mt-4 max-w-3xl text-[14px] leading-7 text-slate">
+          {t(outlook.agentic.lede)}
+        </Reveal>
+        <div className="mt-6 grid gap-5 md:grid-cols-3">
+          {outlook.agentic.items.map((a, i) => (
+            <Reveal
+              key={a.stat}
+              delay={i * 0.06}
+              className="rounded-lg border-l-2 border-teal bg-panel/70 py-4 pl-5"
+            >
+              <div className="font-mono text-2xl leading-none font-semibold text-navy">
+                {a.stat}
+              </div>
+              <p className="mt-2.5 text-[13px] leading-6 text-slate">{t(a.body)}</p>
+            </Reveal>
+          ))}
+        </div>
+        <Reveal className="mt-6 flex max-w-3xl gap-3 rounded-lg border border-gold/35 bg-gold/[0.07] p-5">
+          <MoveRight size={17} className="mt-0.5 shrink-0 text-gold" />
+          <p className="text-[14px] leading-7 font-medium text-navy">
+            {t(outlook.agentic.kicker)}
+          </p>
+        </Reveal>
+        <p className="mt-4 font-mono text-[10.5px] text-slate/80">{outlook.agentic.src}</p>
+
+        {/* 6 — the regulatory clock */}
+        <Reveal
+          as="h3"
+          className="font-display mt-16 flex items-center gap-2.5 text-xl font-semibold text-navy"
+        >
+          <Clock3 size={17} className="text-teal" />
+          {t(outlook.clock.title)}
+        </Reveal>
+        <Reveal as="p" className="mt-4 max-w-3xl text-[14px] leading-7 text-slate">
+          {t(outlook.clock.lede)}
+        </Reveal>
+        <ol className="mt-8 border-l border-mist">
+          {outlook.clock.items.map((c, i) => (
+            <Reveal
+              key={i}
+              delay={i * 0.05}
+              as="div"
+              className="relative pb-8 pl-7 last:pb-0 md:pl-9"
+            >
+              <span className="absolute top-[7px] -left-[4.5px] h-[9px] w-[9px] rounded-full bg-teal ring-4 ring-paper" />
+              <div className="font-mono text-[11px] tracking-wide text-teal-deep">{t(c.date)}</div>
+              <h4 className="mt-1.5 text-[15.5px] font-semibold text-navy">{t(c.title)}</h4>
+              <p className="mt-2 max-w-3xl text-[13px] leading-6 text-slate">{t(c.body)}</p>
+              <p className="mt-2 font-mono text-[10.5px] leading-4 text-slate/70">{c.src}</p>
+            </Reveal>
+          ))}
+        </ol>
+
+        <Reveal className="mt-10 max-w-4xl rounded-lg border border-mist bg-panel p-7">
+          <p className="text-[15px] leading-8 text-ink">{t(outlook.closer)}</p>
+        </Reveal>
+        <Reveal as="p" className="mt-8 max-w-3xl font-mono text-[11px] leading-5 text-slate/80">
+          {t(outlook.disclaimer)}
         </Reveal>
       </div>
     </section>
@@ -784,6 +1121,7 @@ export default function App() {
         <TrackRecord />
         <Workflows />
         <Program />
+        <Outlook />
         <Insights />
         <Governance />
         <Materials />

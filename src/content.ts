@@ -8,6 +8,7 @@ export const nav = {
     { id: "instructor", label: { en: "Instructor", zh: "讲师" } },
     { id: "clients", label: { en: "Clients", zh: "服务客户" } },
     { id: "workflows", label: { en: "What We Train", zh: "培训内容" } },
+    { id: "outlook", label: { en: "AI Outlook", zh: "AI 展望" } },
     { id: "insights", label: { en: "Insights", zh: "监管与洞察" } },
   ] as { id: string; label: L }[],
   cta: { en: "Book a session", zh: "预约培训" },
@@ -36,7 +37,7 @@ export const hero = {
   stats: [
     { value: "2.5–3h", label: { en: "one focused session", zh: "一场聚焦的工作坊" } },
     { value: "6", label: { en: "hands-on cases, one connected quarter", zh: "个实操案例，串成同一个季度" } },
-    { value: "2", label: { en: "delivery paths: local VBA & AI agents", zh: "条路径：本机 VBA 与 AI 智能体" } },
+    { value: "3", label: { en: "Microsoft apps: Excel, Word, PowerPoint — no new tool", zh: "个微软应用：Excel、Word、PowerPoint——不引入新工具" } },
     { value: "0", label: { en: "installs required on participant laptops", zh: "学员电脑零安装" } },
   ] as { value: string; label: L }[],
 };
@@ -49,37 +50,37 @@ export const bigNumbers = {
     zh: "六个数字，先把局面讲清楚",
   },
   intro: {
-    en: "The macro picture the session opens with — why access alone changes nothing, and why hands-on capability is the scarce asset. All figures from Deloitte's global surveys.",
-    zh: "培训开场先讲的宏观图景——为什么“有工具”本身改变不了什么，动手能力才是稀缺资产。全部数字来自德勤全球调查。",
+    en: "The macro picture the session opens with — drawn from Deloitte's financial-services cut, not a generic tech survey. The story it tells: tool access has already been solved. Capability has not.",
+    zh: "培训开场先讲的宏观图景——取自德勤金融服务业专项样本，而非泛泛的科技调查。它说的是一件事：工具可及性已经解决，能力还没有。",
   },
   stats: [
     {
-      value: "2×",
-      label: { en: "workforce access to sanctioned AI tools roughly doubled in one year — from under 40% to about 60%", zh: "员工可用合规 AI 工具的比例一年翻倍——从不足 40% 升至约 60%" },
+      value: "30% → 62%",
+      label: { en: "of workers in financial services now have sanctioned AI tools — access doubled in a single year", zh: "金融业员工中已配备合规 AI 工具的比例——一年之内翻倍" },
     },
     {
-      value: "~60%",
-      label: { en: "of workers with access actually use AI in daily work — the activation gap is a skills gap", zh: "拿到工具的员工中真正日常使用的比例——“激活缺口”本质是技能缺口" },
+      value: "24%",
+      label: { en: "have moved 40%+ of their AI experiments into production — most pilots still stall before the finish line", zh: "把四成以上 AI 试点推进到了生产——多数试点仍倒在终点线前" },
     },
     {
-      value: "25%",
-      label: { en: "of companies have moved 40%+ of AI experiments into production — most pilots stall", zh: "的公司把四成以上 AI 试点推进到生产——大多数试点止步于试点" },
+      value: "53%",
+      label: { en: "expect to reach that level within three to six months — the wave lands next quarter, ready or not", zh: "预计在三到六个月内达到该水平——不管准备好没有，浪就在下个季度拍岸" },
+    },
+    {
+      value: "41%",
+      label: { en: "still use AI only at surface level, with little or no change to the underlying process", zh: "至今只在表层使用 AI，底层流程几乎原封不动" },
     },
     {
       value: "84%",
-      label: { en: "have not redesigned work around AI; insufficient skills rank as the #1 integration barrier", zh: "尚未围绕 AI 重塑工作方式；技能不足高居整合障碍首位" },
+      label: { en: "have not redesigned work around AI — and insufficient worker skills is named the #1 barrier to integration", zh: "尚未围绕 AI 重塑工作方式——而“员工技能不足”被列为整合的头号障碍" },
     },
     {
-      value: "74% vs 21%",
-      label: { en: "plan agentic AI within two years — versus those with a mature governance model for agents", zh: "计划两年内部署智能体——而具备成熟智能体治理模型的仅 21%" },
-    },
-    {
-      value: "31%",
-      label: { en: "of boards have AI on the agenda, while 66% of directors report limited AI knowledge", zh: "的董事会将 AI 列入议程，同时 66% 的董事自认 AI 知识有限" },
+      value: "31% / 66%",
+      label: { en: "of boards have AI on the agenda, while 66% of directors report limited-to-no AI knowledge", zh: "的董事会将 AI 列入议程，而 66% 的董事自认 AI 知识有限或没有" },
     },
   ] as { value: string; label: L }[],
   source:
-    "Deloitte, State of AI in the Enterprise (Jan 2026, n=3,235) · Deloitte Global Boardroom Program, Governance of AI 2nd ed. (2025, n=695, 56 countries)",
+    "Deloitte, State of AI in the Financial Services Industry: The untapped edge (Mar 2026 · N=573 financial-services leaders, from a survey of 3,235 director-to-C-suite respondents across 24 countries) · Deloitte Global Boardroom Program, Governance of AI 2nd ed. (2025 · n=695, 56 countries)",
 };
 
 /* ------------------------------------------------------------ pain points -- */
@@ -127,26 +128,34 @@ export const pains = {
 /* --------------------------------------------------------------- program -- */
 export const program = {
   eyebrow: { en: "Program design", zh: "课程设计" },
-  title: { en: "One session, two delivery paths, one habit", zh: "一场课、两条路径、一个习惯" },
+  title: { en: "One session, three apps, one habit", zh: "一场课、三个应用、一个习惯" },
   intro: {
-    en: "Every case teaches the same loop — describe the outcome, let AI execute, then verify like an accountant. Participants practice both delivery paths and learn when each is appropriate.",
-    zh: "每个案例都在训练同一个循环——把结果描述清楚、让 AI 执行、再像会计师一样复核。学员两条路径都会练，并懂得何时该用哪条。",
+    en: "A quarter's reporting is three moves — and Microsoft 365 Copilot sits inside all three. Every case teaches the same loop: describe the outcome, let Copilot execute, then verify like an accountant. Nothing to install, no new login, and the data never leaves the bank's governed environment.",
+    zh: "一个季度的报告工作，本质是三步动作——而 Microsoft 365 Copilot 就在这三个应用里。每个案例都在训练同一个循环：把结果描述清楚、让 Copilot 执行、再像会计师一样复核。零安装、无需新账号，数据也始终留在银行受管控的环境内。",
   },
   paths: [
     {
-      tag: { en: "Path 1 · data stays local", zh: "路径一 · 数据不出本机" },
-      title: { en: "AI-written VBA / Office Scripts", zh: "AI 生成 VBA / Office Scripts" },
+      tag: { en: "Excel · the numbers", zh: "Excel · 数字" },
+      title: { en: "Build, merge, clean, analyse, chart", zh: "构建、合并、清洗、分析、作图" },
       body: {
-        en: "Ask AI for a macro, paste it into Excel, run it on the laptop. Right choice for sensitive files and simple operations. Every case ships with Mac/Windows-compatible reference code.",
-        zh: "让 AI 写宏，粘进 Excel 本机运行。适合敏感文件与简单操作。每个案例都附 Mac/Windows 双平台参考代码。",
+        en: "Copilot's editing mode works multi-step inside the open workbook: it splits ledgers, joins sheets across a broken key, cleans a register and flags exceptions, and builds PivotTables and charts — all as native, auditable objects a reviewer can click into.",
+        zh: "Copilot 的编辑模式在打开的工作簿里多步作业：拆分台账、跨表按错位主键匹配、清洗登记簿并标出异常、生成透视表与图表——产出的都是复核人能逐格点开的原生、可审计对象。",
       },
     },
     {
-      tag: { en: "Path 2 · recommended default", zh: "路径二 · 推荐默认" },
-      title: { en: "AI agents & data-analysis chat", zh: "AI 智能体与数据分析对话" },
+      tag: { en: "Word · the narrative", zh: "Word · 叙述" },
+      title: { en: "Draft, restructure, tighten, fact-check", zh: "起草、重构、收紧、事实核查" },
       body: {
-        en: "Attach the file to Claude, ChatGPT or Copilot and describe the outcome. Easier, more powerful, higher success rate — and the only path for end-to-end deliverables like formatted reports and follow-up emails.",
-        zh: "把文件交给 Claude、ChatGPT 或 Copilot，描述你要的结果。更易用、更强大、成功率更高——报告排版、催办邮件这类端到端交付物只有这条路走得通。",
+        en: "The numbers become a memo: an executive summary, a budget-position read, a chase email. Copilot drafts and edits by instruction — and the case makes the room fact-check every claim against the tables, because the summary is the paragraph management actually reads.",
+        zh: "数字变成备忘录：执行摘要、预算解读、催办邮件。Copilot 按指令起草与修改——而案例会逼学员把每一句结论都对回表格核验，因为摘要恰恰是管理层唯一会读的那一段。",
+      },
+    },
+    {
+      tag: { en: "PowerPoint · the message", zh: "PowerPoint · 表达" },
+      title: { en: "Structure in, structure out", zh: "结构进，结构出" },
+      body: {
+        en: "PowerPoint builds the board deck from the Word memo's heading structure, then rewrites every slide title so it states the finding, not the topic. The pack that took an afternoon is now a rendering of the numbers — regenerate it when a figure changes.",
+        zh: "PowerPoint 依据 Word 备忘录的标题层级生成董事会简报，再把每页标题改写成“结论”而非“话题”。过去要耗一个下午的汇报包，如今只是数字的一次渲染——数字一变，重新生成即可。",
       },
     },
   ],
@@ -171,7 +180,7 @@ export const program = {
   ],
   agendaTitle: { en: "Suggested agenda · 175 minutes", zh: "建议议程 · 175 分钟" },
   agenda: [
-    { time: "0:00", len: "15′", label: { en: "Opening: what AI can and cannot do; the two paths; a live 2-minute teaser", zh: "开场：AI 能与不能、两条路径、2 分钟现场预演" } },
+    { time: "0:00", len: "15′", label: { en: "Opening: what AI can and cannot be trusted with; the Excel → Word → PowerPoint spine; a live 2-minute teaser", zh: "开场：AI 什么能信、什么不能信；Excel → Word → PowerPoint 主线；2 分钟现场预演" } },
     { time: "0:15", len: "10′", label: { en: "State of AI in financial institutions: adoption vs activation, supervisory direction, what peers are doing", zh: "金融机构 AI 现状：采纳与激活的落差、监管走向、同业在做什么" } },
     { time: "0:25", len: "10′", label: { en: "Setup check: tools signed in, data pack in place", zh: "环境检查：工具登录、数据包就位" } },
     { time: "0:35", len: "15′", label: { en: "Case 1 · Split — everyone gets a win", zh: "案例 1 · 拆分——人人先赢一局" } },
@@ -179,9 +188,10 @@ export const program = {
     { time: "1:20", len: "10′", label: { en: "Break", zh: "休息" } },
     { time: "1:30", len: "25′", label: { en: "Case 3 · Invoice cleanup — catch the duplicate payment", zh: "案例 3 · 发票清洗——揪出重复付款" } },
     { time: "1:55", len: "25′", label: { en: "Case 4 · Variance dashboard — change one word, new analysis", zh: "案例 4 · 差异看板——改一个词，换一种分析" } },
-    { time: "2:20", len: "15′", label: { en: "Case 5 · Flash report demo — regenerate in seconds", zh: "案例 5 · 快报演示——秒级重新生成" } },
+    { time: "2:05", len: "15′", label: { en: "Case 5 · The quarterly memo, in Word — draft, tighten, fact-check", zh: "案例 5 · 季度备忘录（Word）——起草、收紧、事实核查" } },
+    { time: "2:20", len: "15′", label: { en: "Case 6 · The board deck, in PowerPoint — titles that state the finding", zh: "案例 6 · 董事会简报（PowerPoint）——让标题说出结论" } },
     { time: "2:35", len: "10′", label: { en: "AI risk & governance for finance teams: the four working rules, IAASB/FRC positions, agent guardrails", zh: "财务条线的 AI 风险与治理：四条使用规则、IAASB/FRC 立场、智能体护栏" } },
-    { time: "2:45", len: "10′", label: { en: "Wrap-up: Monday-morning plan, Q&A · Case 6 as take-home", zh: "收尾：周一行动计划、答疑 · 案例 6 留作课后" } },
+    { time: "2:45", len: "10′", label: { en: "Wrap-up: Monday-morning plan, Q&A · the valuation-review case as take-home", zh: "收尾：周一行动计划、答疑 · 估值复核案例留作课后" } },
   ],
   audience: {
     title: { en: "Calibrated for a mixed finance audience", zh: "为混合层级的财务听众校准" },
@@ -404,65 +414,272 @@ export const cases: CaseItem[] = [
   },
 ];
 
-/* -------------------------------------------------------------- insights -- */
-export const insightsSection = {
-  eyebrow: { en: "Regulatory & adoption insights", zh: "监管与采纳洞察" },
+/* --------------------------------------------------------------- outlook -- */
+/* Every figure below is traceable to a Deloitte publication or an official
+   regulator/standard-setter. No secondary sources; no non-Deloitte firms.   */
+export const outlook = {
+  eyebrow: { en: "AI outlook 2026", zh: "AI 展望 2026" },
   title: {
-    en: "The context your finance team is operating in",
-    zh: "财务团队所处的监管与采纳大势",
+    en: "Governance is not the brake on AI. It is the licence to scale.",
+    zh: "治理不是 AI 的刹车，而是规模化的通行证。",
   },
   intro: {
-    en: "A short, sourced briefing opens the session: what regulators expect, what the profession's standard-setters are saying, and what adoption data shows about why hands-on skills — not tool access — are the bottleneck. Survey figures come from Deloitte's global research; regulatory items cite the primary documents.",
-    zh: "开课先上一段有出处的简报：监管者期待什么、会计与审计准则制定者在说什么、采纳数据又如何解释“瓶颈不在工具、而在上手能力”。调查数字均来自德勤全球研究，监管条目直引官方原文。",
+    en: "In July 2026 Deloitte published Banking on trust — an index of how 135 senior leaders at systemically important and other large banks across 16 countries actually govern AI. Its finding is uncomfortable and useful: banks have written the policies. They have not built the accountability, the monitoring or the people. Everything below is from that report or from a primary regulatory document.",
+    zh: "2026 年 7 月，德勤发布《Banking on trust》——对 16 个国家、135 位全球系统重要性银行及其他大型银行高管的 AI 治理成熟度做了指数化测评。结论既扎心又有用：政策，银行都写好了；问责、监控与人，还没建起来。以下每一条，不是出自该报告，就是出自一手监管文件。",
+  },
+  sourceHero: {
+    label: { en: "The source report", zh: "核心报告" },
+    title: { en: "Banking on trust: AI governance for growth, resilience and scale", zh: "《Banking on trust：以 AI 治理驱动增长、韧性与规模化》" },
+    meta: {
+      en: "Deloitte Asia Pacific (Trustworthy AI · Deloitte Access Economics) · July 2026 · 135 senior leaders across 16 countries, incl. G-SIBs and D-SIBs",
+      zh: "德勤亚太（可信 AI · 德勤经济研究院）· 2026 年 7 月 · 16 国 135 位高管，涵盖全球系统重要性银行（G-SIB）与国内系统重要性银行（D-SIB）",
+    },
+    href: "https://www.deloitte.com/ap/en/perspectives/banking-on-trust.html",
+  },
+
+  /* ---- 1. the gap ---- */
+  gapTitle: { en: "The governance gap, measured", zh: "被量化出来的治理缺口" },
+  gap: [
+    {
+      stat: "87%",
+      head: { en: "of banks have room to materially strengthen AI governance", zh: "的银行在 AI 治理上仍有实质性提升空间" },
+      body: {
+        en: "Only 13% of global banks reach the “optimised” tier of Deloitte's AI Governance Index — and 10% are still effectively ad hoc. Meanwhile weekly AI use by bank employees doubled in a year, reaching 63% in 2026. Adoption is running ahead of control.",
+        zh: "只有 13% 的银行达到德勤 AI 治理指数的“成熟”级，仍有 10% 基本处于“初级”。与此同时，银行员工每周使用 AI 的比例一年翻倍，2026 年已达 63%。采纳跑在了控制前面。",
+      },
+      src: "Deloitte, Banking on trust, Jul 2026 · n=135 banks, 16 countries",
+    },
+    {
+      stat: "72%",
+      head: { en: "cannot see half of their own AI", zh: "连自家一半的 AI 都看不见" },
+      body: {
+        en: "72% of banks have less than half of their AI use cases recorded in a central register. You cannot govern — or audit — an inventory you do not have. This is the most concrete, most fixable finding in the report.",
+        zh: "72% 的银行，其 AI 用例登记在中央清单里的不足一半。一个不存在的清单，既无法治理，也无法审计。这是全篇最具体、也最容易补上的一条。",
+      },
+      src: "Deloitte, Banking on trust, Jul 2026",
+    },
+    {
+      stat: "15%",
+      head: { en: "train their people on AI governance", zh: "的银行为员工提供持续的 AI 治理培训" },
+      body: {
+        en: "Only 15% of banks give regularly refreshed AI governance training to all staff; around a third rely on ad hoc training or none at all. Deloitte names people and skills as one of the two weakest pillars — the gap is human, not procedural.",
+        zh: "只有 15% 的银行为全体员工提供定期更新的 AI 治理培训，约三分之一只有临时培训甚至完全没有。德勤将“人与技能”列为两大最弱支柱之一——缺口在人，不在流程。",
+      },
+      src: "Deloitte, Banking on trust, Jul 2026",
+    },
+  ] as { stat: string; head: L; body: L; src: string }[],
+
+  /* ---- 2. the reframe (pull quote) ---- */
+  quote: {
+    en: "As AI becomes more deeply embedded in core banking activities, the governance gap will increasingly become a performance gap.",
+    zh: "随着 AI 更深地嵌入核心银行业务，治理缺口将日益变成业绩缺口。",
+  },
+  quoteSrc: "Deloitte, Banking on trust: AI governance for growth, resilience and scale, July 2026",
+  quoteFollow: {
+    en: "The report's evidence runs against the instinct that control slows you down. Banks with optimised governance have fully implemented AI in five of ten business areas — more than double the rudimentary tier, and more than five times the ad hoc tier. Deloitte's conclusion, in its own words: effective AI governance “does not appear to suppress adoption; rather, it creates the conditions for broader and faster deployment.” Governance is how a bank gets out of pilot purgatory.",
+    zh: "报告的证据与“控制会拖慢速度”的直觉正好相反：治理达到“成熟”级的银行，已在 10 个业务领域中的 5 个完成 AI 全面落地——是“发展中”级的两倍多、“初级”级的五倍以上。德勤的原话是：有效的 AI 治理“并未抑制采纳，反而创造了更广、更快部署的条件”。治理，正是银行走出“试点炼狱”的方式。",
+  },
+  quoteFollowSrc: "Deloitte, Banking on trust, Jul 2026 · fully implemented AI solutions across 10 business areas, by governance tier",
+
+  /* ---- 3. the five pillars ---- */
+  pillarsTitle: { en: "Where the gap actually is", zh: "缺口究竟在哪里" },
+  pillarsLede: {
+    en: "Deloitte scores five pillars. Read them in order and the story tells itself: banks have the procedures and the policies. What they lack is the org structure that names who is accountable — and the people trained to apply any of it. In Deloitte's words, “the main gaps in AI governance are human and organisational rather than procedural.”",
+    zh: "德勤对五大支柱逐一打分。顺着看下来，结论不言自明：流程和政策，银行有；缺的是“谁来担责”的组织架构，以及有能力把这一切执行下去的人。德勤原文：“AI 治理的主要缺口是人与组织层面的，而非流程层面的。”",
+  },
+  pillars: [
+    { name: { en: "Procedures & controls", zh: "流程与控制" }, optimised: 25, adhoc: 11 },
+    { name: { en: "Principles & policy", zh: "原则与政策" }, optimised: 20, adhoc: 19 },
+    { name: { en: "Monitoring & reporting", zh: "监控与报告" }, optimised: 20, adhoc: 12 },
+    { name: { en: "Organisational structure", zh: "组织架构" }, optimised: 13, adhoc: 27 },
+    { name: { en: "People & skills", zh: "人与技能" }, optimised: 11, adhoc: 14 },
+  ] as { name: L; optimised: number; adhoc: number }[],
+  pillarsLegend: {
+    optimised: { en: "Optimised", zh: "成熟级" },
+    adhoc: { en: "Ad hoc", zh: "初级" },
+  },
+  pillarsSrc: "Deloitte, Banking on trust, Jul 2026 · Chart 3.2, distribution of AI governance across global banks, by pillar (n=135)",
+  pillarsKicker: {
+    en: "Organisational structure is the least mature pillar — more than a quarter of banks sit in the lowest category. People and skills has the fewest banks at the top: 11%.",
+    zh: "“组织架构”是最不成熟的支柱——超过四分之一的银行落在最低档。“人与技能”则是登顶者最少的一项：仅 11%。",
+  },
+
+  /* ---- 4. what banks actually fear ---- */
+  risksTitle: {
+    en: "What financial institutions say they fear",
+    zh: "金融机构自陈最担心什么",
+  },
+  risksLede: {
+    en: "Asked which AI risks concern them most, financial-services leaders named four — and every one of them is a governance problem, not a technology problem. None of them is solved by buying a better model.",
+    zh: "当被问及最担心哪些 AI 风险时，金融业高管点出了四项——而每一项都是治理问题，不是技术问题。没有一项能靠买一个更好的模型解决。",
+  },
+  risks: [
+    { pct: 80, label: { en: "Data privacy and/or security", zh: "数据隐私与安全" } },
+    { pct: 55, label: { en: "Legal, IP, or regulatory compliance", zh: "法律、知识产权与合规" } },
+    { pct: 48, label: { en: "Governance capabilities and oversight", zh: "治理能力与监督" } },
+    { pct: 43, label: { en: "Model quality, consistency, explainability", zh: "模型质量、一致性与可解释性" } },
+    { pct: 25, label: { en: "Workforce impact", zh: "对员工的影响" } },
+  ] as { pct: number; label: L }[],
+  risksSrc: "Deloitte, State of AI in the Financial Services Industry: The untapped edge, Mar 2026 · N=573 financial-services leaders",
+
+  /* ---- 5. trustworthy AI framework ---- */
+  framework: {
+    title: { en: "What “trustworthy” has to mean", zh: "“可信”必须落到哪七件事上" },
+    lede: {
+      en: "Deloitte's Trustworthy AI™ framework names seven dimensions an AI solution must satisfy before an institution can defend it — to a board, to a supervisor, or to an auditor. The working rules taught in this program are a desk-level translation of exactly these.",
+      zh: "德勤 Trustworthy AI™ 框架给出七个维度——只有满足它们，机构才能在董事会、监管者或审计师面前站得住。本课程教的那几条工作规则，正是这七个维度在案头层面的翻译。",
+    },
+    items: [
+      { en: "Transparent & explainable", zh: "透明、可解释" },
+      { en: "Fair & impartial", zh: "公平、中立" },
+      { en: "Robust & reliable", zh: "稳健、可靠" },
+      { en: "Private", zh: "保护隐私" },
+      { en: "Safe & secure", zh: "安全、稳妥" },
+      { en: "Responsible", zh: "承担责任" },
+      { en: "Accountable", zh: "问责" },
+    ] as L[],
+    src: "Deloitte Trustworthy AI™ framework · Deloitte AI Institute",
+  },
+
+  /* ---- 6. the agentic frontier ---- */
+  agentic: {
+    title: { en: "Next: agents that act, not just advise", zh: "下一步：会“动手”的智能体" },
+    lede: {
+      en: "Agentic AI changes the control question. A model that recommends can be reviewed after the fact; an agent that initiates a payment, changes a credit limit or amends a disclosure cannot. Deloitte's recommendation is a shift banks have barely started: from “human in the loop” to “human on the loop” — people set the boundaries, monitor, and intervene, while automated monitoring, exception reporting, usage logging and access controls carry the routine load.",
+      zh: "智能体改变了控制的命题。给建议的模型可以事后复核；能发起付款、调整授信、改动披露的智能体不行。德勤给出的建议，是一次多数银行才刚起步的转变：从“human in the loop”（人在环内逐条批）走向“human on the loop”（人在环上）——由人设定边界、监控、必要时介入，而自动化监控、异常报告、使用留痕与权限控制承担日常负荷。",
+    },
+    items: [
+      {
+        stat: "44%",
+        body: {
+          en: "of banks have risk monitoring across the implementation lifecycle for agentic AI — versus 61% for traditional AI. Oversight thins out exactly where autonomy rises.",
+          zh: "的银行对智能体 AI 建立了覆盖全实施生命周期的风险监控——传统 AI 是 61%。自主性越高的地方，监督反而越薄。",
+        },
+      },
+      {
+        stat: "23%",
+        body: {
+          en: "of financial-services companies report a mature governance model for autonomous agents — while agents already reach payments, trading, credit decisions and customer disclosures.",
+          zh: "的金融机构自称拥有成熟的自主智能体治理模型——而智能体已经触及付款、交易、授信决策与客户披露。",
+        },
+      },
+      {
+        stat: "84%",
+        body: {
+          en: "have not redesigned jobs or work around AI, and insufficient worker skills is named the single biggest barrier to integration. Capability — not licences — is the bottleneck.",
+          zh: "尚未围绕 AI 重新设计岗位与工作方式，而“员工技能不足”被列为整合的头号障碍。瓶颈是能力，不是许可证。",
+        },
+      },
+    ] as { stat: string; body: L }[],
+    src: "Deloitte, Banking on trust (Jul 2026) · Deloitte, State of AI in the Financial Services Industry (Mar 2026, N=573)",
+    kicker: {
+      en: "Two of those three numbers are about people, not technology. That is the whole argument for this program: the tools have arrived, the working habits have not.",
+      zh: "这三个数字里有两个说的是人，不是技术。这就是这门课存在的全部理由：工具已经到位，工作习惯还没有。",
+    },
+  },
+
+  /* ---- 7. the regulatory clock ---- */
+  clock: {
+    title: { en: "The regulatory clock — and it just moved", zh: "监管时钟——而且刚刚被拨动过" },
+    lede: {
+      en: "For an institution operating across jurisdictions the direction of travel is unmistakable: classify the risk, keep a human in the decision, and leave an auditable trail. Every item below is a primary document, checked in July 2026.",
+      zh: "对跨法域运营的机构而言，方向已无悬念：把风险分级、让人留在决策里、留下可审计的痕迹。以下每一条都出自一手文件，并于 2026 年 7 月复核。",
+    },
+    items: [
+      {
+        date: { en: "Jan 2023", zh: "2023年1月" },
+        title: { en: "NIST AI Risk Management Framework 1.0", zh: "NIST 人工智能风险管理框架 1.0" },
+        body: {
+          en: "Four functions — Govern, Map, Measure, Manage. Voluntary, and now the common vocabulary for AI risk programs worldwide.",
+          zh: "四大功能——治理、映射、衡量、管理。虽属自愿采用，如今已是全球 AI 风险体系的通用语言。",
+        },
+        src: "NIST AI 100-1 · nist.gov/itl/ai-risk-management-framework",
+      },
+      {
+        date: { en: "Dec 2023", zh: "2023年12月" },
+        title: { en: "ISO/IEC 42001 — AI management systems", zh: "ISO/IEC 42001 人工智能管理体系" },
+        body: {
+          en: "The world's first certifiable AI management system standard. Unlike a framework, it is something an independent body can audit you against — the difference between a principle and an obligation.",
+          zh: "全球首个可认证的 AI 管理体系标准。与“框架”不同，它是独立机构可以照着审你的东西——这正是“原则”与“义务”的分界。",
+        },
+        src: "ISO/IEC 42001:2023 · iso.org/standard/42001",
+      },
+      {
+        date: { en: "Feb 2025", zh: "2025年2月" },
+        title: { en: "EU AI Act: prohibitions and AI literacy apply", zh: "欧盟《人工智能法案》：禁止条款与 AI 素养义务生效" },
+        body: {
+          en: "Article 4 obliges providers and deployers alike to take measures on the AI literacy of their staff. It binds a bank that merely uses a third-party AI system — not only one that builds it. (A simplification package adopted in June 2026 softens the wording; the obligation itself remains.)",
+          zh: "第 4 条要求提供者与部署者都必须就员工的 AI 素养采取措施。它约束的不只是“造 AI”的机构，也包括“只是用了第三方 AI”的银行。（2026 年 6 月通过的简化法案放宽了措辞，但义务本身仍在。）",
+        },
+        src: "Regulation (EU) 2024/1689, Art. 4 · in force since 2 Feb 2025",
+      },
+      {
+        date: { en: "Apr 2026", zh: "2026年4月" },
+        title: { en: "The US rewrites the model-risk bedrock", zh: "美国重写模型风险的地基" },
+        body: {
+          en: "SR 26-2 replaces SR 11-7, the guidance that has defined model risk management for fifteen years. Whatever a bank's model inventory looked like, the standard it is measured against has changed.",
+          zh: "SR 26-2 取代了统治模型风险管理十五年的 SR 11-7。无论一家银行的模型清单原本长什么样，衡量它的那把尺已经换了。",
+        },
+        src: "Federal Reserve / OCC / FDIC, SR 26-2 · federalreserve.gov",
+      },
+      {
+        date: { en: "Jun 2026", zh: "2026年6月" },
+        title: { en: "China: AI in banking & insurance (Jinfa [2026] No. 8)", zh: "中国：金发〔2026〕8号" },
+        body: {
+          en: "Eight parts, 32 articles. Full-lifecycle management; risk classification; named high-risk domains (funds transactions, credit approval, underwriting and claims, risk management); mandatory human oversight, a human final decision for high-risk uses, and periodic algorithm audits.",
+          zh: "八部分 32 条。全生命周期管理；风险分类分级；点名高风险领域（资金交易、信贷审批、承保理赔、风险管理）；强制人工监督、高风险须由人做最终决策，并定期开展算法审计。",
+        },
+        src: "国家金融监督管理总局《关于银行业保险业人工智能安全开发应用的指导意见》· nfra.gov.cn, 18 Jun 2026",
+      },
+      {
+        date: { en: "Jun 2026", zh: "2026年6月" },
+        title: { en: "FSB: 12 Sound Practices for responsible AI adoption", zh: "FSB：负责任采用 AI 的 12 项稳健做法" },
+        body: {
+          en: "A consultation report, not final guidance — but it is the shape of things. Two pillars: organisation-wide governance, and lifecycle management. Sound Practice 10 makes human oversight scale with the system's autonomy — the same logic Deloitte reaches from the other side.",
+          zh: "这是征求意见稿，尚非最终指引——但轮廓已经清楚。两大支柱：全组织治理，与全生命周期管理。其中第 10 项要求人工监督的强度随系统自主性而提升——与德勤从另一端得出的逻辑完全一致。",
+        },
+        src: "Financial Stability Board, Sound Practices for Responsible Adoption of AI (consultation), 10 Jun 2026 · fsb.org",
+      },
+      {
+        date: { en: "Dec 2027", zh: "2027年12月" },
+        title: { en: "EU high-risk obligations — where credit scoring sits", zh: "欧盟高风险义务——信用评分正落在这里" },
+        body: {
+          en: "Annex III(5)(b) classifies AI that evaluates the creditworthiness of natural persons as high-risk (fraud detection is carved out). Those obligations were deferred from Aug 2026 to 2 December 2027 by the Digital Omnibus — adopted by Parliament on 16 June and Council on 29 June 2026, signed 8 July, and awaiting publication in the Official Journal. Penalties reach €35m or 7% of worldwide turnover. And for banks the Act is enforced by the financial supervisor, not a separate AI regulator.",
+          zh: "附件三第 5(b) 项把“评估自然人信用状况”的 AI 列为高风险（反欺诈用途除外）。这些义务已由《数字综合法案》从 2026 年 8 月推迟至 2027 年 12 月 2 日——该法案于 2026 年 6 月 16 日经欧洲议会、6 月 29 日经理事会通过，7 月 8 日签署，尚待在《官方公报》刊登。罚则最高可达 3,500 万欧元或全球营业额的 7%。而对银行而言，执法者是金融监管机构本身，而非另设的 AI 监管者。",
+        },
+        src: "Regulation (EU) 2024/1689, Annex III(5)(b), Arts. 74(6) & 99 · Digital Omnibus on AI, adopted 16/29 Jun 2026, awaiting OJ publication",
+      },
+    ] as { date: L; title: L; body: L; src: string }[],
+  },
+
+  closer: {
+    en: "Read the clock together and one conclusion is hard to avoid: every regime is converging on the same three demands — classify the risk, keep a human in the decision, and leave an auditable trail. A finance team that already works that way is not preparing for regulation. It is already moving in the direction of it. And the deferral of the EU's high-risk dates is not a reprieve — the supervisory layer is tightening now, faster than the statute.",
+    zh: "把这张时钟连起来看，一个结论几乎无法回避：所有法域都在收敛到同样三项要求——把风险分级、让人留在决策里、留下可审计的痕迹。一支已经这样工作的财务团队，不是在为监管做准备——它本就走在监管指向的方向上。而欧盟高风险义务的推迟并不是喘息：监管层面的收紧正在发生，且比立法本身更快。",
   },
   disclaimer: {
-    en: "Sources on file and verified against the original publications as of July 2026. Survey figures describe the cited Deloitte samples, not any individual institution.",
-    zh: "所有来源均存档，并于 2026 年 7 月对照原始出版物核验。调查数字描述的是所引德勤样本，不指向任何单一机构。",
+    en: "Every figure on this page is taken from a Deloitte publication or a primary regulatory document, and was checked against the original in July 2026. Survey figures describe the cited samples, not any individual institution. Where a legislative act has been adopted but not yet published in the Official Journal, that status is stated rather than glossed.",
+    zh: "本页每一个数字都取自德勤出版物或一手监管文件，并已于 2026 年 7 月对照原文核验。调查数字描述的是所引样本，不指向任何单一机构。凡属“已通过但尚未在官方公报刊登”的立法，均如实标注其状态，不作模糊处理。",
+  },
+};
+
+/* -------------------------------------------------------------- insights -- */
+export const insightsSection = {
+  eyebrow: { en: "Boardroom & profession", zh: "董事会与职业界" },
+  title: {
+    en: "Three currents that decide whether AI sticks",
+    zh: "决定 AI 能否留下来的三股暗流",
+  },
+  intro: {
+    en: "Beyond the outlook above, three forces shape what a finance function can actually do with AI: what boards are ready to supervise, where the data has to live, and what the accounting and audit profession will accept as evidence. Deloitte survey figures cite their samples; every regulatory or professional item points to the primary document.",
+    zh: "在上面的展望之外，还有三股力量决定财务职能到底能拿 AI 做什么：董事会有能力监督到什么程度、数据必须留在哪里、以及会计与审计职业界认可什么作为证据。德勤调查数字均注明样本，监管与职业条目均直指一手文件。",
+  },
+  disclaimer: {
+    en: "Sources verified against the original publications as of July 2026. Survey figures describe the cited samples, not any individual institution.",
+    zh: "所有来源均于 2026 年 7 月对照原始出版物核验。调查数字描述的是所引样本，不指向任何单一机构。",
   },
   groups: [
     {
-      title: { en: "Regulation is converging on risk-based governance", zh: "监管正收敛于基于风险的治理" },
-      items: [
-        {
-          stat: { en: "Risk-tiered", zh: "风险分级" },
-          head: { en: "EU AI Act — Regulation (EU) 2024/1689", zh: "欧盟《人工智能法案》——(EU) 2024/1689" },
-          body: {
-            en: "The first comprehensive AI law: prohibited / high-risk / minimal-risk tiers, with high-risk systems requiring risk management, data governance, human oversight and post-market monitoring. It reaches any institution whose AI touches EU persons — obligations phase in through 2026–27.",
-            zh: "首部综合性 AI 法律：禁止类 / 高风险 / 低风险分级，高风险系统须配备风险管理、数据治理、人工监督与上市后监测。凡 AI 触及欧盟人员的机构均在射程内——义务在 2026–27 年间分阶段生效。",
-          },
-          src: "Regulation (EU) 2024/1689, in force Aug 2024 · obligations phase in to 2026–27",
-        },
-        {
-          stat: { en: "Map–Measure–Manage–Govern", zh: "映射–度量–管理–治理" },
-          head: { en: "NIST AI Risk Management Framework 1.0", zh: "NIST 人工智能风险管理框架 1.0" },
-          body: {
-            en: "The de-facto vocabulary for AI risk programs, voluntary but widely referenced by supervisors and used in US federal procurement. Its four functions translate naturally into a finance function's control language.",
-            zh: "AI 风险体系事实上的通用语言，虽属自愿采用，却被监管机构广泛引用并用于美国联邦采购。四大职能可自然映射到财务职能的控制语言。",
-          },
-          src: "NIST AI RMF 1.0, Jan 2023",
-        },
-        {
-          stat: { en: "77%", zh: "77%" },
-          head: { en: "Sovereign AI shapes vendor choices", zh: "主权 AI 左右选型决策" },
-          body: {
-            en: "77% of companies now factor an AI solution's country of origin into vendor decisions, and 83% call sovereign AI important to strategic planning. Data residency and compute location have become core governance requirements — familiar territory for multilateral institutions.",
-            zh: "77% 的公司在选型时考量 AI 方案的来源国，83% 认为主权 AI 对战略规划重要。数据驻留与算力所在地已成为核心治理要求——这对多边机构而言并不陌生。",
-          },
-          src: "Deloitte, State of AI in the Enterprise, Jan 2026 · n=3,235",
-        },
-        {
-          stat: { en: "7 areas · 32 articles", zh: "7 方面 · 32 条" },
-          head: { en: "China: AI in banking & insurance", zh: "中国：银行业保险业 AI 指导意见" },
-          body: {
-            en: "The national financial regulator's guidance on safe AI development and application in banking and insurance — model governance, data quality, explainability and financial-stability impact — a signal of where Asia-Pacific banking supervision is heading.",
-            zh: "国家金融监督管理总局就银行业保险业 AI 安全开发应用给出的指导意见——模型治理、数据质量、可解释性与金融稳定影响——预示亚太银行监管的走向。",
-          },
-          src: "NFRA guidance, Jun 2026 (as catalogued in the program knowledge base)",
-        },
-      ],
-    },
-    {
-      title: { en: "Boards and supervisors expect working governance", zh: "董事会与监管者要求“能运转的治理”" },
+      title: { en: "Boards are being asked to supervise what they don't yet know", zh: "董事会被要求监督他们尚不熟悉的东西" },
       items: [
         {
           stat: { en: "31% vs 66%", zh: "31% 对 66%" },
@@ -474,22 +691,22 @@ export const insightsSection = {
           src: "Deloitte Global Boardroom Program, Governance of AI (2nd ed.), 2025 · n=695, 56 countries",
         },
         {
-          stat: { en: "42% → 30%", zh: "42% → 30%" },
-          head: { en: "Strategy outruns risk readiness", zh: "战略跑在风险前面" },
+          stat: { en: "77% / 83%", zh: "77% / 83%" },
+          head: { en: "Sovereign AI now shapes vendor choice", zh: "主权 AI 已在左右选型" },
           body: {
-            en: "42% of organisations call their AI strategy highly prepared; only 30% say the same of risk and governance — the slowest-improving dimension. Supervisory reviews will land exactly in that gap.",
-            zh: "42% 的机构自评 AI 战略高度就绪，而风险与治理仅 30%——且是进步最慢的维度。监管检查恰恰会落在这道缝隙上。",
+            en: "77% of companies factor an AI solution's country of origin into vendor decisions, and 83% call sovereign AI important to strategic planning. Data residency and compute location have become governance requirements — familiar territory for a multilateral institution.",
+            zh: "77% 的公司在选型时考量 AI 方案的来源国，83% 认为主权 AI 对战略规划重要。数据驻留与算力所在地已成为治理要求——这对多边机构而言并不陌生。",
           },
-          src: "Deloitte, State of AI in the Enterprise, Jan 2026 · n=3,235",
+          src: "Deloitte, State of AI in the Enterprise, 2026 · n=3,235 · 24 countries",
         },
         {
-          stat: { en: "74% vs 21%", zh: "74% 对 21%" },
-          head: { en: "Agents scale faster than guardrails", zh: "智能体跑得比护栏快" },
+          stat: { en: "1 in 2", zh: "半数以上" },
+          head: { en: "Staff don't believe the controls hold", zh: "员工并不相信控制守得住" },
           body: {
-            en: "74% of companies plan agentic AI within two years (23% run it today), yet only 21% have a mature governance model for autonomous agents: autonomy boundaries, human-in-the-loop gates, audit trails. The training's exception-log habit is exactly that control, practiced small.",
-            zh: "74% 的公司计划两年内部署智能体（今天已部署的为 23%），但仅 21% 具备成熟的智能体治理模型：自主边界、人审关口、审计留痕。本培训反复训练的“异常日志”习惯，正是这类控制的微缩演练。",
+            en: "More than half of technology workers do not believe their organisation can effectively manage AI-related risk. Credibility with your own people is won by visibly working the controls, not by announcing them.",
+            zh: "超过半数的技术工作者不认为自己所在的组织能有效应对 AI 相关风险。在自己人面前的可信度，靠的是把控制真正做出来给他们看，而不是宣布它存在。",
           },
-          src: "Deloitte, State of AI in the Enterprise, Jan 2026",
+          src: "Deloitte Asia Pacific AI Institute & Deloitte Economics Institute, 2025",
         },
       ],
     },
@@ -503,57 +720,25 @@ export const insightsSection = {
             en: "The IAASB's technology position and ISA 540's challenger-model logic point one way: responsibility cannot be delegated to a machine. AI may prepare the estimate or the analysis; the auditor — and by extension the preparer — still owns the judgment.",
             zh: "IAASB 的技术立场声明与 ISA 540 的“独立预期/挑战者模型”逻辑指向同一结论：责任不可移交给机器。AI 可以起草估计或分析，判断仍归审计师——推而广之，也归编制者。",
           },
-          src: "IAASB technology position & ISA 540 (Revised), 2024",
+          src: "IAASB technology position statement, Oct 2024 · ISA 540 (Revised) · iaasb.org",
         },
         {
-          stat: { en: "3 risk classes", zh: "3 类风险" },
+          stat: { en: "Function · Process · Governance", zh: "功能 · 流程 · 治理" },
           head: { en: "UK FRC: AI in audit", zh: "英国 FRC：审计中的 AI" },
           body: {
-            en: "The FRC frames AI risk as functional (does the output hold), process (is it integrated with controls) and governance (who oversees it) — with human review and independent corroboration among the core mitigations. The same triad applies to a controller's use of AI.",
-            zh: "FRC 将 AI 风险分为功能（产出是否可靠）、流程（是否嵌入控制）与治理（谁来监督）三类——人工复核与独立佐证是核心缓解措施。这套三分法同样适用于财务控制职能的 AI 使用。",
+            en: "The FRC's guidance on AI in audit — the UK's first, with generative and agentic follow-ups — frames the risk in three layers and puts human review and independent corroboration among the core mitigations. The same triad applies to a controller's use of AI.",
+            zh: "FRC 发布了英国首份审计中 AI 使用指引（并有生成式与智能体的后续指引），将风险分为三层，并把人工复核与独立佐证列为核心缓解措施。这套三分法同样适用于财务控制职能的 AI 使用。",
           },
-          src: "UK FRC guidance on AI in audit, 2025–26 (as catalogued in the program knowledge base)",
+          src: "UK Financial Reporting Council, guidance on the use of AI in audit, 2025–26 · frc.org.uk",
         },
         {
           stat: { en: "财会〔2024〕11号", zh: "财会〔2024〕11号" },
-          head: { en: "China MOF: accounting goes digital-native", zh: "中国财政部：会计信息化提速" },
+          head: { en: "China MOF: accounting goes machine-readable", zh: "中国财政部：会计记录走向机器可读" },
           body: {
-            en: "The Ministry of Finance's accounting-informatization rules and the nine-ministry e-voucher data standard push toward machine-readable accounting records — the very substrate AI-assisted close and audit work depends on.",
-            zh: "财政部会计信息化工作规范与九部门电子凭证会计数据标准，正把会计记录推向机器可读——这正是 AI 辅助结账与审计赖以运转的底层。",
+            en: "The Ministry of Finance's accounting-informatization rules (effective 2025) and the nine-ministry e-voucher data standard push accounting records toward machine-readable form — the substrate that AI-assisted close and full-population testing depend on.",
+            zh: "财政部《会计信息化工作规范》（2025 年施行）与九部门电子凭证会计数据标准，正把会计记录推向机器可读——这正是 AI 辅助结账与全量测试赖以运转的底层。",
           },
-          src: "MOF 财会〔2024〕11号 (2024, effective 2025) & e-voucher standard initiative",
-        },
-      ],
-    },
-    {
-      title: { en: "Adoption data: access is not capability", zh: "采纳数据：有工具不等于有能力" },
-      items: [
-        {
-          stat: { en: "<40% → ~60%", zh: "<40% → 约60%" },
-          head: { en: "Access doubled in a year…", zh: "一年间工具可及率翻倍……" },
-          body: {
-            en: "Workforce access to sanctioned AI tools roughly doubled year-on-year — yet only about 60% of workers with access actually use AI in daily work. The activation gap is a skills gap, which is precisely what hands-on cases attack.",
-            zh: "员工可用的合规 AI 工具一年间接近翻倍——但拿到工具的人里仅约六成真正在日常工作中使用。这道“激活缺口”本质是技能缺口，实操案例正是冲它而来。",
-          },
-          src: "Deloitte, State of AI in the Enterprise, Jan 2026 · n=3,235",
-        },
-        {
-          stat: { en: "25%", zh: "25%" },
-          head: { en: "…but pilots stall before production", zh: "……但试点大多止步于试点" },
-          body: {
-            en: "Only a quarter of companies have moved 40% or more of their AI experiments into production. Small, well-verified workflow wins — a reusable accrual prompt, a standing flash-report pipeline — are how finance teams escape the proof-of-concept trap.",
-            zh: "仅四分之一的公司把四成以上 AI 试点推进到了生产。小而可验证的流程胜利——一条可复用的应计提示词、一条常备的快报流水线——正是财务团队跳出“试点陷阱”的路径。",
-          },
-          src: "Deloitte, State of AI in the Enterprise, Jan 2026",
-        },
-        {
-          stat: { en: "84%", zh: "84%" },
-          head: { en: "Work hasn't been redesigned yet", zh: "工作本身尚未被重新设计" },
-          body: {
-            en: "84% of companies have not redesigned roles around AI, and insufficient worker skills rank as the #1 integration barrier. Institutions that teach their finance teams to describe, delegate and verify are building the scarce capability.",
-            zh: "84% 的公司尚未围绕 AI 重塑岗位，而员工技能不足高居整合障碍首位。教会财务团队“描述—委派—验证”的机构，正在积累最稀缺的那种能力。",
-          },
-          src: "Deloitte, State of AI in the Enterprise, Jan 2026",
+          src: "MOF 财会〔2024〕11号 & 〔2024〕12号, effective 1 Jan 2025 · mof.gov.cn",
         },
       ],
     },
@@ -563,7 +748,6 @@ export const insightsSection = {
   }[],
 };
 
-/* ------------------------------------------------------------ governance -- */
 export const governance = {
   eyebrow: { en: "Governance & data safety", zh: "治理与数据安全" },
   title: {
@@ -625,8 +809,8 @@ export const materials = {
     {
       title: { en: "Instructor answer pack", zh: "讲师答案册" },
       body: {
-        en: "Sample prompts for both paths, Mac/Windows-compatible VBA, Python reference solutions, verified expected numbers and teaching points for every case.",
-        zh: "两条路径的示范提示词、Mac/Windows 兼容 VBA、Python 参考解法、实跑验证的预期数字与逐案例讲解要点。",
+        en: "The exact Copilot prompts for every case, what you will see when they run, the verified expected numbers, the common wobbles with their fixes, and the teaching points.",
+        zh: "每个案例的确切 Copilot 提示词、运行时会看到什么、实跑验证的预期数字、常见卡壳与解法，以及讲解要点。",
       },
     },
     {
@@ -829,24 +1013,25 @@ export const trackRecord = {
 export const workflows = {
   eyebrow: { en: "What we train", zh: "培训内容" },
   title: {
-    en: "Six finance workflows, hands-on, in one session",
-    zh: "六个财务工作流，一场课全部上手",
+    en: "From a raw ledger to a board deck — in one connected quarter",
+    zh: "从原始台账到董事会简报——串在同一个季度里",
   },
   intro: {
-    en: "Participants work through one connected quarter — from raw ledgers to the management report — instructing AI in plain language at every step. Full case materials, data packs and reference solutions are provided in the session, not published here.",
-    zh: "学员完整跑通一个季度——从原始台账到管理层报告——每一步都用大白话指挥 AI。完整案例材料、数据包与参考解法在课上提供，不在本站公开。",
+    en: "Participants work one simulated quarter end to end: Excel finds the numbers, Word turns them into the memo, PowerPoint turns the memo into the deck. Six hands-on cases in the session, plus a valuation-review case to take home. Full case materials, data packs and reference solutions are provided in the session, not published here.",
+    zh: "学员完整跑通一个模拟季度：Excel 把数字算出来，Word 把数字写成备忘录，PowerPoint 把备忘录变成简报。课内六个实操案例，另附一个估值复核案例带回去做。完整案例材料、数据包与参考解法在课上提供，不在本站公开。",
   },
   items: [
-    { tag: { en: "Split", zh: "拆分" }, title: { en: "Ledger splitting & distribution", zh: "总账拆分与分发" } },
-    { tag: { en: "Merge", zh: "合并" }, title: { en: "Quarter-end accrual consolidation", zh: "季末应计归集" } },
-    { tag: { en: "Clean", zh: "清洗" }, title: { en: "Invoice-register cleanup & duplicate-payment checks", zh: "发票台账清洗与重复付款核查" } },
-    { tag: { en: "Analyze", zh: "分析" }, title: { en: "Budget-vs-actual variance dashboards", zh: "预算执行差异看板" } },
-    { tag: { en: "Report", zh: "报告" }, title: { en: "One-prompt management flash reports", zh: "一句提示词生成管理层快报" } },
-    { tag: { en: "Review", zh: "复核" }, title: { en: "Fair-value roll-forward screening (Level 3)", zh: "公允价值滚动筛查（Level 3）" } },
+    { tag: { en: "Excel · Split", zh: "Excel · 拆分" }, title: { en: "Ledger splitting & distribution", zh: "总账拆分与分发" } },
+    { tag: { en: "Excel · Merge", zh: "Excel · 合并" }, title: { en: "Quarter-end accrual consolidation", zh: "季末应计归集" } },
+    { tag: { en: "Excel · Clean", zh: "Excel · 清洗" }, title: { en: "Invoice-register cleanup & duplicate-payment checks", zh: "发票台账清洗与重复付款核查" } },
+    { tag: { en: "Excel · Analyze", zh: "Excel · 分析" }, title: { en: "Budget-vs-actual variance dashboards", zh: "预算执行差异看板" } },
+    { tag: { en: "Word · Draft", zh: "Word · 起草" }, title: { en: "The quarterly memo — drafted, tightened, fact-checked", zh: "季度备忘录——起草、收紧、逐句核对" } },
+    { tag: { en: "PowerPoint · Present", zh: "PowerPoint · 表达" }, title: { en: "The board briefing deck, built from the memo", zh: "由备忘录直接生成的董事会简报" } },
+    { tag: { en: "Take-home · Review", zh: "课后 · 复核" }, title: { en: "Fair-value roll-forward screening (Level 3)", zh: "公允价值滚动筛查（Level 3）" } },
   ] as { tag: L; title: L }[],
   note: {
-    en: "Two delivery paths throughout: AI-written macros that keep data on the laptop, and AI agents for end-to-end deliverables — with the four prompt principles drilled at every step.",
-    zh: "全程两条路径：数据不出本机的 AI 宏，与端到端交付的 AI 智能体——四条提示词原则贯穿每一步。",
+    en: "Everything runs on Microsoft 365 Copilot inside Excel, Word and PowerPoint — the apps your team already has open — with the four prompt principles drilled at every step.",
+    zh: "全程都在 Microsoft 365 Copilot 上完成——Excel、Word、PowerPoint，团队本来就开着的那三个应用；四条提示词原则贯穿每一步。",
   },
 };
 
