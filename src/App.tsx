@@ -1,14 +1,18 @@
 import { motion, useInView } from "framer-motion";
 import {
+  AlertTriangle,
   ArrowRight,
   ArrowUpRight,
+  Ban,
   BookOpenCheck,
+  Boxes,
   Bot,
   CheckCircle2,
   ClipboardCheck,
   Check,
   Clock3,
   Download,
+  Eye,
   ExternalLink,
   FileSpreadsheet,
   FileText,
@@ -19,6 +23,7 @@ import {
   Mail,
   MessageSquareText,
   MoveRight,
+  Presentation,
   Quote,
   ScanSearch,
   ShieldAlert,
@@ -28,12 +33,14 @@ import {
   Star,
   TrendingUp,
   UserRound,
+  Wand2,
   X,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import {
   bigNumbers,
   casesUi,
+  copilot,
   downloads,
   footer,
   foundations,
@@ -904,7 +911,150 @@ function Instructor() {
 }
 
 
+
+/* --------------------------------------------------------------- copilot -- */
+
+const cpPointIcons: Record<string, typeof Wand2> = {
+  edit: Wand2,
+  shield: ShieldCheck,
+  watch: Eye,
+  quirk: AlertTriangle,
+  limit: Ban,
+  family: Boxes,
+};
+const cpAppIcons = [FileSpreadsheet, FileText, Presentation];
+
+function Copilot() {
+  const { t } = useLang();
+  return (
+    <section id="copilot" className="py-20 md:py-24">
+      <div className="mx-auto max-w-6xl px-5">
+        <SectionHead eyebrow={t(copilot.eyebrow)} title={t(copilot.title)} intro={t(copilot.intro)} />
+
+        {/* mental model */}
+        <Reveal
+          as="h3"
+          className="font-display mt-12 flex items-center gap-2.5 text-xl font-semibold text-navy"
+        >
+          <Sparkles size={17} className="text-teal" />
+          {t(copilot.modelTitle)}
+        </Reveal>
+        <div className="mt-5 grid gap-4 md:grid-cols-3">
+          {copilot.steps.map((st, i) => (
+            <Reveal
+              key={st.n}
+              delay={i * 0.06}
+              className="relative rounded-lg border border-mist bg-panel p-6"
+            >
+              <div className="flex items-center gap-3">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-navy font-mono text-sm font-semibold text-[#7FD8D4]">
+                  {st.n}
+                </span>
+                <h4 className="font-display text-[16px] font-semibold text-navy">{t(st.verb)}</h4>
+              </div>
+              <p className="mt-3 text-[13.5px] leading-6 text-slate">{t(st.body)}</p>
+              {i < copilot.steps.length - 1 ? (
+                <ArrowRight
+                  size={18}
+                  className="absolute top-1/2 -right-3 hidden -translate-y-1/2 text-teal md:block"
+                />
+              ) : null}
+            </Reveal>
+          ))}
+        </div>
+
+        {/* where it lives */}
+        <Reveal
+          as="h3"
+          className="font-display mt-14 flex items-center gap-2.5 text-xl font-semibold text-navy"
+        >
+          <Layers size={17} className="text-teal" />
+          {t(copilot.appsTitle)}
+        </Reveal>
+        <div className="mt-5 grid gap-4 md:grid-cols-3">
+          {copilot.apps.map((a, i) => {
+            const Icon = cpAppIcons[i] ?? FileSpreadsheet;
+            return (
+              <Reveal
+                key={a.app}
+                delay={i * 0.06}
+                className="card-hover rounded-lg border border-mist bg-panel p-6"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-md bg-teal-wash text-teal-deep">
+                    <Icon size={18} />
+                  </span>
+                  <div>
+                    <h4 className="font-display text-[16px] font-semibold text-navy">{a.app}</h4>
+                    <p className="font-mono text-[10.5px] text-teal-deep/80">{t(a.tag)}</p>
+                  </div>
+                </div>
+                <p className="mt-3 text-[13px] leading-6 text-slate">{t(a.body)}</p>
+              </Reveal>
+            );
+          })}
+        </div>
+
+        {/* six things to know */}
+        <Reveal
+          as="h3"
+          className="font-display mt-14 flex items-center gap-2.5 text-xl font-semibold text-navy"
+        >
+          <BookOpenCheck size={17} className="text-teal" />
+          {t(copilot.pointsTitle)}
+        </Reveal>
+        <div className="mt-5 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {copilot.points.map((pt, i) => {
+            const Icon = cpPointIcons[pt.icon] ?? Wand2;
+            return (
+              <Reveal
+                key={i}
+                delay={i * 0.05}
+                className="flex flex-col rounded-lg border border-mist bg-panel p-6"
+              >
+                <span className="flex h-9 w-9 items-center justify-center rounded-md bg-navy text-[#7FD8D4]">
+                  <Icon size={16} />
+                </span>
+                <h4 className="mt-3.5 text-[14.5px] font-semibold text-navy">{t(pt.head)}</h4>
+                <p className="mt-2 flex-1 text-[13px] leading-6 text-slate">{t(pt.body)}</p>
+              </Reveal>
+            );
+          })}
+        </div>
+
+        {/* setup + closer */}
+        <div className="mt-14 grid gap-6 lg:grid-cols-2">
+          <Reveal className="rounded-xl border border-teal/30 bg-teal-wash/50 p-6 md:p-7">
+            <h3 className="font-display flex items-center gap-2.5 text-lg font-semibold text-navy">
+              <ShieldCheck size={17} className="text-teal" />
+              {t(copilot.setupTitle)}
+            </h3>
+            <ul className="mt-4 space-y-2.5">
+              {copilot.setup.map((c, i) => (
+                <li key={i} className="flex gap-2.5 text-[13.5px] leading-6 text-ink">
+                  <Check size={15} className="mt-1 shrink-0 text-teal" />
+                  {t(c)}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-4 text-[12.5px] leading-6 text-slate">{t(copilot.setupNote)}</p>
+          </Reveal>
+          <Reveal delay={0.08} className="dark-band flex items-center rounded-xl p-7 text-white md:p-9">
+            <div>
+              <Quote size={24} className="text-[#7FD8D4]" />
+              <p className="font-display mt-4 text-[18px] leading-8 font-semibold md:text-[20px]">
+                {t(copilot.closer)}
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ------------------------------------------------------------ foundations -- */
+
 
 const moduleIcons: Record<string, typeof MessageSquareText> = {
   prompt: MessageSquareText,
@@ -1272,6 +1422,7 @@ export default function App() {
         <BigNumbers />
         <Outlook />
         <Insights />
+        <Copilot />
         <Foundations />
         <Governance />
         <Cases />

@@ -5,10 +5,10 @@ export const nav = {
   brand: { en: "AI for the Finance Function", zh: "财务职能 AI 实训" },
   links: [
     { id: "outlook", label: { en: "AI Now", zh: "AI 现状" } },
-    { id: "foundations", label: { en: "Foundations", zh: "方法论" } },
+    { id: "copilot", label: { en: "Copilot", zh: "Copilot" } },
+    { id: "foundations", label: { en: "Method", zh: "方法论" } },
     { id: "cases", label: { en: "Cases", zh: "实操案例" } },
     { id: "downloads", label: { en: "Downloads", zh: "资料下载" } },
-    { id: "program", label: { en: "Agenda", zh: "议程" } },
     { id: "instructor", label: { en: "Instructor", zh: "讲师" } },
   ] as { id: string; label: L }[],
   cta: { en: "Data pack (ZIP)", zh: "数据包 (ZIP)" },
@@ -26,8 +26,8 @@ export const hero = {
     zh: "这是培训网站本身——你需要的一切都在这一页。",
   },
   subtitle: {
-    en: "This is the courseware, not a brochure. Read the AI-now briefing your session opens with, learn the three working disciplines (prompt, context and harness engineering), work the seven cases exactly as printed in your handout, and download the data pack — all from this page, before, during and after the session.",
-    zh: "这不是宣传页，而是课件本身。开场的 AI 现状简报、三大工作方法（提示词工程 · 上下文工程 · 管控工程）、与纸质讲义逐字一致的七个实操案例、以及可直接下载的数据包——课前、课中、课后都在这一页完成。",
+    en: "This is the courseware, not a brochure. Everything the session uses is on this page: the AI-now briefing it opens with, a plain-English tour of Microsoft 365 Copilot, the three working disciplines (prompt, context and harness engineering), the seven hands-on cases exactly as printed in your handout, and the data pack to download. Work from here — before, during and after the session.",
+    zh: "这不是宣传页，而是课件本身。本场培训用到的一切都在这一页：开场的 AI 现状简报、一段大白话版的 Microsoft 365 Copilot 导览、三大工作方法（提示词工程 · 上下文工程 · 管控工程）、与纸质讲义逐字一致的七个实操案例、以及可直接下载的数据包。课前、课中、课后，都从这里开始。",
   },
   badge: {
     en: "Current edition: prepared for the Office of the Controller of an Asia-based, AAA-rated multilateral development bank · July 2026",
@@ -750,7 +750,7 @@ export const insightsSection = {
 };
 
 export const governance = {
-  eyebrow: { en: "Module 2b · The working rules", zh: "模块二之二 · 工作规则" },
+  eyebrow: { en: "The working rules · data safety", zh: "工作规则 · 数据安全" },
   title: {
     en: "Bank-grade habits, taught from the first prompt",
     zh: "银行级的习惯，从第一句提示词教起",
@@ -1077,7 +1077,7 @@ export const footer = {
 /* Module F · The three working disciplines. Taught in the session, kept here
    as the reference the room can return to. Grounded in the actual cases.    */
 export const foundations = {
-  eyebrow: { en: "Module 2 · The method", zh: "模块二 · 方法论" },
+  eyebrow: { en: "Module 3 · The method", zh: "模块三 · 方法论" },
   title: {
     en: "Three disciplines that make AI work usable in a finance function",
     zh: "让 AI 在财务职能真正可用的三门功夫",
@@ -1327,7 +1327,7 @@ export const foundations = {
 
 /* --------------------------------------------------------- cases browser -- */
 export const casesUi = {
-  eyebrow: { en: "Module 3 · The cases", zh: "模块三 · 实操案例" },
+  eyebrow: { en: "Module 4 · The cases", zh: "模块四 · 实操案例" },
   title: {
     en: "Seven cases, one connected quarter — exactly as printed in your handout",
     zh: "七个案例、同一个季度——与你手里的讲义逐字一致",
@@ -1351,7 +1351,7 @@ export const casesUi = {
 
 /* -------------------------------------------------------------- downloads -- */
 export const downloads = {
-  eyebrow: { en: "Module 4 · Take it with you", zh: "模块四 · 带走它" },
+  eyebrow: { en: "Module 5 · Take it with you", zh: "模块五 · 带走它" },
   title: { en: "Downloads — the data pack and the documents", zh: "资料下载——数据包与配套文档" },
   intro: {
     en: "Everything a participant needs, downloadable here. All data is simulated and regenerates from a fixed seed — your self-check totals will match the printed expected results exactly. Before the session: copy the data into your OneDrive with AutoSave on.",
@@ -1395,5 +1395,143 @@ export const downloads = {
   note: {
     en: "Simulated data only — safe with any AI tool. The instructor pack (prompts, expected numbers, teaching points) is deliberately not published here; ask at the session.",
     zh: "全部为模拟数据——用任何 AI 工具都安全。讲师包（提示词、预期数字、讲解要点）刻意不在此发布；课上向讲师索取。",
+  },
+};
+
+/* ---------------------------------------------------------------- copilot -- */
+/* Module 2 · a plain-English primer on the tool. Key points an instructor can
+   talk through before the disciplines and the cases.                        */
+export const copilot = {
+  eyebrow: { en: "Module 2 · The tool", zh: "模块二 · 认识工具" },
+  title: { en: "Meet Microsoft 365 Copilot", zh: "认识 Microsoft 365 Copilot" },
+  intro: {
+    en: "Copilot is the AI you will use all day — and it is not a new app to learn. It lives inside Excel, Word and PowerPoint, the programs already open on your screen. Before we practise the skill, here is the tool: what it is, where it lives, and how to think about it.",
+    zh: "Copilot 就是你一整天要用的 AI——它不是一款要另学的新软件，而是住在你屏幕上已经打开的 Excel、Word、PowerPoint 里。练功夫之前，先把工具看清：它是什么、住在哪里、该怎么想它。",
+  },
+
+  modelTitle: { en: "The mental model", zh: "心智模型" },
+  steps: [
+    {
+      n: "1",
+      verb: { en: "Describe", zh: "描述" },
+      body: {
+        en: "State the outcome you want, in plain English — the result, not the clicks.",
+        zh: "用大白话说出你要的结果——是产出，不是操作步骤。",
+      },
+    },
+    {
+      n: "2",
+      verb: { en: "It plans & executes", zh: "它规划并执行" },
+      body: {
+        en: "Copilot lays out the steps, shows you the plan, and carries them out inside your file — while you watch.",
+        zh: "Copilot 列出步骤、把计划摆给你看，再在你的文件里执行——你看着它做。",
+      },
+    },
+    {
+      n: "3",
+      verb: { en: "You verify", zh: "你来验证" },
+      body: {
+        en: "You read the plan and check the numbers. Your job shifts from doing the work to describing and checking it.",
+        zh: "你读计划、核数字。你的角色从“干活”变成“把活说清、把结果验准”。",
+      },
+    },
+  ] as { n: string; verb: L; body: L }[],
+
+  appsTitle: { en: "Where Copilot lives", zh: "Copilot 住在哪里" },
+  apps: [
+    {
+      app: "Excel",
+      tag: { en: "the numbers", zh: "数字" },
+      body: {
+        en: "Build, merge, clean, analyse and chart — multi-step, inside the open workbook. Cloud Python runs behind the pane when a task needs it; nothing installs.",
+        zh: "在打开的工作簿里多步完成：构建、合并、清洗、分析、作图。需要时云端 Python 在窗格背后运行；零安装。",
+      },
+    },
+    {
+      app: "Word",
+      tag: { en: "the narrative", zh: "叙述" },
+      body: {
+        en: "Draft, rewrite, restructure, summarise and adjust tone — editing your document by instruction, reviewably and reversibly.",
+        zh: "起草、改写、重构、摘要、调语气——按指令编辑文档，可复核、可撤销。",
+      },
+    },
+    {
+      app: "PowerPoint",
+      tag: { en: "the message", zh: "表达" },
+      body: {
+        en: "Build a deck from a Word document, rewrite slides, draft speaker notes — reading your heading structure to lay out the slides.",
+        zh: "依据 Word 文档生成幻灯片、改写页面、起草演讲备注——按你的标题层级排布页面。",
+      },
+    },
+  ] as { app: string; tag: L; body: L }[],
+
+  pointsTitle: { en: "Six things to know before you start", zh: "开始前要知道的六件事" },
+  points: [
+    {
+      icon: "edit",
+      head: { en: "It edits — it doesn't just chat", zh: "它会动手，不只是聊天" },
+      body: {
+        en: "Since April 2026, Copilot's editing mode takes multi-step actions directly in your file. Make sure the pane says “Allow editing”, not “Chat only” — the single most common reason it answers but changes nothing.",
+        zh: "自 2026 年 4 月起，Copilot 的编辑模式会在你的文件里多步动手。务必让窗格显示“Allow editing（允许编辑）”，而不是“仅聊天”——这是“它回答了却什么都没改”的头号原因。",
+      },
+    },
+    {
+      icon: "shield",
+      head: { en: "Grounded in your work — and it stays there", zh: "扎根于你的工作——且不外流" },
+      body: {
+        en: "Copilot runs inside your organisation's Microsoft 365 boundary: it can use your files, prompts and outputs are logged and auditable, and your data is not used to train the AI models. That is why real Bank data belongs here, not in a public chatbot.",
+        zh: "Copilot 跑在你所在机构的 Microsoft 365 边界内：可调用你的文件，提示词与产出均留痕可审计，且你的数据不会被拿去训练 AI 模型。这正是真实银行数据该留在这里、而非公网聊天机器人的原因。",
+      },
+    },
+    {
+      icon: "watch",
+      head: { en: "You can watch it think", zh: "你能看它思考" },
+      body: {
+        en: "The pane narrates its plan before it acts, and reports what it changed after. Reading that plan is the new review step — where you catch a misunderstanding before it becomes a wrong number.",
+        zh: "窗格动手前先讲计划、动手后再报改动。读这份计划，就是新的复核动作——赶在误解变成错数字之前把它抓住。",
+      },
+    },
+    {
+      icon: "quirk",
+      head: { en: "Brilliant — and occasionally silly", zh: "很聪明，偶尔也犯傻" },
+      body: {
+        en: "Copilot gets the hard part right and the easy part — a currency symbol, a percentage format — wrong more often than you would expect. That is exactly why the accountant stays in the loop. Verify, always.",
+        zh: "Copilot 常常做对难的、做错易的——一个货币符号、一个百分比格式。这恰恰是会计师必须留在环内的理由。永远要验证。",
+      },
+    },
+    {
+      icon: "limit",
+      head: { en: "Know the edges", zh: "知道它的边界" },
+      body: {
+        en: "Word can't read an Excel file — paste the numbers in first. PowerPoint builds from your headings, not loose prose. And output varies run to run: if a big request stalls, split it in two.",
+        zh: "Word 读不了 Excel 文件——先把数字粘进去。PowerPoint 依据标题、而非零散正文来生成。而且每次运行会有差异：大请求卡住了，就拆成两问。",
+      },
+    },
+    {
+      icon: "family",
+      head: { en: "There's a wider family", zh: "它还有一个大家族" },
+      body: {
+        en: "Beyond the in-app pane, Microsoft 365 Copilot Chat works across files and can create new ones, with its own file agents. Powerful, but switched on per organisation — so this course stays inside the three apps everyone already has.",
+        zh: "除了应用内窗格，Microsoft 365 Copilot Chat 还能跨文件工作、生成新文件，并配有文件智能体。很强，但由各机构自行开通——所以本课程只用人人都有的这三个应用。",
+      },
+    },
+  ] as { icon: string; head: L; body: L }[],
+
+  setupTitle: { en: "The five-minute setup that makes it work", zh: "让它顺畅运转的五分钟设置" },
+  setup: [
+    { en: "Signed in with your licensed work account", zh: "用有授权的工作账号登录" },
+    { en: "File in OneDrive, with AutoSave on", zh: "文件放 OneDrive，开启自动保存" },
+    { en: "Data formatted as a table (Ctrl / Cmd + T)", zh: "数据设为表格（Ctrl / Cmd + T）" },
+    { en: "Copilot pane set to “Allow editing”", zh: "Copilot 窗格设为“允许编辑”" },
+    { en: "Formulas on automatic calculation", zh: "公式设为自动计算" },
+  ] as L[],
+  setupNote: {
+    en: "Do this once per file, and everything in the cases just works.",
+    zh: "每个文件做一次，后面所有案例都会顺。",
+  },
+
+  closer: {
+    en: "Copilot is not a new skill bolted onto your job. It is your job, described out loud — a machine that does the typing, and a human who owns the numbers.",
+    zh: "Copilot 不是你工作之外硬装上的一门技能。它就是你的工作，被大声说出来——机器负责敲键盘，人对数字负责。",
   },
 };
