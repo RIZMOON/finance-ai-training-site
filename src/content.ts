@@ -4,14 +4,15 @@ import type { L } from "./i18n";
 export const nav = {
   brand: { en: "AI for the Finance Function", zh: "财务职能 AI 实训" },
   links: [
-    { id: "outcomes", label: { en: "Outcomes", zh: "培训成效" } },
+    { id: "outlook", label: { en: "AI Now", zh: "AI 现状" } },
+    { id: "foundations", label: { en: "Foundations", zh: "方法论" } },
+    { id: "cases", label: { en: "Cases", zh: "实操案例" } },
+    { id: "downloads", label: { en: "Downloads", zh: "资料下载" } },
+    { id: "program", label: { en: "Agenda", zh: "议程" } },
     { id: "instructor", label: { en: "Instructor", zh: "讲师" } },
-    { id: "clients", label: { en: "Clients", zh: "服务客户" } },
-    { id: "workflows", label: { en: "What We Train", zh: "培训内容" } },
-    { id: "outlook", label: { en: "AI Outlook", zh: "AI 展望" } },
-    { id: "insights", label: { en: "Insights", zh: "监管与洞察" } },
   ] as { id: string; label: L }[],
-  cta: { en: "Book a session", zh: "预约培训" },
+  cta: { en: "Data pack (ZIP)", zh: "数据包 (ZIP)" },
+  ctaHref: "/downloads/AI_Finance_Training_DataPack.zip",
 };
 
 /* ----------------------------------------------------------------- hero -- */
@@ -21,22 +22,22 @@ export const hero = {
     zh: "线下实操 · 献给支撑“明日基建”的财务团队",
   },
   title: {
-    en: "AI your finance team can use on Monday morning.",
-    zh: "让财务团队周一早上就能用起来的 AI。",
+    en: "The training site. Everything you need is on this page.",
+    zh: "这是培训网站本身——你需要的一切都在这一页。",
   },
   subtitle: {
-    en: "A 2.5–3 hour working session, not a lecture. Participants split ledgers, consolidate quarter-end accruals, clean invoice registers, build variance dashboards and generate a quarterly flash report — by instructing AI in plain language, on their own laptops, with zero installs.",
-    zh: "这是一场 2.5–3 小时的实操工作坊，不是讲座。学员在自己的笔记本上，用一句大白话指挥 AI：拆分总账、归集季末应计、清洗发票台账、搭建预算差异看板、一键生成季度快报——全程无需安装任何软件。",
+    en: "This is the courseware, not a brochure. Read the AI-now briefing your session opens with, learn the three working disciplines (prompt, context and harness engineering), work the seven cases exactly as printed in your handout, and download the data pack — all from this page, before, during and after the session.",
+    zh: "这不是宣传页，而是课件本身。开场的 AI 现状简报、三大工作方法（提示词工程 · 上下文工程 · 管控工程）、与纸质讲义逐字一致的七个实操案例、以及可直接下载的数据包——课前、课中、课后都在这一页完成。",
   },
   badge: {
     en: "Current edition: prepared for the Office of the Controller of an Asia-based, AAA-rated multilateral development bank · July 2026",
     zh: "当前版本：为一家总部位于亚洲的 AAA 评级多边开发银行财务控制部定制 · 2026 年 7 月",
   },
-  ctaCases: { en: "See what we train", zh: "查看培训内容" },
-  ctaDemo: { en: "Book a session", zh: "预约培训" },
+  ctaCases: { en: "Open the cases", zh: "打开案例" },
+  ctaDemo: { en: "Download the data pack", zh: "下载数据包" },
   stats: [
     { value: "2.5–3h", label: { en: "one focused session", zh: "一场聚焦的工作坊" } },
-    { value: "6", label: { en: "hands-on cases, one connected quarter", zh: "个实操案例，串成同一个季度" } },
+    { value: "7", label: { en: "hands-on cases, one connected quarter", zh: "个实操案例，串成同一个季度" } },
     { value: "3", label: { en: "Microsoft apps: Excel, Word, PowerPoint — no new tool", zh: "个微软应用：Excel、Word、PowerPoint——不引入新工具" } },
     { value: "0", label: { en: "installs required on participant laptops", zh: "学员电脑零安装" } },
   ] as { value: string; label: L }[],
@@ -44,7 +45,7 @@ export const hero = {
 
 /* ------------------------------------------------------- opening numbers -- */
 export const bigNumbers = {
-  eyebrow: { en: "The 2026 numbers · openers for your first slide", zh: "2026 大数字 · 开场第一页就能讲" },
+  eyebrow: { en: "Module 0 · The opening numbers", zh: "模块零 · 开场数字" },
   title: {
     en: "Six numbers that set the room up",
     zh: "六个数字，先把局面讲清楚",
@@ -127,7 +128,7 @@ export const pains = {
 
 /* --------------------------------------------------------------- program -- */
 export const program = {
-  eyebrow: { en: "Program design", zh: "课程设计" },
+  eyebrow: { en: "The session · design & agenda", zh: "本场培训 · 设计与议程" },
   title: { en: "One session, three apps, one habit", zh: "一场课、三个应用、一个习惯" },
   intro: {
     en: "A quarter's reporting is three moves — and Microsoft 365 Copilot sits inside all three. Every case teaches the same loop: describe the outcome, let Copilot execute, then verify like an accountant. Nothing to install, no new login, and the data never leaves the bank's governed environment.",
@@ -418,7 +419,7 @@ export const cases: CaseItem[] = [
 /* Every figure below is traceable to a Deloitte publication or an official
    regulator/standard-setter. No secondary sources; no non-Deloitte firms.   */
 export const outlook = {
-  eyebrow: { en: "AI outlook 2026", zh: "AI 展望 2026" },
+  eyebrow: { en: "Module 1 · AI now & governance", zh: "模块一 · AI 现状与治理" },
   title: {
     en: "Governance is not the brake on AI. It is the licence to scale.",
     zh: "治理不是 AI 的刹车，而是规模化的通行证。",
@@ -749,7 +750,7 @@ export const insightsSection = {
 };
 
 export const governance = {
-  eyebrow: { en: "Governance & data safety", zh: "治理与数据安全" },
+  eyebrow: { en: "Module 2b · The working rules", zh: "模块二之二 · 工作规则" },
   title: {
     en: "Bank-grade habits, taught from the first prompt",
     zh: "银行级的习惯，从第一句提示词教起",
@@ -1069,5 +1070,330 @@ export const footer = {
   built: {
     en: "Program and site prepared by the Deloitte AI enablement team.",
     zh: "课程与网站由德勤 AI 赋能团队制作。",
+  },
+};
+
+/* ------------------------------------------------------------ foundations -- */
+/* Module F · The three working disciplines. Taught in the session, kept here
+   as the reference the room can return to. Grounded in the actual cases.    */
+export const foundations = {
+  eyebrow: { en: "Module 2 · The method", zh: "模块二 · 方法论" },
+  title: {
+    en: "Three disciplines that make AI work usable in a finance function",
+    zh: "让 AI 在财务职能真正可用的三门功夫",
+  },
+  intro: {
+    en: "Access to Copilot is not the skill. The skill splits into three disciplines: say precisely what you want (prompt engineering), control what the model can see (context engineering), and build the checks and rails around it so the work is repeatable and defensible (harness engineering). Every case in this course drills all three.",
+    zh: "拿到 Copilot 不等于会用。真正的能力拆成三门功夫：把要什么说准（提示词工程）、管住模型能看到什么（上下文工程）、再给整个过程装上校验与轨道，让它可重复、可交代（管控工程）。本课程的每个案例都在同时训练这三样。",
+  },
+  modules: [
+    {
+      id: "prompt",
+      icon: "prompt",
+      name: { en: "Prompt Engineering", zh: "提示词工程" },
+      tagline: { en: "Say the outcome precisely", zh: "把结果说准" },
+      definition: {
+        en: "Briefing the AI the way you would brief a capable junior colleague: enough context to start, a clear deliverable, the constraints that matter, and an instruction to report back.",
+        zh: "像给一位能干的年轻同事布置工作那样对 AI 说话：够用的背景、明确的交付物、真正要紧的约束，以及“做完汇报”的要求。",
+      },
+      points: [
+        {
+          title: { en: "1 · Context", zh: "1 · 给上下文" },
+          body: {
+            en: "What the file is, what the columns mean, where the traps are. “36 open POs; Vendor ID is text in one sheet and a number in the other” saved ten minutes of confusion in Case 2.",
+            zh: "文件是什么、每列什么意思、坑在哪里。Case 2 里一句“36 张未结 PO；Vendor ID 在一张表是文本、另一张是数字”，省下了十分钟的困惑。",
+          },
+        },
+        {
+          title: { en: "2 · Outcome, not steps", zh: "2 · 说结果，不说步骤" },
+          body: {
+            en: "“One sheet per department plus a sorted Summary” — not “click Data, then Filter…”. You are hiring a doer, not narrating a tutorial.",
+            zh: "“每个部门一张表，外加排好序的汇总表”——而不是“点开数据菜单，再点筛选……”。你是在委派一件事，不是在念操作教程。",
+          },
+        },
+        {
+          title: { en: "3 · Constraints", zh: "3 · 讲清约束" },
+          body: {
+            en: "Formats, floors, what must not change: “utilization as a percentage”, “accrual floored at zero”, “keep every row”. In Case 1 a missing format constraint produced ¥ totals — right numbers, wrong symbol.",
+            zh: "格式、下限、什么不能动：“利用率显示为百分比”“应计下限为零”“保留每一行”。Case 1 里少了一句格式约束，合计就带上了 ¥ 符号——数字对，符号错。",
+          },
+        },
+        {
+          title: { en: "4 · Verification", zh: "4 · 要求可验证" },
+          body: {
+            en: "End big requests with “tell me every change and every flag you made”. One line, and a black box becomes an audit trail.",
+            zh: "大请求结尾加一句“把你做的每个更改、打的每个标记都告诉我”。一行字，黑箱就变成了审计留痕。",
+          },
+        },
+        {
+          title: { en: "The honesty rule", zh: "诚实规则" },
+          body: {
+            en: "If your prompt doesn't say what to do with missing or broken data, the model will guess. Say it: “no confirmation → zero accrual and flag it; never invent a percentage.”",
+            zh: "如果提示词没说缺数据、坏数据怎么办，模型就会猜。所以要说死：“没有确认 → 应计为零并打标记；绝不虚构一个百分比。”",
+          },
+        },
+        {
+          title: { en: "The one-word rerun", zh: "换一个词，换一种分析" },
+          body: {
+            en: "Analysis has a grammar — dimension, measure, comparison. “By department” → “by category” → “by vendor”: change one word, get a new analysis. That is steering, not receiving.",
+            zh: "分析有语法——维度、度量、比较基准。“按部门”→“按科目”→“按供应商”：改一个词，就是一套新分析。这叫驾驶，不叫乘车。",
+          },
+        },
+      ] as { title: L; body: L }[],
+      example: {
+        label: { en: "Before / after, from Case 4", zh: "对比示例（出自 Case 4）" },
+        bad: "Analyze this data.",
+        good:
+          "Create a sheet \"Variance by Department\": for each department, H1 actual, H1 budget, variance and utilization % (actual / H1 budget), sorted by utilization descending, utilization formatted as a percentage. Highlight red any department above 100%. Tell me what you did.",
+        note: {
+          en: "Same model, same data. The first prompt produces a guess at what you want; the second produces the working paper.",
+          zh: "同一个模型、同一份数据。前一句得到的是“猜你想要什么”，后一句得到的是可用的底稿。",
+        },
+      },
+      dodont: {
+        dos: [
+          { en: "Name sheets and column headers exactly", zh: "点名工作表与列名，一字不差" },
+          { en: "State what to do with gaps and errors", zh: "说明缺失与异常如何处理" },
+          { en: "Ask for the report-back, every time", zh: "每次都要求“做完汇报”" },
+          { en: "Split a stalled multi-step ask into two", zh: "多步请求卡住就拆成两问" },
+        ],
+        donts: [
+          { en: "Narrate clicks and menu paths", zh: "复述点击路径和菜单操作" },
+          { en: "Leave formats and rounding implicit", zh: "让格式与舍入“靠默契”" },
+          { en: "Accept output you didn't ask it to explain", zh: "接受一个它没解释过的结果" },
+        ],
+      },
+    },
+    {
+      id: "context",
+      icon: "context",
+      name: { en: "Context Engineering", zh: "上下文工程" },
+      tagline: { en: "Control what the model sees", zh: "管住模型能看到什么" },
+      definition: {
+        en: "Most “AI got it wrong” moments are really “AI couldn't see it” moments. Context engineering is deciding what is in front of the model — the highest-leverage fix in this course.",
+        zh: "大多数“AI 做错了”，其实是“AI 根本看不到”。上下文工程就是决定摆在模型面前的是什么——这是全课程杠杆最大的一招。",
+      },
+      points: [
+        {
+          title: { en: "Excel: the open workbook is the context", zh: "Excel：打开的工作簿就是上下文" },
+          body: {
+            en: "Copilot's pane works on what's open — so name the exact sheet and column headers. Case 7's five near-identical FV columns are the cautionary tale: ambiguity picks the wrong quarter.",
+            zh: "Copilot 窗格作用于你打开的工作簿——所以要点名工作表与确切列名。Case 7 里五个长得几乎一样的 FV 列就是教训：含糊一点，它就配错季度。",
+          },
+        },
+        {
+          title: { en: "Word: it only knows what is IN the document", zh: "Word：只认识文档里有的东西" },
+          body: {
+            en: "Copilot in Word cannot open your Excel file. Thirty seconds of pasting the five tables in IS the context engineering of Case 5 — then the whole memo becomes possible.",
+            zh: "Word 里的 Copilot 打不开你的 Excel。Case 5 的上下文工程就是那三十秒——把五张表粘进文档，整篇备忘录才成为可能。",
+          },
+        },
+        {
+          title: { en: "PowerPoint: structure is the interface", zh: "PowerPoint：结构就是接口" },
+          body: {
+            en: "Create-from-file reads your heading hierarchy, nothing else. Real Word headings in, clean slides out; undifferentiated prose in, mush out. Structure in, structure out.",
+            zh: "“从文件创建演示文稿”读的只有标题层级。真标题进，干净的页出来；一锅粥的正文进，出来的也是一锅粥。结构进，结构出。",
+          },
+        },
+        {
+          title: { en: "Feed the trap into the prompt", zh: "把坑喂进提示词" },
+          body: {
+            en: "You know the vendor IDs are text-vs-number; the model doesn't until it looks. Declaring known data quirks up front (Case 2) turns a silent failure into a handled case.",
+            zh: "你知道 Vendor ID 有文本/数字之分，模型不看不知道。像 Case 2 那样把已知的“数据脾气”提前声明，静默失败就变成了被处理的分支。",
+          },
+        },
+        {
+          title: { en: "Anchor dates and thresholds explicitly", zh: "日期与阈值要钉死" },
+          body: {
+            en: "“Older than 12 months” drifts; “earlier than 2025-06-30” doesn't. Case 7's staleness rule only became reliable when the date was pinned.",
+            zh: "“超过 12 个月”会漂移；“早于 2025-06-30”不会。Case 7 的“估值过期”规则，是把日期钉死之后才稳定的。",
+          },
+        },
+        {
+          title: { en: "The tenant is context too", zh: "租户本身也是上下文" },
+          body: {
+            en: "Work Copilot runs inside the Bank's Microsoft 365 boundary — grounded, logged, not used to train models. A public chatbot has neither your files nor your controls. Same skill, different room; choose the room by the data.",
+            zh: "工作版 Copilot 跑在银行的 Microsoft 365 边界内——有据可查、留痕、不被拿去训练模型。公网聊天机器人既没有你的文件，也没有你的控制。功夫相同，房间不同；按数据选房间。",
+          },
+        },
+      ] as { title: L; body: L }[],
+      example: {
+        label: { en: "Before / after, from Case 2", zh: "对比示例（出自 Case 2）" },
+        bad: "Why is my lookup failing?",
+        good:
+          "My XLOOKUP of Vendor ID from \"Open POs\" into \"Vendor Master\" returns #N/A even though the IDs look the same in both sheets. Why, and how do I fix it?",
+        note: {
+          en: "The second version carries the context — which sheets, which key, what you observed. Copilot diagnoses text-vs-number in one turn. The first version gets you three rounds of questions.",
+          zh: "第二句带足了上下文——哪两张表、哪个键、观察到什么。Copilot 一轮就诊断出文本/数字问题；第一句只会换来三轮反问。",
+        },
+      },
+      dodont: {
+        dos: [
+          { en: "Paste the numbers before asking Word for the memo", zh: "先把数字粘进 Word，再要备忘录" },
+          { en: "Use real heading styles — they are the API", zh: "用真标题样式——那是应用间的接口" },
+          { en: "Declare known data quirks up front", zh: "已知的数据脾气提前声明" },
+          { en: "Keep real Bank data inside the tenant", zh: "真实银行数据留在租户之内" },
+        ],
+        donts: [
+          { en: "Attach an .xlsx to Word and hope", zh: "把 .xlsx 附给 Word 然后祈祷" },
+          { en: "Say “the usual columns” to a model", zh: "对模型说“就是常规那几列”" },
+          { en: "Paste confidential data into public chatbots", zh: "把机密数据粘进公网聊天机器人" },
+        ],
+      },
+    },
+    {
+      id: "harness",
+      icon: "harness",
+      name: { en: "Harness Engineering", zh: "管控工程" },
+      tagline: { en: "Build the rails around the model", zh: "给模型装上轨道" },
+      definition: {
+        en: "The system AROUND the model: verification, audit trail, repeatability and human gates. A clever prompt is a trick; a prompt inside a harness is a workflow your auditor can live with.",
+        zh: "模型“周围”的那套系统：校验、留痕、可重复性、人工闸门。一句聪明的提示词只是技巧；装进管控框架的提示词，才是审计师能接受的工作流。",
+      },
+      points: [
+        {
+          title: { en: "Verification: arithmetic beats vibes", zh: "校验：算术胜过感觉" },
+          body: {
+            en: "Every case ends on control totals — 720 rows twice to the cent (Case 1), an accrual of exactly 1,134,964.92 (Case 2), a quarter that cross-foots (Cases 4→5). If it doesn't tie, it doesn't ship.",
+            zh: "每个案例都以控制合计收口——Case 1 两种方法各 720 行、分毫不差；Case 2 应计恰为 1,134,964.92；Case 4→5 全季度勾稽相符。对不上数，就不交付。",
+          },
+        },
+        {
+          title: { en: "Audit trail: the report-back convention", zh: "留痕：报告回执惯例" },
+          body: {
+            en: "“Tell me every change and every flag” turns each run into a change log. Pair it with exception lists (Cases 2, 3, 7) and you have working papers, not just output.",
+            zh: "“把每个更改、每个标记都报出来”，让每次运行自带变更日志。再配上例外清单（Case 2、3、7），产出的就是底稿，而不只是结果。",
+          },
+        },
+        {
+          title: { en: "Repeatability: regenerate, don't patch", zh: "可重复：重新生成，而不是打补丁" },
+          body: {
+            en: "The inputs are the single source of truth. When a number changes, rerun the stored prompt — memo and deck follow in minutes (Cases 5–6). Hand-patching outputs is how versions diverge.",
+            zh: "输入才是唯一事实来源。数字一变，重跑存好的提示词——备忘录和简报几分钟内跟上（Case 5–6）。手改产出物，正是版本失控的开始。",
+          },
+        },
+        {
+          title: { en: "The prompt library: a team asset", zh: "提示词库：团队资产" },
+          body: {
+            en: "A reusable prompt stored next to the procedure notes is this course's cheapest deliverable and its most durable one. Same prompt + next month's file = next month's pack.",
+            zh: "把可复用的提示词存在流程说明旁边，是本课程最便宜、也最耐用的交付物。同一句提示词＋下个月的文件＝下个月的报告包。",
+          },
+        },
+        {
+          title: { en: "Human gates: on the loop, not out of it", zh: "人工闸门：人在环上，不在环外" },
+          body: {
+            en: "Screening is delegated; judgment is not. The write-down call, the Board sentence, what gets cut from the deck — human decisions, by design. Supervisors worldwide are converging on the same rule: the higher the autonomy and the risk, the stronger the human oversight.",
+            zh: "筛查可以委派，判断不行。减值与否、上董事会的那句话、简报里砍掉什么——都是设计上就留给人的决定。全球监管也在收敛到同一条：自主性和风险越高，人工监督越要硬。",
+          },
+        },
+        {
+          title: { en: "Data rails: R1–R4", zh: "数据轨道：R1–R4" },
+          body: {
+            en: "Simulated data in training; real Bank data only inside the governed tenant; anonymize when in doubt; re-verify AI output before it leaves your desk. The four working rules are the harness's outer fence.",
+            zh: "培训用模拟数据；真实银行数据只留在受管控租户内；拿不准就先脱敏；AI 产出离开你桌面前必须复核。四条工作规则，就是管控框架最外圈的围栏。",
+          },
+        },
+      ] as { title: L; body: L }[],
+      example: {
+        label: { en: "The maturity ladder", zh: "成熟度阶梯" },
+        bad: "A clever prompt that worked once, living in someone's chat history.",
+        good:
+          "Stored prompt + control totals + exception log + a named human checkpoint — rerun monthly, checked in minutes, defensible in front of a reviewer.",
+        note: {
+          en: "Level 1: a prompt. Level 2: a prompt with checks. Level 3: a stored prompt with checks — a team asset. Level 4: a pipeline with human gates. This course moves you from 1 to 3 in one afternoon; level 4 is the quarter's project.",
+          zh: "一级：一句提示词。二级：带校验的提示词。三级：存档的带校验提示词——团队资产。四级：带人工闸门的流水线。这门课一个下午带你从一级到三级；第四级是本季度的功课。",
+        },
+      },
+      dodont: {
+        dos: [
+          { en: "End every run on a control total", zh: "每次运行都以控制合计收口" },
+          { en: "Keep exception logs next to clean outputs", zh: "例外清单与干净结果放在一起" },
+          { en: "Store the prompt with the procedure notes", zh: "提示词与流程说明一起归档" },
+          { en: "Name the human checkpoint for each workflow", zh: "为每条工作流指定人工检查点" },
+        ],
+        donts: [
+          { en: "Trust a run you didn't verify", zh: "相信一次未经校验的运行" },
+          { en: "Hand-edit generated output (regenerate instead)", zh: "手改生成的产出（应重新生成）" },
+          { en: "Let the summary ship without a fact-check", zh: "让摘要不经核对就发出去" },
+        ],
+      },
+    },
+  ],
+  closer: {
+    en: "Prompt engineering gets you a good answer. Context engineering gets you the right answer. Harness engineering is what lets you sign your name under it.",
+    zh: "提示词工程让你得到一个好答案；上下文工程让你得到正确的答案；而管控工程，才是你敢在下面签字的原因。",
+  },
+};
+
+/* --------------------------------------------------------- cases browser -- */
+export const casesUi = {
+  eyebrow: { en: "Module 3 · The cases", zh: "模块三 · 实操案例" },
+  title: {
+    en: "Seven cases, one connected quarter — exactly as printed in your handout",
+    zh: "七个案例、同一个季度——与你手里的讲义逐字一致",
+  },
+  intro: {
+    en: "Work them in order: Excel finds the numbers (1–4), Word writes the memo (5), PowerPoint makes the deck (6), and the valuation review (7) goes home with you. Case text below is the student pack verbatim; grab the data from the Downloads section, work on your own laptop, and check yourself against the printed self-checks. Case bodies are in English — the session's working language.",
+    zh: "按序推进：Excel 算出数字（1–4），Word 写成备忘录（5），PowerPoint 变成简报（6），估值复核（7）带回家。以下案例正文与学生讲义完全一致（保留课堂工作语言英文原文）；到“资料下载”取数据，在自己的电脑上完成，再对照自查清单验收。",
+  },
+  labels: {
+    difficulty: { en: "Difficulty", zh: "难度" },
+    time: { en: "Time", zh: "用时" },
+    data: { en: "Data file", zh: "数据文件" },
+    download: { en: "Download", zh: "下载" },
+    noData: {
+      en: "No data file — this case consumes YOUR Case 5 memo (or the reference memo in Downloads).",
+      zh: "本案例不需要数据文件——它的输入是你在 Case 5 写出的备忘录（或下载区的参考备忘录）。",
+    },
+    appTag: { en: "App", zh: "应用" },
+  },
+};
+
+/* -------------------------------------------------------------- downloads -- */
+export const downloads = {
+  eyebrow: { en: "Module 4 · Take it with you", zh: "模块四 · 带走它" },
+  title: { en: "Downloads — the data pack and the documents", zh: "资料下载——数据包与配套文档" },
+  intro: {
+    en: "Everything a participant needs, downloadable here. All data is simulated and regenerates from a fixed seed — your self-check totals will match the printed expected results exactly. Before the session: copy the data into your OneDrive with AutoSave on.",
+    zh: "学员需要的一切都可以在这里下载。所有数据均为模拟、由固定随机种子生成——你的自查合计会与讲义印出的预期结果分毫不差。课前请把数据复制进自己的 OneDrive 并开启自动保存。",
+  },
+  zip: {
+    name: "AI_Finance_Training_DataPack.zip",
+    href: "/downloads/AI_Finance_Training_DataPack.zip",
+    size: "118 KB",
+    title: { en: "The data pack — all six workbooks + README", zh: "数据包——全部六个工作簿 + 说明" },
+    body: {
+      en: "One ZIP with every case's raw data (Cases 1–5 and 7; Case 6 uses your Case 5 memo). Unzip, copy into OneDrive, done.",
+      zh: "一个 ZIP 打包全部案例原始数据（Case 1–5 与 7；Case 6 的输入是你的 Case 5 备忘录）。解压、复制进 OneDrive，即可。",
+    },
+    button: { en: "Download ZIP", zh: "下载 ZIP" },
+  },
+  filesTitle: { en: "Or take the files one by one", zh: "也可以按案例单独取用" },
+  files: [
+    { case: "Case 1", name: "Data_Case01_Admin_Expense_Ledger.xlsx", href: "/downloads/data/Data_Case01_Admin_Expense_Ledger.xlsx", size: "43 KB" },
+    { case: "Case 2", name: "Data_Case02_Accrual_Consolidation.xlsx", href: "/downloads/data/Data_Case02_Accrual_Consolidation.xlsx", size: "11 KB" },
+    { case: "Case 3", name: "Data_Case03_Invoice_Register.xlsx", href: "/downloads/data/Data_Case03_Invoice_Register.xlsx", size: "9 KB" },
+    { case: "Case 4", name: "Data_Case04_Budget_vs_Actuals.xlsx", href: "/downloads/data/Data_Case04_Budget_vs_Actuals.xlsx", size: "41 KB" },
+    { case: "Case 5", name: "Data_Case05_Reporting_Pack_Inputs.xlsx", href: "/downloads/data/Data_Case05_Reporting_Pack_Inputs.xlsx", size: "9 KB" },
+    { case: "Case 7", name: "Data_Case07_Investment_FV_Rollforward.xlsx", href: "/downloads/data/Data_Case07_Investment_FV_Rollforward.xlsx", size: "7 KB" },
+  ] as { case: string; name: string; href: string; size: string }[],
+  docsTitle: { en: "Documents", zh: "配套文档" },
+  docs: [
+    {
+      name: { en: "Student handout (all cases, Word)", zh: "学生讲义（全部案例，Word）" },
+      detail: { en: "The printed handout: all seven cases plus the Copilot setup appendix and the prompt-patterns cheat sheet.", zh: "纸质讲义的电子版：七个案例全文，外加 Copilot 设置附录与提示词速查卡。" },
+      href: "/downloads/Student_Handout_All_Cases.docx",
+      size: "52 KB",
+    },
+    {
+      name: { en: "Reference Q2 flash-report memo (Word)", zh: "参考版 Q2 快报备忘录（Word）" },
+      detail: { en: "A fully worked Case 5 answer with real heading styles — and the guaranteed input for Case 6 if your own memo isn't ready.", zh: "Case 5 的完整参考答案，带真实标题样式——也是 Case 6 的保底输入（如果你自己的备忘录还没写完）。" },
+      href: "/downloads/Reference_Q2_Flash_Report_Memo.docx",
+      size: "39 KB",
+    },
+  ] as { name: L; detail: L; href: string; size: string }[],
+  note: {
+    en: "Simulated data only — safe with any AI tool. The instructor pack (prompts, expected numbers, teaching points) is deliberately not published here; ask at the session.",
+    zh: "全部为模拟数据——用任何 AI 工具都安全。讲师包（提示词、预期数字、讲解要点）刻意不在此发布；课上向讲师索取。",
   },
 };

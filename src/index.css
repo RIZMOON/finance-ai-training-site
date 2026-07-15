@@ -107,3 +107,74 @@ body {
     radial-gradient(1100px 420px at 85% -10%, rgba(0, 138, 145, 0.30), transparent 60%),
     linear-gradient(160deg, #0e2a47 0%, #0f3050 55%, #0c2440 100%);
 }
+
+/* ---- case-doc: student-pack case bodies (generated from the handout md) -- */
+.case-doc {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--color-ink);
+}
+.case-doc h5 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-navy);
+  margin: 1.9em 0 0.6em;
+  padding-top: 1.1em;
+  border-top: 1px solid var(--color-mist);
+}
+.case-doc h5:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+.case-doc p { margin: 0.65em 0; }
+.case-doc strong { color: var(--color-navy); }
+.case-doc em { color: inherit; }
+.case-doc code {
+  font-family: var(--font-mono);
+  font-size: 0.83em;
+  background: var(--color-teal-wash);
+  color: var(--color-teal-deep);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+.case-doc table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.9em 0;
+  font-size: 13px;
+}
+.case-doc th, .case-doc td {
+  border: 1px solid var(--color-mist);
+  padding: 0.5em 0.75em;
+  text-align: left;
+  vertical-align: top;
+}
+.case-doc th { background: #eff3f6; color: var(--color-navy); font-weight: 600; }
+.case-doc ul, .case-doc ol { margin: 0.65em 0; padding-left: 1.4em; }
+.case-doc ol { list-style: decimal; }
+.case-doc ul { list-style: disc; }
+.case-doc li { margin: 0.35em 0; }
+.case-doc li.check {
+  list-style: none;
+  position: relative;
+  padding-left: 1.7em;
+  margin-left: -1.4em;
+}
+.case-doc li.check::before {
+  content: "";
+  position: absolute;
+  left: 0.15em;
+  top: 0.36em;
+  width: 0.85em;
+  height: 0.85em;
+  border: 1.5px solid var(--color-teal);
+  border-radius: 3px;
+  background: var(--color-teal-wash);
+}
+.case-doc blockquote {
+  margin: 1.1em 0 0.4em;
+  padding: 0.7em 1em;
+  border-left: 3px solid var(--color-teal);
+  background: var(--color-teal-wash);
+  border-radius: 0 6px 6px 0;
+  color: var(--color-teal-deep);
+  font-size: 13px;
+}

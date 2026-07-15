@@ -6,40 +6,47 @@ import {
   Bot,
   CheckCircle2,
   ClipboardCheck,
+  Check,
   Clock3,
+  Download,
   ExternalLink,
   FileSpreadsheet,
+  FileText,
+  FolderArchive,
   Landmark,
   Languages,
   Layers,
   Mail,
+  MessageSquareText,
   MoveRight,
   Quote,
+  ScanSearch,
   ShieldAlert,
   ShieldCheck,
+  SlidersHorizontal,
   Sparkles,
   Star,
   TrendingUp,
   UserRound,
+  X,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import {
   bigNumbers,
-  cta,
+  casesUi,
+  downloads,
   footer,
+  foundations,
   governance,
   hero,
   instructor,
   insightsSection,
   materials,
   nav,
-  outcomes,
   outlook,
-  pains,
   program,
-  trackRecord,
-  workflows,
 } from "./content";
+import { caseDocs } from "./casesData";
 import { useLang } from "./i18n";
 
 /* ------------------------------------------------------------ primitives -- */
@@ -183,7 +190,8 @@ function Nav() {
         </nav>
         <div className="flex items-center gap-3">
           <a
-            href="#contact"
+            href={nav.ctaHref}
+            download
             className="hidden rounded-md bg-navy px-4 py-2 text-[13px] font-semibold text-white transition-colors hover:bg-navy-2 md:inline-block"
           >
             {t(nav.cta)}
@@ -218,7 +226,8 @@ function Nav() {
             </a>
           ))}
           <a
-            href="#contact"
+            href={nav.ctaHref}
+            download
             onClick={() => setOpen(false)}
             className="mt-2 block rounded-md bg-navy px-4 py-2.5 text-center text-sm font-semibold text-white"
           >
@@ -245,17 +254,19 @@ function Hero() {
 
         <div className="mt-8 flex flex-wrap items-center gap-3">
           <a
-            href="#contact"
+            href="#cases"
             className="group inline-flex items-center gap-2 rounded-md bg-navy px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-navy-2"
           >
-            {t(hero.ctaDemo)}
+            {t(hero.ctaCases)}
             <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
           </a>
           <a
-            href="#workflows"
+            href={nav.ctaHref}
+            download
             className="inline-flex items-center gap-2 rounded-md border border-navy/25 bg-panel px-5 py-3 text-sm font-semibold text-navy transition-colors hover:border-teal hover:text-teal-deep"
           >
-            {t(hero.ctaCases)}
+            <Download size={15} />
+            {t(hero.ctaDemo)}
           </a>
         </div>
 
@@ -308,33 +319,6 @@ function BigNumbers() {
         <Reveal as="p" className="mt-8 font-mono text-[11px] leading-5 text-white/45">
           {bigNumbers.source}
         </Reveal>
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------------------------------------ pain points -- */
-
-function Pains() {
-  const { t } = useLang();
-  return (
-    <section className="py-20 md:py-24">
-      <div className="mx-auto max-w-6xl px-5">
-        <SectionHead eyebrow={t(pains.eyebrow)} title={t(pains.title)} intro={t(pains.body)} />
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
-          {pains.items.map((p, i) => (
-            <Reveal
-              key={p.k}
-              delay={i * 0.08}
-              className="card-hover rounded-lg border border-mist bg-panel p-6"
-            >
-              <div className="font-mono text-xs font-semibold text-teal-deep">{p.k}</div>
-              <h3 className="font-display mt-2 text-lg font-semibold text-navy">{t(p.title)}</h3>
-              <p className="mt-3 text-[13.5px] leading-6 text-slate">{t(p.body)}</p>
-              <p className="mt-4 font-mono text-xs font-semibold text-gold">{t(p.maps)}</p>
-            </Reveal>
-          ))}
-        </div>
       </div>
     </section>
   );
@@ -850,49 +834,6 @@ function Materials() {
   );
 }
 
-/* -------------------------------------------------------------- outcomes -- */
-
-function Outcomes() {
-  const { t } = useLang();
-  return (
-    <section id="outcomes" className="py-20 md:py-24">
-      <div className="mx-auto max-w-6xl px-5">
-        <SectionHead eyebrow={t(outcomes.eyebrow)} title={t(outcomes.title)} intro={t(outcomes.intro)} />
-        <div className="mt-10 grid gap-5 md:grid-cols-2">
-          {outcomes.pairs.map((p, i) => (
-            <Reveal
-              key={i}
-              delay={i * 0.06}
-              className="card-hover overflow-hidden rounded-lg border border-mist bg-panel"
-            >
-              <div className="border-b border-mist bg-paper/60 px-6 py-3">
-                <span className="font-mono text-xs font-semibold tracking-wide text-navy uppercase">
-                  {t(p.task)}
-                </span>
-              </div>
-              <div className="grid sm:grid-cols-2">
-                <div className="p-6">
-                  <span className="font-mono text-[10.5px] tracking-wider text-slate/70 uppercase">
-                    {t({ en: "Before", zh: "过去" })}
-                  </span>
-                  <p className="mt-2 text-[13px] leading-6 text-slate">{t(p.before)}</p>
-                </div>
-                <div className="border-t border-mist bg-teal-wash/50 p-6 sm:border-t-0 sm:border-l">
-                  <span className="inline-flex items-center gap-1.5 font-mono text-[10.5px] tracking-wider text-teal-deep uppercase">
-                    <MoveRight size={12} />
-                    {t({ en: "After", zh: "现在" })}
-                  </span>
-                  <p className="mt-2 text-[13px] leading-6 text-ink">{t(p.after)}</p>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ------------------------------------------------------------ instructor -- */
 
 function Instructor() {
@@ -962,123 +903,336 @@ function Instructor() {
   );
 }
 
-/* ---------------------------------------------------------- track record -- */
 
-function TrackRecord() {
+/* ------------------------------------------------------------ foundations -- */
+
+const moduleIcons: Record<string, typeof MessageSquareText> = {
+  prompt: MessageSquareText,
+  context: ScanSearch,
+  harness: SlidersHorizontal,
+};
+
+function Foundations() {
   const { t } = useLang();
+  const [active, setActive] = useState(0);
+  const m = foundations.modules[active];
+  const Icon = moduleIcons[m.icon] ?? MessageSquareText;
   return (
-    <section id="clients" className="py-20 md:py-24">
+    <section id="foundations" className="border-y border-mist bg-[#EFF3F6] py-20 md:py-24">
       <div className="mx-auto max-w-6xl px-5">
         <SectionHead
-          eyebrow={t(trackRecord.eyebrow)}
-          title={t(trackRecord.title)}
-          intro={t(trackRecord.intro)}
+          eyebrow={t(foundations.eyebrow)}
+          title={t(foundations.title)}
+          intro={t(foundations.intro)}
         />
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
-          {trackRecord.programs.map((p, i) => (
+
+        {/* tab bar */}
+        <div className="mt-10 grid gap-3 md:grid-cols-3">
+          {foundations.modules.map((mod, i) => {
+            const TabIcon = moduleIcons[mod.icon] ?? MessageSquareText;
+            const on = i === active;
+            return (
+              <button
+                key={mod.id}
+                onClick={() => setActive(i)}
+                className={`flex items-center gap-3.5 rounded-lg border p-4 text-left transition-all ${
+                  on
+                    ? "border-teal bg-navy text-white shadow-lg"
+                    : "border-mist bg-panel text-navy hover:border-teal/60"
+                }`}
+              >
+                <span
+                  className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-md ${
+                    on ? "bg-white/10 text-[#7FD8D4]" : "bg-teal-wash text-teal-deep"
+                  }`}
+                >
+                  <TabIcon size={18} />
+                </span>
+                <span className="min-w-0">
+                  <span className="block font-display text-[15px] leading-tight font-semibold">
+                    {t(mod.name)}
+                  </span>
+                  <span
+                    className={`mt-0.5 block font-mono text-[10.5px] ${on ? "text-white/60" : "text-slate"}`}
+                  >
+                    {t(mod.tagline)}
+                  </span>
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* panel */}
+        <div key={m.id} className="mt-6 rounded-xl border border-mist bg-panel p-6 md:p-9">
+          <div className="flex items-start gap-4">
+            <span className="hidden h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-navy text-[#7FD8D4] md:flex">
+              <Icon size={19} />
+            </span>
+            <p className="max-w-4xl text-[15px] leading-7 font-medium text-navy">
+              {t(m.definition)}
+            </p>
+          </div>
+
+          <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {m.points.map((pt, i) => (
+              <Reveal
+                key={i}
+                delay={i * 0.04}
+                className="rounded-lg border border-mist bg-paper/60 p-5"
+              >
+                <h4 className="text-[13.5px] font-semibold text-teal-deep">{t(pt.title)}</h4>
+                <p className="mt-2 text-[13px] leading-6 text-slate">{t(pt.body)}</p>
+              </Reveal>
+            ))}
+          </div>
+
+          {/* example */}
+          <div className="mt-8 rounded-lg border border-mist bg-paper p-5 md:p-6">
+            <p className="eyebrow">{t(m.example.label)}</p>
+            <div className="mt-4 grid gap-4 lg:grid-cols-2">
+              <div className="rounded-md border border-flag/30 bg-flag/[0.04] p-4">
+                <span className="font-mono text-[10px] font-semibold tracking-wide text-flag">
+                  ✗ {t({ en: "WEAK", zh: "弱" })}
+                </span>
+                <p className="mt-2 font-mono text-[12.5px] leading-6 text-ink/80">{m.example.bad}</p>
+              </div>
+              <div className="rounded-md border border-teal/40 bg-teal-wash/60 p-4">
+                <span className="font-mono text-[10px] font-semibold tracking-wide text-teal-deep">
+                  ✓ {t({ en: "STRONG", zh: "强" })}
+                </span>
+                <p className="mt-2 font-mono text-[12.5px] leading-6 text-ink">{m.example.good}</p>
+              </div>
+            </div>
+            <p className="mt-4 max-w-3xl text-[13px] leading-6 text-slate">{t(m.example.note)}</p>
+          </div>
+
+          {/* do / don't */}
+          <div className="mt-6 grid gap-4 md:grid-cols-2">
+            <div className="rounded-lg border border-teal/30 bg-teal-wash/40 p-5">
+              <h4 className="font-mono text-[11px] font-semibold tracking-wide text-teal-deep">
+                {t({ en: "DO", zh: "要这样做" })}
+              </h4>
+              <ul className="mt-3 space-y-2">
+                {m.dodont.dos.map((d, i) => (
+                  <li key={i} className="flex gap-2.5 text-[13px] leading-6 text-ink">
+                    <Check size={15} className="mt-1 shrink-0 text-teal" />
+                    {t(d)}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="rounded-lg border border-flag/25 bg-flag/[0.04] p-5">
+              <h4 className="font-mono text-[11px] font-semibold tracking-wide text-flag">
+                {t({ en: "DON'T", zh: "别这样做" })}
+              </h4>
+              <ul className="mt-3 space-y-2">
+                {m.dodont.donts.map((d, i) => (
+                  <li key={i} className="flex gap-2.5 text-[13px] leading-6 text-ink">
+                    <X size={15} className="mt-1 shrink-0 text-flag" />
+                    {t(d)}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <Reveal className="mt-8 max-w-4xl rounded-lg border border-mist bg-panel p-6">
+          <p className="font-display text-[17px] leading-8 font-semibold text-navy">
+            {t(foundations.closer)}
+          </p>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ----------------------------------------------------------------- cases -- */
+
+function Cases() {
+  const { t, lang } = useLang();
+  const [active, setActive] = useState(0);
+  const c = caseDocs[active];
+  return (
+    <section id="cases" className="py-20 md:py-24">
+      <div className="mx-auto max-w-6xl px-5">
+        <SectionHead eyebrow={t(casesUi.eyebrow)} title={t(casesUi.title)} intro={t(casesUi.intro)} />
+
+        <div className="mt-10 grid gap-6 lg:grid-cols-[240px_minmax(0,1fr)]">
+          {/* case picker */}
+          <div className="flex gap-2 overflow-x-auto pb-1 lg:flex-col lg:overflow-visible">
+            {caseDocs.map((cd, i) => {
+              const on = i === active;
+              return (
+                <button
+                  key={cd.num}
+                  onClick={() => setActive(i)}
+                  className={`shrink-0 rounded-lg border px-4 py-3 text-left transition-all lg:w-full ${
+                    on
+                      ? "border-teal bg-navy text-white shadow-md"
+                      : "border-mist bg-panel text-navy hover:border-teal/60"
+                  }`}
+                >
+                  <span
+                    className={`font-mono text-[10px] tracking-wide ${on ? "text-[#7FD8D4]" : "text-teal-deep"}`}
+                  >
+                    CASE {cd.num} · {cd.app.toUpperCase()}
+                  </span>
+                  <span className="mt-0.5 block text-[13px] leading-snug font-semibold">
+                    {cd.label}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* case panel */}
+          <div key={c.num} className="min-w-0 rounded-xl border border-mist bg-panel">
+            <div className="border-b border-mist p-6 md:p-7">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                <span className="rounded bg-navy px-2.5 py-1 font-mono text-[11px] font-semibold text-[#7FD8D4]">
+                  Case {c.num}
+                </span>
+                <span className="rounded border border-teal/40 bg-teal-wash px-2.5 py-1 font-mono text-[11px] font-medium text-teal-deep">
+                  {c.app}
+                </span>
+                <Stars n={c.difficulty} />
+                {c.time ? (
+                  <span className="inline-flex items-center gap-1.5 font-mono text-[11px] text-slate">
+                    <Clock3 size={12} />
+                    {c.time}
+                  </span>
+                ) : null}
+              </div>
+              <h3 className="font-display mt-3 text-2xl leading-tight font-semibold text-navy">
+                {c.label}
+              </h3>
+              <p className="mt-2 text-[14px] leading-6 text-slate">{c.subtitle}</p>
+              {c.dataFile ? (
+                <a
+                  href={`/downloads/data/${c.dataFile}`}
+                  download
+                  className="mt-4 inline-flex items-center gap-2 rounded-md border border-teal/40 bg-teal-wash px-3.5 py-2 font-mono text-[12px] font-medium text-teal-deep transition-colors hover:bg-teal hover:text-white"
+                >
+                  <FileSpreadsheet size={14} />
+                  {c.dataFile}
+                  <Download size={13} />
+                </a>
+              ) : (
+                <p className="mt-4 inline-flex items-start gap-2 rounded-md border border-gold/35 bg-gold/[0.07] px-3.5 py-2 text-[12.5px] leading-5 text-navy">
+                  <MoveRight size={14} className="mt-0.5 shrink-0 text-gold" />
+                  {t(casesUi.labels.noData)}
+                </p>
+              )}
+            </div>
+            <div className="case-doc p-6 md:p-7" dangerouslySetInnerHTML={{ __html: c.html }} />
+          </div>
+        </div>
+        {lang === "zh" ? (
+          <p className="mt-6 font-mono text-[11px] leading-5 text-slate/80">
+            案例正文与纸质讲义保持一致，保留课堂工作语言（英文）原文。
+          </p>
+        ) : null}
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------- downloads -- */
+
+function Downloads() {
+  const { t } = useLang();
+  return (
+    <section id="downloads" className="border-y border-mist bg-[#EFF3F6] py-20 md:py-24">
+      <div className="mx-auto max-w-6xl px-5">
+        <SectionHead eyebrow={t(downloads.eyebrow)} title={t(downloads.title)} intro={t(downloads.intro)} />
+
+        {/* zip hero */}
+        <Reveal className="mt-10">
+          <div className="dark-band flex flex-col gap-6 rounded-xl p-7 text-white md:flex-row md:items-center md:p-9">
+            <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-white/10">
+              <FolderArchive size={26} className="text-[#7FD8D4]" />
+            </span>
+            <div className="min-w-0 flex-1">
+              <h3 className="font-display text-xl font-semibold">{t(downloads.zip.title)}</h3>
+              <p className="mt-2 max-w-2xl text-[13.5px] leading-6 text-white/80">
+                {t(downloads.zip.body)}
+              </p>
+              <p className="mt-2 font-mono text-[11px] text-white/50">
+                {downloads.zip.name} · {downloads.zip.size}
+              </p>
+            </div>
+            <a
+              href={downloads.zip.href}
+              download
+              className="inline-flex shrink-0 items-center gap-2 rounded-md bg-white px-5 py-3 text-sm font-semibold text-navy transition-colors hover:bg-teal-wash"
+            >
+              <Download size={16} />
+              {t(downloads.zip.button)}
+            </a>
+          </div>
+        </Reveal>
+
+        {/* individual files */}
+        <Reveal as="h3" className="font-display mt-12 text-lg font-semibold text-navy">
+          {t(downloads.filesTitle)}
+        </Reveal>
+        <div className="mt-4 overflow-hidden rounded-lg border border-mist bg-panel">
+          {downloads.files.map((f, i) => (
+            <a
+              key={f.name}
+              href={f.href}
+              download
+              className={`flex items-center gap-4 px-5 py-3.5 transition-colors hover:bg-teal-wash/50 ${
+                i > 0 ? "border-t border-mist" : ""
+              }`}
+            >
+              <span className="w-14 shrink-0 font-mono text-[11px] font-semibold text-teal-deep">
+                {f.case}
+              </span>
+              <FileSpreadsheet size={15} className="shrink-0 text-slate" />
+              <span className="min-w-0 flex-1 truncate font-mono text-[12.5px] text-ink">
+                {f.name}
+              </span>
+              <span className="hidden font-mono text-[11px] text-slate/70 sm:block">{f.size}</span>
+              <Download size={14} className="shrink-0 text-teal" />
+            </a>
+          ))}
+        </div>
+
+        {/* documents */}
+        <Reveal as="h3" className="font-display mt-12 text-lg font-semibold text-navy">
+          {t(downloads.docsTitle)}
+        </Reveal>
+        <div className="mt-4 grid gap-5 md:grid-cols-2">
+          {downloads.docs.map((d, i) => (
             <Reveal
               key={i}
-              delay={i * 0.08}
+              delay={i * 0.06}
               className="card-hover flex flex-col rounded-lg border border-mist bg-panel p-6"
             >
-              <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-teal-wash px-3 py-1 font-mono text-[10.5px] font-semibold tracking-wide text-teal-deep uppercase">
-                <Landmark size={12} />
-                {t(p.tag)}
-              </span>
-              <h3 className="font-display mt-4 text-lg leading-snug font-semibold text-navy">
-                {t(p.client)}
-              </h3>
-              <p className="mt-2.5 text-[13px] leading-6 text-slate">{t(p.body)}</p>
+              <div className="flex items-center gap-3">
+                <span className="flex h-9 w-9 items-center justify-center rounded-md bg-navy text-[#7FD8D4]">
+                  <FileText size={16} />
+                </span>
+                <h4 className="text-[15px] font-semibold text-navy">{t(d.name)}</h4>
+              </div>
+              <p className="mt-3 flex-1 text-[13px] leading-6 text-slate">{t(d.detail)}</p>
+              <a
+                href={d.href}
+                download
+                className="mt-4 inline-flex items-center gap-2 self-start rounded-md border border-teal/40 bg-teal-wash px-3.5 py-2 font-mono text-[12px] font-medium text-teal-deep transition-colors hover:bg-teal hover:text-white"
+              >
+                <Download size={13} />
+                {t({ en: "Download", zh: "下载" })} · {d.size}
+              </a>
             </Reveal>
           ))}
         </div>
-        <Reveal className="mt-10 rounded-lg border border-mist bg-panel p-6">
-          <p className="font-mono text-[10.5px] tracking-wider text-teal-deep uppercase">{t(trackRecord.segmentsTitle)}</p>
-          <div className="mt-3.5 flex flex-wrap gap-2.5">
-            {trackRecord.segments.map((sg, i) => (
-              <span key={i} className="rounded-full bg-teal-wash px-3.5 py-1.5 font-mono text-[11.5px] text-teal-deep">
-                {t(sg)}
-              </span>
-            ))}
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
 
-/* -------------------------------------------------------------- workflows -- */
-
-function Workflows() {
-  const { t } = useLang();
-  return (
-    <section id="workflows" className="border-y border-mist bg-[#EFF3F6] py-20 md:py-24">
-      <div className="mx-auto max-w-6xl px-5">
-        <SectionHead eyebrow={t(workflows.eyebrow)} title={t(workflows.title)} intro={t(workflows.intro)} />
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {workflows.items.map((w, i) => (
-            <Reveal
-              key={i}
-              delay={i * 0.05}
-              className="card-hover flex items-center gap-4 rounded-lg border border-mist bg-panel p-5"
-            >
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-navy font-mono text-xs font-semibold text-[#7FD8D4]">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <div>
-                <p className="font-mono text-[10px] tracking-wider text-teal-deep uppercase">{t(w.tag)}</p>
-                <h3 className="mt-0.5 text-[14.5px] leading-snug font-semibold text-navy">{t(w.title)}</h3>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-        <Reveal as="p" className="mt-8 flex items-start gap-2 text-[13px] leading-6 text-slate">
-          <ShieldCheck size={15} className="mt-0.5 shrink-0 text-teal" />
-          {t(workflows.note)}
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-/* -------------------------------------------------------------------- cta -- */
-
-function Cta() {
-  const { t } = useLang();
-  return (
-    <section id="contact" className="dark-band py-20 text-white md:py-24">
-      <div className="mx-auto max-w-5xl px-5">
-        <Reveal className="rounded-2xl border border-[#66D1CC]/30 bg-white/[0.04] p-8 md:p-12">
-          <p className="eyebrow !text-[#7FD8D4]">{t(cta.eyebrow)}</p>
-          <h2 className="font-display mt-3 max-w-3xl text-3xl leading-tight font-semibold md:text-[2.5rem]">
-            {t(cta.title)}
-          </h2>
-          <p className="mt-5 max-w-2xl text-[15px] leading-7 text-white/75">{t(cta.body)}</p>
-          <div className="mt-7 flex flex-wrap items-center gap-3">
-            <a
-              href={`mailto:${cta.email}?subject=${encodeURIComponent("AI for the Finance Function - training enquiry")}`}
-              className="group inline-flex items-center gap-2 rounded-md bg-[#66D1CC] px-5 py-3 text-sm font-semibold text-[#0c2440] transition-colors hover:bg-[#7FD8D4]"
-            >
-              <Mail size={16} />
-              {t(cta.emailLabel)}
-              <span className="font-mono text-[13px] font-normal opacity-80">{cta.email}</span>
-            </a>
-            <a
-              href="#workflows"
-              className="inline-flex items-center gap-2 rounded-md border border-white/25 px-5 py-3 text-sm font-semibold text-white transition-colors hover:border-[#66D1CC]"
-            >
-              {t(cta.secondaryLabel)}
-              <ArrowRight size={15} />
-            </a>
-          </div>
-          <div className="mt-8 flex flex-wrap gap-x-7 gap-y-2.5 border-t border-white/12 pt-6">
-            {cta.points.map((p, i) => (
-              <div key={i} className="flex items-center gap-2 text-[12.5px] text-white/70">
-                <CheckCircle2 size={14} className="text-[#7FD8D4]" />
-                {t(p)}
-              </div>
-            ))}
-          </div>
+        <Reveal as="p" className="mt-8 max-w-3xl font-mono text-[11px] leading-5 text-slate/80">
+          {t(downloads.note)}
         </Reveal>
       </div>
     </section>
@@ -1086,6 +1240,7 @@ function Cta() {
 }
 
 /* ---------------------------------------------------------------- footer -- */
+
 
 function Footer() {
   const { t } = useLang();
@@ -1115,17 +1270,15 @@ export default function App() {
       <main>
         <Hero />
         <BigNumbers />
-        <Pains />
-        <Outcomes />
-        <Instructor />
-        <TrackRecord />
-        <Workflows />
-        <Program />
         <Outlook />
         <Insights />
+        <Foundations />
         <Governance />
+        <Cases />
+        <Downloads />
+        <Program />
+        <Instructor />
         <Materials />
-        <Cta />
       </main>
       <Footer />
     </div>
