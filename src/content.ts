@@ -12,8 +12,6 @@ export const nav = {
     { id: "downloads", label: { en: "Downloads", zh: "资料下载" } },
     { id: "instructor", label: { en: "Instructor", zh: "讲师" } },
   ] as { id: string; label: L }[],
-  cta: { en: "Data pack (ZIP)", zh: "数据包 (ZIP)" },
-  ctaHref: "/downloads/AI_Finance_Training_DataPack.zip",
 };
 
 /* ----------------------------------------------------------------- hero -- */
@@ -35,7 +33,7 @@ export const hero = {
     zh: "当前版本：为一家总部位于亚洲的 AAA 评级多边开发银行财务控制部定制 · 2026 年 7 月",
   },
   ctaCases: { en: "Open the cases", zh: "打开案例" },
-  ctaDemo: { en: "Download the data pack", zh: "下载数据包" },
+  ctaDownloads: { en: "Go to downloads", zh: "前往资料下载" },
   stats: [
     { value: "2.5–3h", label: { en: "one focused session", zh: "一场聚焦的工作坊" } },
     { value: "7", label: { en: "hands-on cases, one connected quarter", zh: "个实操案例，串成同一个季度" } },

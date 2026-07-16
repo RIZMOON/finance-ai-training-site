@@ -200,13 +200,6 @@ function Nav() {
           ))}
         </nav>
         <div className="flex items-center gap-3">
-          <a
-            href={nav.ctaHref}
-            download
-            className="hidden rounded-md bg-navy px-4 py-2 text-[13px] font-semibold text-white transition-colors hover:bg-navy-2 md:inline-block"
-          >
-            {t(nav.cta)}
-          </a>
           <button
             onClick={() => setLang(lang === "en" ? "zh" : "en")}
             className="flex items-center gap-1.5 rounded-full border border-mist bg-panel px-3 py-1.5 font-mono text-xs font-medium text-navy transition-colors hover:border-teal hover:text-teal-deep"
@@ -236,14 +229,6 @@ function Nav() {
               {t(l.label)}
             </a>
           ))}
-          <a
-            href={nav.ctaHref}
-            download
-            onClick={() => setOpen(false)}
-            className="mt-2 block rounded-md bg-navy px-4 py-2.5 text-center text-sm font-semibold text-white"
-          >
-            {t(nav.cta)}
-          </a>
         </nav>
       ) : null}
     </header>
@@ -272,12 +257,10 @@ function Hero() {
             <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
           </a>
           <a
-            href={nav.ctaHref}
-            download
+            href="#downloads"
             className="inline-flex items-center gap-2 rounded-md border border-navy/25 bg-panel px-5 py-3 text-sm font-semibold text-navy transition-colors hover:border-teal hover:text-teal-deep"
           >
-            <Download size={15} />
-            {t(hero.ctaDemo)}
+            {t(hero.ctaDownloads)}
           </a>
         </div>
 
