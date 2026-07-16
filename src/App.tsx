@@ -54,7 +54,6 @@ import {
   materials,
   nav,
   outlook,
-  program,
 } from "./content";
 import { caseDocs } from "./casesData";
 import { promptVault, promptVaultUi } from "./promptsData";
@@ -313,90 +312,6 @@ function BigNumbers() {
         <Reveal as="p" className="mt-8 font-mono text-[11px] leading-5 text-white/45">
           {bigNumbers.source}
         </Reveal>
-      </div>
-    </section>
-  );
-}
-
-/* --------------------------------------------------------------- program -- */
-
-function Program() {
-  const { t } = useLang();
-  return (
-    <section id="program" className="dark-band py-20 text-white md:py-24">
-      <div className="mx-auto max-w-6xl px-5">
-        <Reveal className="max-w-3xl">
-          <p className="eyebrow !text-[#7FD8D4]">{t(program.eyebrow)}</p>
-          <h2 className="font-display mt-3 text-3xl leading-tight font-semibold md:text-[2.6rem]">
-            {t(program.title)}
-          </h2>
-          <p className="mt-5 text-[15px] leading-7 text-white/70">{t(program.intro)}</p>
-        </Reveal>
-
-        <div className="mt-10 grid gap-5 md:grid-cols-2">
-          {program.paths.map((p, i) => (
-            <Reveal
-              key={i}
-              delay={i * 0.1}
-              className={`rounded-lg border p-6 ${
-                i === 1 ? "border-[#66D1CC]/50 bg-white/[0.07]" : "border-white/15 bg-white/[0.04]"
-              }`}
-            >
-              <p className={`font-mono text-[11px] tracking-wider uppercase ${i === 1 ? "text-[#7FD8D4]" : "text-white/50"}`}>
-                {t(p.tag)}
-              </p>
-              <h3 className="font-display mt-2 text-xl font-semibold">{t(p.title)}</h3>
-              <p className="mt-3 text-[13.5px] leading-6 text-white/70">{t(p.body)}</p>
-            </Reveal>
-          ))}
-        </div>
-
-        <Reveal as="h3" className="font-display mt-14 text-xl font-semibold">
-          {t(program.principlesTitle)}
-        </Reveal>
-        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {program.principles.map((p, i) => (
-            <Reveal
-              key={i}
-              delay={i * 0.06}
-              className="rounded-lg border border-white/12 bg-white/[0.04] p-5"
-            >
-              <div className="font-mono text-[11px] text-[#7FD8D4]">{String(i + 1).padStart(2, "0")}</div>
-              <div className="mt-1.5 font-semibold">{t(p.title)}</div>
-              <p className="mt-2 text-[12.5px] leading-5 text-white/60">{t(p.body)}</p>
-            </Reveal>
-          ))}
-        </div>
-
-        <div className="mt-14 grid gap-10 lg:grid-cols-[1.25fr_1fr]">
-          <div>
-            <Reveal as="h3" className="font-display text-xl font-semibold">
-              {t(program.agendaTitle)}
-            </Reveal>
-            <div className="mt-5 overflow-hidden rounded-lg border border-white/12">
-              {program.agenda.map((a, i) => (
-                <Reveal
-                  key={i}
-                  delay={i * 0.03}
-                  className={`flex items-start gap-4 px-5 py-3.5 text-[13.5px] ${
-                    i % 2 ? "bg-white/[0.03]" : "bg-white/[0.06]"
-                  }`}
-                >
-                  <span className="font-mono text-xs text-[#7FD8D4] pt-0.5 w-10 shrink-0">{a.time}</span>
-                  <span className="font-mono text-[11px] text-white/40 pt-0.5 w-8 shrink-0">{a.len}</span>
-                  <span className="leading-5 text-white/85">{t(a.label)}</span>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-          <Reveal className="rounded-lg border border-white/12 bg-white/[0.04] p-6 self-start">
-            <div className="flex items-center gap-2">
-              <Clock3 size={16} className="text-[#7FD8D4]" />
-              <h4 className="font-display text-lg font-semibold">{t(program.audience.title)}</h4>
-            </div>
-            <p className="mt-3 text-[13.5px] leading-6 text-white/70">{t(program.audience.body)}</p>
-          </Reveal>
-        </div>
       </div>
     </section>
   );
@@ -1640,7 +1555,6 @@ export default function App() {
         <Cases />
         <PromptVault />
         <Downloads />
-        <Program />
         <Instructor />
         <Materials />
       </main>
