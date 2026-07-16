@@ -8,6 +8,7 @@ export const nav = {
     { id: "copilot", label: { en: "Copilot", zh: "Copilot" } },
     { id: "foundations", label: { en: "Method", zh: "方法论" } },
     { id: "cases", label: { en: "Cases", zh: "实操案例" } },
+    { id: "prompts", label: { en: "Prompts", zh: "提示词库" } },
     { id: "downloads", label: { en: "Downloads", zh: "资料下载" } },
     { id: "instructor", label: { en: "Instructor", zh: "讲师" } },
   ] as { id: string; label: L }[],

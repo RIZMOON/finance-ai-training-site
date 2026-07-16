@@ -21,6 +21,9 @@ import {
   Languages,
   Layers,
   Mail,
+  Copy,
+  KeyRound,
+  Lock,
   MessageSquareText,
   MoveRight,
   Presentation,
@@ -54,6 +57,7 @@ import {
   program,
 } from "./content";
 import { caseDocs } from "./casesData";
+import { promptVault, promptVaultUi } from "./promptsData";
 import { useLang } from "./i18n";
 
 /* ------------------------------------------------------------ primitives -- */
@@ -1289,7 +1293,232 @@ function Cases() {
   );
 }
 
+
+/* ------------------------------------------------------------ prompt vault -- */
+
+const VAULT_KEY = "prompt-vault-auth";
+
+function PromptCard({ prompt }: { prompt: (typeof promptVault)[number]["prompts"][number] }) {
+  const { t } = useLang();
+  const [copied, setCopied] = useState(false);
+  const doCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(prompt.text);
+    } catch {
+      const ta = document.createElement("textarea");
+      ta.value = prompt.text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+    }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1600);
+  };
+  return (
+    <div className="overflow-hidden rounded-lg border border-mist">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-mist bg-paper px-4 py-2.5">
+        <div className="min-w-0">
+          <p className="text-[13px] font-semibold text-navy">{t(prompt.label)}</p>
+          <p className="mt-0.5 font-mono text-[10.5px] text-teal-deep">
+            {t(promptVaultUi.labels.where)}: {t(prompt.where)}
+          </p>
+        </div>
+        <button
+          onClick={doCopy}
+          className={`inline-flex shrink-0 items-center gap-1.5 rounded-md border px-3 py-1.5 font-mono text-[11px] font-semibold transition-colors ${
+            copied
+              ? "border-teal bg-teal text-white"
+              : "border-navy/25 bg-panel text-navy hover:border-teal hover:text-teal-deep"
+          }`}
+        >
+          {copied ? <Check size={12} /> : <Copy size={12} />}
+          {copied ? t(promptVaultUi.labels.copied) : t(promptVaultUi.labels.copy)}
+        </button>
+      </div>
+      <pre className="overflow-x-auto bg-[#FBFCFD] px-4 py-3.5 font-mono text-[11.5px] leading-[1.65] whitespace-pre-wrap text-ink">
+        {prompt.text}
+      </pre>
+    </div>
+  );
+}
+
+function PromptVault() {
+  const { t } = useLang();
+  const [unlocked, setUnlocked] = useState<boolean>(() => {
+    if (typeof window === "undefined") return false;
+    return window.localStorage.getItem(VAULT_KEY) === "granted";
+  });
+  const [user, setUser] = useState("");
+  const [pass, setPass] = useState("");
+  const [err, setErr] = useState(false);
+  const [active, setActive] = useState(0);
+  const vc = promptVault[active];
+
+  const tryUnlock = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (user.trim().toLowerCase() === "aiib" && pass.trim() === "2026") {
+      window.localStorage.setItem(VAULT_KEY, "granted");
+      setUnlocked(true);
+      setErr(false);
+    } else {
+      setErr(true);
+    }
+  };
+  const lock = () => {
+    window.localStorage.removeItem(VAULT_KEY);
+    setUnlocked(false);
+    setUser("");
+    setPass("");
+  };
+
+  return (
+    <section id="prompts" className="border-y border-mist bg-[#EFF3F6] py-20 md:py-24">
+      <div className="mx-auto max-w-6xl px-5">
+        <SectionHead
+          eyebrow={t(promptVaultUi.eyebrow)}
+          title={t(promptVaultUi.title)}
+          intro={t(promptVaultUi.intro)}
+        />
+
+        {!unlocked ? (
+          <Reveal className="mx-auto mt-12 max-w-md">
+            <form
+              onSubmit={tryUnlock}
+              className="rounded-xl border border-mist bg-panel p-7 shadow-sm md:p-8"
+            >
+              <span className="flex h-11 w-11 items-center justify-center rounded-md bg-navy text-[#7FD8D4]">
+                <Lock size={18} />
+              </span>
+              <h3 className="font-display mt-4 text-xl font-semibold text-navy">
+                {t(promptVaultUi.gate.heading)}
+              </h3>
+              <p className="mt-2 text-[13.5px] leading-6 text-slate">
+                {t(promptVaultUi.gate.body)}
+              </p>
+              <label className="mt-5 block">
+                <span className="font-mono text-[10.5px] tracking-wide text-slate uppercase">
+                  {t(promptVaultUi.gate.user)}
+                </span>
+                <input
+                  value={user}
+                  onChange={(e) => setUser(e.target.value)}
+                  autoComplete="username"
+                  className="mt-1.5 w-full rounded-md border border-mist bg-paper px-3.5 py-2.5 text-[14px] text-ink outline-none focus:border-teal"
+                />
+              </label>
+              <label className="mt-4 block">
+                <span className="font-mono text-[10.5px] tracking-wide text-slate uppercase">
+                  {t(promptVaultUi.gate.pass)}
+                </span>
+                <input
+                  type="password"
+                  value={pass}
+                  onChange={(e) => setPass(e.target.value)}
+                  autoComplete="current-password"
+                  className="mt-1.5 w-full rounded-md border border-mist bg-paper px-3.5 py-2.5 text-[14px] text-ink outline-none focus:border-teal"
+                />
+              </label>
+              {err ? (
+                <p className="mt-3 text-[12.5px] font-medium text-flag">
+                  {t(promptVaultUi.gate.error)}
+                </p>
+              ) : null}
+              <button
+                type="submit"
+                className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-md bg-navy px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-navy-2"
+              >
+                <KeyRound size={15} />
+                {t(promptVaultUi.gate.button)}
+              </button>
+              <p className="mt-4 text-center font-mono text-[10.5px] text-slate/80">
+                {t(promptVaultUi.gate.lockNote)}
+              </p>
+            </form>
+          </Reveal>
+        ) : (
+          <>
+            <div className="mt-10 grid gap-6 lg:grid-cols-[240px_minmax(0,1fr)]">
+              {/* case picker */}
+              <div className="flex gap-2 overflow-x-auto pb-1 lg:flex-col lg:overflow-visible">
+                {promptVault.map((v, i) => {
+                  const on = i === active;
+                  return (
+                    <button
+                      key={v.num}
+                      onClick={() => setActive(i)}
+                      className={`shrink-0 rounded-lg border px-4 py-3 text-left transition-all lg:w-full ${
+                        on
+                          ? "border-teal bg-navy text-white shadow-md"
+                          : "border-mist bg-panel text-navy hover:border-teal/60"
+                      }`}
+                    >
+                      <span
+                        className={`font-mono text-[10px] tracking-wide ${on ? "text-[#7FD8D4]" : "text-teal-deep"}`}
+                      >
+                        CASE {v.num} · {v.app.toUpperCase()}
+                      </span>
+                      <span className="mt-0.5 block text-[13px] leading-snug font-semibold">
+                        {v.label}
+                      </span>
+                    </button>
+                  );
+                })}
+                <button
+                  onClick={lock}
+                  className="shrink-0 rounded-lg border border-mist bg-panel px-4 py-2.5 text-left font-mono text-[11px] text-slate transition-colors hover:border-flag/50 hover:text-flag lg:w-full"
+                >
+                  <Lock size={11} className="mr-1.5 inline" />
+                  {t(promptVaultUi.labels.signOut)}
+                </button>
+              </div>
+
+              {/* panel */}
+              <div key={vc.num} className="min-w-0 space-y-6">
+                {/* takeaways */}
+                <div className="rounded-xl border border-gold/40 bg-gold/[0.07] p-6 md:p-7">
+                  <h3 className="font-display flex items-center gap-2.5 text-lg font-semibold text-navy">
+                    <Star size={16} className="text-gold" fill="currentColor" strokeWidth={0} />
+                    {t(promptVaultUi.labels.takeaways)} · Case {vc.num}
+                  </h3>
+                  <ul className="mt-4 space-y-3.5">
+                    {vc.takeaways.map((k, i) => (
+                      <li key={i} className="flex gap-3">
+                        <span className="mt-[3px] font-mono text-[11px] font-semibold text-gold">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <p className="text-[13.5px] leading-6 font-medium text-ink">{t(k)}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* prompts */}
+                <div className="rounded-xl border border-mist bg-panel p-6 md:p-7">
+                  <h3 className="font-display flex items-center gap-2.5 text-lg font-semibold text-navy">
+                    <MessageSquareText size={16} className="text-teal" />
+                    {t(promptVaultUi.labels.prompts)}
+                  </h3>
+                  <div className="mt-4 space-y-4">
+                    {vc.prompts.map((pr, i) => (
+                      <PromptCard key={`${vc.num}-${i}`} prompt={pr} />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <Reveal as="p" className="mt-8 max-w-3xl font-mono text-[11px] leading-5 text-slate/80">
+              {t(promptVaultUi.labels.note)}
+            </Reveal>
+          </>
+        )}
+      </div>
+    </section>
+  );
+}
+
 /* -------------------------------------------------------------- downloads -- */
+
 
 function Downloads() {
   const { t } = useLang();
@@ -1426,6 +1655,7 @@ export default function App() {
         <Foundations />
         <Governance />
         <Cases />
+        <PromptVault />
         <Downloads />
         <Program />
         <Instructor />
