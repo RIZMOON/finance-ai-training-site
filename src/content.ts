@@ -1265,8 +1265,13 @@ export const casesUi = {
     data: { en: "Data file", zh: "数据文件" },
     download: { en: "Download", zh: "下载" },
     noData: {
-      en: "No data file — this case consumes YOUR Case 5 memo (or the reference memo in Downloads).",
-      zh: "本案例不需要数据文件——它的输入是你在 Case 5 写出的备忘录（或下载区的参考备忘录）。",
+      en: "This case has no data file — its input is a Word memo. Use the one YOU wrote in Case 5; if yours isn't ready, take the reference memo below.",
+      zh: "本案例没有数据文件——它的输入是一份 Word 备忘录。优先用你在 Case 5 里写出来的那一份；若还没写完，就用下面这份参考备忘录。",
+    },
+    refMemo: { en: "Reference Q2 flash-report memo (Word)", zh: "参考备忘录：Q2 快报（Word）" },
+    refMemoNote: {
+      en: "A fully worked Case 5 answer with real heading styles — the structure PowerPoint reads.",
+      zh: "一份完整的 Case 5 参考答案，带真正的标题样式——PowerPoint 正是靠它来生成幻灯片。",
     },
     appTag: { en: "App", zh: "应用" },
   },
@@ -1307,12 +1312,6 @@ export const downloads = {
       detail: { en: "The printed handout: all seven cases plus the Copilot setup appendix and the prompt-patterns cheat sheet.", zh: "纸质讲义的电子版：七个案例全文，外加 Copilot 设置附录与提示词速查卡。" },
       href: "/downloads/Student_Handout_All_Cases.docx",
       size: "52 KB",
-    },
-    {
-      name: { en: "Reference Q2 flash-report memo (Word)", zh: "参考版 Q2 快报备忘录（Word）" },
-      detail: { en: "A fully worked Case 5 answer with real heading styles — and the guaranteed input for Case 6 if your own memo isn't ready.", zh: "Case 5 的完整参考答案，带真实标题样式——也是 Case 6 的保底输入（如果你自己的备忘录还没写完）。" },
-      href: "/downloads/Reference_Q2_Flash_Report_Memo.docx",
-      size: "39 KB",
     },
   ] as { name: L; detail: L; href: string; size: string }[],
   note: {

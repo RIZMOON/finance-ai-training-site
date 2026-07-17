@@ -1172,10 +1172,24 @@ function Cases() {
                   <Download size={13} />
                 </a>
               ) : (
-                <p className="mt-4 inline-flex items-start gap-2 rounded-md border border-gold/35 bg-gold/[0.07] px-3.5 py-2 text-[12.5px] leading-5 text-navy">
-                  <MoveRight size={14} className="mt-0.5 shrink-0 text-gold" />
-                  {t(casesUi.labels.noData)}
-                </p>
+                <div className="mt-4 rounded-md border border-gold/35 bg-gold/[0.07] px-3.5 py-3">
+                  <p className="flex items-start gap-2 text-[12.5px] leading-5 text-navy">
+                    <MoveRight size={14} className="mt-0.5 shrink-0 text-gold" />
+                    {t(casesUi.labels.noData)}
+                  </p>
+                  <a
+                    href="/downloads/Reference_Q2_Flash_Report_Memo.docx"
+                    download
+                    className="mt-3 inline-flex items-center gap-2 rounded-md border border-gold/50 bg-panel px-3.5 py-2 font-mono text-[12px] font-medium text-navy transition-colors hover:border-gold hover:bg-gold/10"
+                  >
+                    <FileText size={14} className="text-gold" />
+                    {t(casesUi.labels.refMemo)}
+                    <Download size={13} />
+                  </a>
+                  <p className="mt-2 text-[11.5px] leading-5 text-slate">
+                    {t(casesUi.labels.refMemoNote)}
+                  </p>
+                </div>
               )}
             </div>
             <div className="case-doc p-6 md:p-7" dangerouslySetInnerHTML={{ __html: c.html }} />
