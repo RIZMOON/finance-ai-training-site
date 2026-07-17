@@ -79,8 +79,22 @@ export const bigNumbers = {
       label: { en: "of boards have AI on the agenda, while 66% of directors report limited-to-no AI knowledge", zh: "的董事会将 AI 列入议程，而 66% 的董事自认 AI 知识有限或没有" },
     },
   ] as { value: string; label: L }[],
-  source:
-    "Deloitte, State of AI in the Financial Services Industry: The untapped edge (Mar 2026 · N=573 financial-services leaders, from a survey of 3,235 director-to-C-suite respondents across 24 countries) · Deloitte Global Boardroom Program, Governance of AI 2nd ed. (2025 · n=695, 56 countries)",
+  /* Both links verified against deloitte.com (Jul 2026). The FS report's own
+     cover prints deloitte.com/us/state-of-ai, which redirects to the first
+     landing page below - that is Deloitte's canonical home for this report. */
+  sources: [
+    {
+      title: "Deloitte · State of AI in the Financial Services Industry: The untapped edge",
+      meta: "Mar 2026 · N=573 financial-services leaders, from a survey of 3,235 director-to-C-suite respondents across 24 countries",
+      href: "https://www.deloitte.com/us/en/what-we-do/capabilities/applied-artificial-intelligence/content/state-of-ai-in-the-enterprise.html",
+    },
+    {
+      title:
+        "Deloitte Global Boardroom Program · Governance of AI: A critical imperative for today's boards (2nd edition)",
+      meta: "2025 · n=695 board members and C-suite executives across 56 countries, surveyed January–February 2025",
+      href: "https://www.deloitte.com/global/en/issues/trust/progress-on-ai-in-the-boardroom-but-room-to-accelerate.html",
+    },
+  ] as { title: string; meta: string; href: string }[],
 };
 
 /* ------------------------------------------------------------ pain points -- */
